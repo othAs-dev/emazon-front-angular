@@ -1,1 +1,16 @@
-<p>login works!</p>
+<section class="flex justify-center items-center h-5/6">
+  <mat-card class="w-1/3 p-4">
+    <mat-card-title class="pb-5">S'identifier</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="submit()" [formGroup]="form">
+        <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
+        <button color="primary" mat-raised-button type="submit">Se connecter</button>
+      </form>
+      <section class="flex items-center flex-col">
+        <p class="pt-8 text-gray-500">Nouveau chez Emazon ?</p>
+        <button color="primary" mat-stroked-button type="submit" routerLink="/sign-up">Créer un nouveau compte Emazon</button>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</section>
+

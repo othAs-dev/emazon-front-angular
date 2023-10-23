@@ -13,7 +13,7 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./login.component.css'],
   standalone: true,
 })
-export class LoginComponent {
+export default class LoginComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {

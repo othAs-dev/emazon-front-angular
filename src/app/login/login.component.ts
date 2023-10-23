@@ -10,7 +10,7 @@ import {RouterLink} from "@angular/router";
   selector: 'app-login',
   imports: [CommonModule, MatCardModule, ReactiveFormsModule, FormlyModule, MatButtonModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less'],
+  styleUrls: ['./login.component.css'],
   standalone: true,
 })
 export class LoginComponent {

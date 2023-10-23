@@ -3,14 +3,14 @@
   <form (ngSubmit)="submit()" [formGroup]="form">
     <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
     <div class="flex w-full justify-end">
-    <button
-      class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
-      color="primary"
-      mat-raised-button
-      type="submit"
-    >
-      Se connecter
-    </button>
+      <button
+        class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+        color="primary"
+        mat-raised-button
+        type="submit"
+      >
+        Se connecter
+      </button>
     </div>
   </form>
   <section class="flex items-center flex-col pt-8">
@@ -20,7 +20,7 @@
       class="text-xs w-fit mt-2 h-fit tablet:text-sm laptop:text-md desktop:text-lg"
       color="primary"
       mat-stroked-button
-      routerLink="/sign-up"
+      routerLink="./signup"
       type="submit"
     >
       Créer un nouveau compte Emazon

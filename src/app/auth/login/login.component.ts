@@ -5,6 +5,7 @@ import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormlyFieldConfig, FormlyFormOptions, FormlyModule} from "@ngx-formly/core";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
+import {LoginFields} from "../../formlyConfig/formly-presets/login-form";
 
 @Component({
   selector: 'app-login',
@@ -16,32 +17,8 @@ import {RouterLink} from "@angular/router";
 export default class LoginComponent {
   form = new FormGroup({});
   model: any = {};
-  options: FormlyFormOptions = {
-    formState: {
-      awesomeIsForced: false,
-    },
-  };
-  fields: FormlyFieldConfig[] = [
-    {
-      key: 'text',
-      type: 'input',
-      props: {
-        label: 'Adresse e-mail',
-        placeholder: 'john-doe@gmail.com',
-        required: true,
-      },
-    },
-    {
-      key: 'password',
-      type: 'input',
-      props: {
-        label: 'Mot de passe',
-        placeholder: '',
-        required: true,
-        type: 'password',
-      },
-    }
-  ];
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = LoginFields;
 
   submit() {
     if (this.form.valid) {

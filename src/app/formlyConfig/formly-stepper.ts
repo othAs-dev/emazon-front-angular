@@ -8,17 +8,15 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
 
 @Component({
   selector: 'formly-field-stepper',
+  styles: ['::ng-deep.mat-horizontal-stepper-header-container { margin-bottom: 10px;} ::ng-deep.mat-step-header{ border-radius: 5px !important; }'],
   template: `
-      <mat-horizontal-stepper
-        (selectionChange)="selectionChange($event)"
-        linear>
-          <mat-step
-                  *ngFor="let step of field.fieldGroup; let index = index; let last = last" [completed]="isValid(step)"
-          >
-              <ng-template matStepLabel>{{
-                step.templateOptions?.label
-                }}</ng-template>
-              <formly-field class="mt-10" [field]="step"></formly-field>
+      <mat-horizontal-stepper (selectionChange)="selectionChange($event)" linear>
+          <mat-step *ngFor="let step of field.fieldGroup; let index = index; let last = last"
+                    [completed]="isValid(step)">
+              <ng-template matStepLabel>
+                  {{step.templateOptions?.label}}
+              </ng-template>
+              <formly-field [field]="step" class="mt-10"></formly-field>
               <div class="flex justify-end">
                   <button
                           *ngIf="index !== 0" class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
@@ -27,6 +25,7 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
                           matStepperPrevious
                           type="button"
                   >
+                      Précédent
                       <mat-icon>keyboard_arrow_left</mat-icon>
                   </button>
                   <button *ngIf="!last" [disabled]="!isValid(step)"
@@ -35,6 +34,7 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
                           mat-stroked-button
                           matStepperNext
                           type="button">
+                      Suivant
                       <mat-icon>keyboard_arrow_right</mat-icon>
                   </button>
                   <button *ngIf="last"

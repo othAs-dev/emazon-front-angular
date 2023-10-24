@@ -1,0 +1,44 @@
+<mat-card-header class="w-full">
+  <mat-card-title class="pb-5 flex justify-between items-end">
+    <h2 class="text-xl tablet:text-2xl">S'identifier</h2>
+    <button
+      class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+      color="accent"
+      mat-stroked-button
+      routerLink="./login"
+      type="submit"
+    >
+      Sans connexion
+      <mat-icon>launch</mat-icon>
+    </button>
+  </mat-card-title>
+</mat-card-header>
+<mat-card-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
+    <div class="flex w-full justify-end pt-3">
+      <button
+        class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+        color="primary"
+        mat-raised-button
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        Se connecter
+      </button>
+    </div>
+  </form>
+  <section class="flex items-center flex-col pt-8">
+    <hr class="w-full"/>
+    <p class="text-gray-500 mt-3 text-sm laptop:text-md">Nouveau chez Emazon ?</p>
+    <button
+      class="text-xs w-fit mt-2 h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+      color="primary"
+      mat-stroked-button
+      routerLink="../signup"
+      type="submit"
+    >
+      Créer un nouveau compte Emazon
+    </button>
+  </section>
+</mat-card-content>

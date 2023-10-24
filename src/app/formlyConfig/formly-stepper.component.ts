@@ -10,14 +10,14 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
   selector: 'formly-field-stepper',
   styles: ['::ng-deep.mat-horizontal-stepper-header-container { margin-bottom: 10px;} ::ng-deep.mat-step-header{ border-radius: 5px !important; }'],
   template: `
-      <mat-horizontal-stepper (selectionChange)="selectionChange($event)" linear>
+      <mat-horizontal-stepper linear (selectionChange)="selectionChange($event)">
           <mat-step *ngFor="let step of field.fieldGroup; let index = index; let last = last"
                     [completed]="isValid(step)">
               <ng-template matStepLabel>
                   {{step.templateOptions?.label}}
               </ng-template>
-              <formly-field [field]="step" class="mt-10"></formly-field>
-              <div class="flex justify-end">
+              <formly-field class="mt-10" [field]="step"></formly-field>
+              <div class="flex justify-end mt-3">
                   <button
                           *ngIf="index !== 0" class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
                           color="primary"
@@ -28,20 +28,21 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
                       Précédent
                       <mat-icon>keyboard_arrow_left</mat-icon>
                   </button>
-                  <button *ngIf="!last" [disabled]="!isValid(step)"
-                          class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+                  <button *ngIf="!last" class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
                           color="primary"
                           mat-stroked-button
                           matStepperNext
-                          type="button">
+                          type="button"
+                          [disabled]="!isValid(step)">
                       Suivant
                       <mat-icon>keyboard_arrow_right</mat-icon>
                   </button>
                   <button *ngIf="last"
-                          [disabled]="!form.valid"
                           class="text-xs ml-2 w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
                           mat-raised-button
                           type="submit"
+                          color="primary"
+                          [disabled]="!form.valid"
                   >
                       S'inscrire
                       <mat-icon>check</mat-icon>
@@ -60,7 +61,7 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
     MatButtonModule
   ]
 })
-export class FormlyFieldStepper extends FieldType {
+export class FormlyFieldStepperComponent extends FieldType {
   selectedIndex = 0;
   isValid(field: FormlyFieldConfig): any {
     if (field.key) {

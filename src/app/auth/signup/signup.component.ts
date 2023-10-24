@@ -21,10 +21,10 @@ import {MatIconModule} from "@angular/material/icon";
   styleUrls: ['./signup.component.css']
 })
 export default class SignupComponent {
-  form = new FormGroup({});
-  model: any = {};
-  options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = SignupFields;
+  protected form = new FormGroup({});
+  protected model: any = {};
+  protected options: FormlyFormOptions = {};
+  protected fields: FormlyFieldConfig[] = SignupFields;
 
   submit() {
     alert(JSON.stringify(this.model));

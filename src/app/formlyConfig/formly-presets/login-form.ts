@@ -1,5 +1,5 @@
 import {FormlyFieldConfig} from "@ngx-formly/core";
-import {EmailValidator} from "../validators";
+import {EmailValidator, PasswordValidator} from "../validators";
 export const LoginFields: FormlyFieldConfig[] = [
   {
     key: 'email',
@@ -14,12 +14,15 @@ export const LoginFields: FormlyFieldConfig[] = [
   },
   {
     key: 'password',
-    type: 'input',
+    type: 'password',
     props: {
       label: 'Mot de passe',
       placeholder: '',
       required: true,
       type: 'password',
     },
+    validators: {
+      validation: [PasswordValidator]
+    }
   }
 ]

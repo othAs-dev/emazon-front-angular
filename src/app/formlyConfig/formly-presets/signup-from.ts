@@ -61,7 +61,7 @@ export const SignupFields: FormlyFieldConfig[] = [{
         },
         {
           key: 'password',
-          type: 'input',
+          type: 'password',
           props: {
             label: 'Mot de passe',
             placeholder: '',
@@ -71,7 +71,7 @@ export const SignupFields: FormlyFieldConfig[] = [{
           validators: {
             validation: [PasswordValidator]
           }
-        },
+        }
       ],
     },
   ],

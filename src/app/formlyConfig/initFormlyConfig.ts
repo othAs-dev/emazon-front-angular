@@ -1,6 +1,7 @@
 import {DatepickerComponent} from "./date-picker.component";
-import {FormlyFieldStepper} from "./formly-stepper";
+import {FormlyFieldStepperComponent} from "./formly-stepper.component";
 import {ConfigOption} from "@ngx-formly/core";
+import {PasswordFieldComponent} from "./password-field.component";
 
 export function initFormly(): ConfigOption {
   return {
@@ -12,14 +13,18 @@ export function initFormly(): ConfigOption {
       },
       {
         name: 'stepper',
-        component: FormlyFieldStepper,
+        component: FormlyFieldStepperComponent,
         wrappers: []
       },
+      {
+        name: 'password',
+        component: PasswordFieldComponent,
+        wrappers: []
+      }
     ],
     validationMessages: [
       { name: 'email', message: "L'email entré est invalide" },
       { name: 'phone', message: 'Numéro de téléphone invalide' },
-      { name: 'password', message: '1 majuscule, 1 minuscule et 1 chiffre' },
       {name: 'required', message: 'Ce champ est obligatoire'}
     ]
   }

@@ -9,7 +9,6 @@ import {FormlyModule} from "@ngx-formly/core";
 import {MatNativeDateModule} from "@angular/material/core";
 import {initFormly} from "./formlyConfig/initFormlyConfig";
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
@@ -23,4 +22,3 @@ export const appConfig: ApplicationConfig = {
     ),
   ],
 }
-            // {name: 'datepicker', component: DatePickerComponent, defaultOptions: {props: {datepickerOptions: {}}}}

@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadChildren: () => import('./auth/auth.routes'),
   },
   {
+    path: 'marketplace',
+    loadChildren: () => import('./marketplace/marketplace.routes'),
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: 'auth',

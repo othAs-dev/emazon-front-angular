@@ -30,6 +30,12 @@
           <span *ngIf="isExpanded" class="full-width">Home</span>
           <mat-icon *ngIf="!isExpanded">home</mat-icon>
         </mat-list-item>
+        <mat-list-item (click)="isExpanded = true">
+          <form *ngIf="isExpanded" (ngSubmit)="submit()" class="h-12" [formGroup]="form">
+            <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
+          </form>
+          <mat-icon *ngIf="!isExpanded">search</mat-icon>
+        </mat-list-item>
         <mat-list-item (click)="showSmartphonesMenu = !showSmartphonesMenu">
           <span *ngIf="isExpanded" class="full-width">Smartphones</span>
           <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded">phone_iphone</mat-icon>

@@ -7,11 +7,15 @@ import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {RouterLink, RouterOutlet} from "@angular/router";
+import {LoginFields} from "../formlyConfig/formly-presets/login-form";
+import {FormlyFieldConfig, FormlyFormOptions, FormlyModule} from "@ngx-formly/core";
+import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {SearchFields} from "../formlyConfig/formly-presets/search-form";
 
 @Component({
   selector: 'app-marketplace',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MatMenuModule, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, RouterLink, RouterOutlet],
+  imports: [CommonModule, MatMenuModule, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, RouterLink, RouterOutlet, FormlyModule, ReactiveFormsModule],
   templateUrl: './marketplace.component.html',
   styleUrls: ['./marketplace.component.css'],
   standalone: true,
@@ -26,8 +30,18 @@ export default class MarketplaceComponent {
   protected showLaptopSubMenu: boolean = false;
   protected showHeadphonesSubMenu: boolean = false;
   protected showSpeakersSubMenu: boolean = false;
+  protected form = new FormGroup({});
+  protected model: any = {};
+  protected options: FormlyFormOptions = {};
+  protected fields: FormlyFieldConfig[] = SearchFields;
 
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  submit() {
+    if (this.form.valid) {
+      alert(JSON.stringify(this.model));
+    }
   }
 }

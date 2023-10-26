@@ -17,9 +17,6 @@
   transform: scaleY(1);
   height: auto;
 }
-mat-sidenav-container{
-  background-color: #F6F4EB !important;
-}
 .menu-open {
   position: fixed;
   top: 0;

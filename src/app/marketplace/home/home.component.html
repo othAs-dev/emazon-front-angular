@@ -2,79 +2,35 @@
   <img alt="image avec des smartphones" src="../../../assets/carousel/phones.jpeg"/>
 </div>
 
-<section class="mt-10 w-full">
+<section class="mt-20 mb-20 w-full">
   <div class="flex justify-center">
     <h1 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl">Nos partenaires</h1>
   </div>
   <div class="flex justify-evenly">
-    <img alt="Google Logo" class="w-10 h-auto hover:scale-105 cursor-pointer tablet:w-12 laptop:w-16 desktop:w-20"
-         src="../../../assets/logo/logo-google.png"/>
-    <img alt="Xiaomi Logo" class="w-10 h-auto hover:scale-105 cursor-pointer tablet:w-12 laptop:w-16 desktop:w-20"
-         src="../../../assets/logo/logo-xiaomi.png"/>
-    <img alt="Apple Logo" class="w-10 h-auto hover:scale-105 cursor-pointer tablet:w-12 laptop:w-16 desktop:w-20"
-         src="../../../assets/logo/apple-logo-0.png"/>
-    <img alt="Samsung Logo" class="w-10 h-auto hover:scale-105 cursor-pointer tablet:w-12 laptop:w-16 desktop:w-20"
-         src="../../../assets/logo/logo-samsung.png"/>
+    <ng-container *ngFor="let logo of logoData; trackBy: trackByLogoData">
+      <img [alt]="logo.alt" class="w-12 h-auto hover:scale-105 transition-all cursor-pointer tablet:w-16 laptop:w-20 desktop:w-20" [src]="logo.src" [title]="logo.tooltip"/>
+    </ng-container>
+
   </div>
 </section>
 <section class="mt-10 w-full">
-  <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl text-center">Catégories poids lourds <span class="text-gray-600 text-lg font-normal">Les appareils reconditionnés encore plus populaires que Teddy Riner</span>
+  <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl text-center">Catégories poids lourds <span class="text-gray-600 text-lg font-normal">Des appareils encore plus cool que Will Smith</span>
   </h2>
-  <div class="flex justify-center gap-10">
-    <mat-card class="hover:scale-105 cursor-pointer">
+  <div class=" gap-4 flex justify-center tablet:gap-10 flex-wrap">
+    <mat-card class="w-36 tablet:w-72 laptop:w-64 hover:scale-105 transition-all cursor-pointer" *ngFor="let c of categoryData; trackBy: trackByCategoryData" [title]="c.tooltip">
       <div class="flex justify-center">
-        <img class="w-56" src="../../../assets/MacBook_Air__2022__M2.avif"/>
+        <img class="w-48 pt-3 tablet:w-56" [src]="c.imageSrc" [alt]="c.title"/>
       </div>
       <mat-card-header>
-        <mat-card-title>Macbook</mat-card-title>
+        <mat-card-title>{{c.title}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <p class="text-justify  text-sm text-gray-600">Au prix d'un McMorning.<br/> Ou presque.</p>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="hover:scale-105 cursor-pointer">
-      <div class="flex justify-center">
-        <img class="w-52 pt-4" src="../../../assets/ipad_category.avif"/>
-      </div>
-      <mat-card-header>
-        <mat-card-title>Tablettes</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p class="text-justify text-sm text-gray-600">Pour ceux qui voient la vie en grand</p>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="hover:scale-105 cursor-pointer">
-      <div class="flex justify-center">
-        <img class="w-56" src="../../../assets/iphone_category.avif"/>
-      </div>
-      <mat-card-header>
-        <mat-card-title>Smartphones</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p class="text-justify text-sm text-gray-600">Le monde dans sa poche</p>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="hover:scale-105 cursor-pointer">
-      <div class="flex justify-center">
-        <img class="w-56" src="../../../assets/airpods_category.avif"/>
-      </div>
-      <mat-card-header>
-        <mat-card-title>Airpods</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p class="text-justify text-sm text-gray-600">Le gadget le plus cool du 21eme siecle</p>
+      <mat-card-content class="pt-3">
+        <p class="text-justify text-sm text-gray-600">{{c.description}}</p>
       </mat-card-content>
     </mat-card>
   </div>
 </section>
-<section>
-  <h1>Loremfrojfglrjeghmre</h1>
-  <h1>Loremfrojfglrjeghmre</h1>
-  <h1>Loremfrojfglrjeghmre</h1>
-  <h1>Loremfrojfglrjeghmre</h1>
+<section class="flex justify-center mt-14 mb-20 w-full">
+  <img alt="image avec des smartphones" src="../../../assets/carousel/iphone-15-pro-banner.webp" class="w-11/12 hover:cursor-pointer" title="Découvrez nos iPhones 15 "/>
 </section>
-<div class="fixed bottom-0 right-0 mb-4 mr-4 p-4 flex items-center">
-  <button (click)="goToTop()" class="sticky bottom-3 right-1 z-10" color="primary" mat-mini-fab>
-    <mat-icon>arrow_upward</mat-icon>
-  </button>
-</div>
+<app-footer />

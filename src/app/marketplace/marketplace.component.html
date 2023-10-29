@@ -1,20 +1,24 @@
 <section class="overflow-hidden h-full">
   <mat-toolbar class="w-full flex justify-between top-0" color="primary">
     <div class="flex items-center">
-      <button (click)="isExpanded = !isExpanded" mat-icon-button>
+      <button (click)="isExpanded = !isExpanded" class="hover:bg-[#f6a636]" mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
-      <h1>E-Mazon</h1>
+      <a routerLink="./home">
+        <img class="w-16" src="assets/logo/ez.png" alt="logo">
+      </a>
     </div>
     <div>
       <button
-        class="text-xs w-fit mr-2 h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+        class="text-xs w-fit mr-2 h-fit hover:bg-[#f6a636] tablet:text-sm laptop:text-md desktop:text-lg"
+        title="Panier"
         color="accent"
         mat-icon-button>
-        <mat-icon class="text-white">shopping_cart</mat-icon>
+        <mat-icon class="text-white" >shopping_cart</mat-icon>
       </button>
       <button
-        class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+        class="text-xs w-fit h-fit hover:bg-[#f6a636] tablet:text-sm laptop:text-md desktop:text-lg"
+        title="Mon compte"
         color="accent"
         mat-icon-button
         routerLink="../auth/login"
@@ -28,17 +32,17 @@
       <mat-nav-list>
         <mat-list-item routerLink="./home">
           <span *ngIf="isExpanded" class="full-width">Home</span>
-          <mat-icon *ngIf="!isExpanded">home</mat-icon>
+          <mat-icon *ngIf="!isExpanded" class="hover:text-[#f6a636]">home</mat-icon>
         </mat-list-item>
         <mat-list-item (click)="isExpanded = true">
           <form *ngIf="isExpanded" (ngSubmit)="submit()" class="h-12" [formGroup]="form">
             <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
           </form>
-          <mat-icon *ngIf="!isExpanded">search</mat-icon>
+          <mat-icon *ngIf="!isExpanded" class="hover:text-[#f6a636]">search</mat-icon>
         </mat-list-item>
         <mat-list-item (click)="showSmartphonesMenu = !showSmartphonesMenu">
           <span *ngIf="isExpanded" class="full-width">Smartphones</span>
-          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded">phone_iphone</mat-icon>
+          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded" class="hover:text-[#f6a636]">phone_iphone</mat-icon>
           <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showSmartphonesMenu}"
                     class="menu-button pt-1.5">
             expand_more
@@ -53,7 +57,7 @@
         </div>
         <mat-list-item (click)="showComputersMenu = !showComputersMenu">
           <span *ngIf="isExpanded" class="full-width">Ordinateurs</span>
-          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded">laptop</mat-icon>
+          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded" class="hover:text-[#f6a636]">laptop</mat-icon>
           <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showComputersMenu}"
                     class="menu-button pt-1.5">
             expand_more
@@ -86,8 +90,8 @@
           </div>
         </div>
         <mat-list-item (click)="showTabletsMenu = !showTabletsMenu">
-          <span *ngIf="isExpanded" class="full-width">Tablettes</span>
-          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded">tablet_mac</mat-icon>
+          <span *ngIf="isExpanded" class="full-width hover:text-[#f6a636]">Tablettes</span>
+          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded" class="hover:text-[#f6a636]">tablet_mac</mat-icon>
           <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showTabletsMenu}" class="menu-button pt-1.5">
             expand_more
           </mat-icon>
@@ -100,7 +104,7 @@
         </div>
         <mat-list-item (click)="showAudioAndSoundMenu = !showAudioAndSoundMenu">
           <span *ngIf="isExpanded" class="full-width">Audio & Son</span>
-          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded">headset</mat-icon>
+          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded" class="hover:text-[#f6a636]">headset</mat-icon>
           <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showAudioAndSoundMenu}"
                     class="menu-button pt-1.5">
             expand_more
@@ -109,7 +113,7 @@
         <div *ngIf="isExpanded" [ngClass]="{'expanded' : showAudioAndSoundMenu}" class="submenu">
           <a href="..." mat-list-item>Voir tout</a>
           <mat-list-item (click)="showHeadphonesSubMenu = !showHeadphonesSubMenu">
-            <span *ngIf="isExpanded" class="full-width">Enceintes</span>
+            <span *ngIf="isExpanded" class="full-width hover:text-[#f6a636]">Enceintes</span>
             <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showHeadphonesSubMenu}" class="menu-button">
               expand_more
             </mat-icon>
@@ -135,7 +139,7 @@
         </div>
         <mat-list-item>
           <span *ngIf="isExpanded" class="full-width">Magasins</span>
-          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded">place</mat-icon>
+          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded" class="hover:text-[#f6a636]">place</mat-icon>
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>

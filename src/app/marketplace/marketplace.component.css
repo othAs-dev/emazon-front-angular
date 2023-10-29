@@ -34,3 +34,8 @@ mat-toolbar{
 .menu-open.mat-sidenav-closed {
   transform: translateX(-100%);
 }
+@media screen and (max-width: 450px) {
+  .hidden-important {
+    display: none !important;
+  }
+}

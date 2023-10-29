@@ -28,7 +28,7 @@
     </div>
   </mat-toolbar>
   <mat-sidenav-container class="h-full fixed">
-    <mat-sidenav mode="side" opened="true">
+    <mat-sidenav mode="side" opened="true" [ngClass]="{'hidden-important': !isExpanded, 'visible': isExpanded}" class="tablet:block">
       <mat-nav-list>
         <mat-list-item routerLink="./home">
           <span *ngIf="isExpanded" class="full-width">Accueil</span>

@@ -8,7 +8,11 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
 
 @Component({
   selector: 'formly-field-stepper',
-  styles: ['::ng-deep.mat-horizontal-stepper-header-container { margin-bottom: 10px;} ::ng-deep.mat-step-header{ border-radius: 5px !important; }'],
+  styles: [
+  '::ng-deep.mat-horizontal-stepper-header-container { margin-bottom: 10px;} ' +
+  '::ng-deep.mat-step-header{ border-radius: 5px !important; } ' +
+  '::ng-deep.mat-step-icon-selected{background-color: #f6a636 !important;}'
+  ],
   template: `
       <mat-horizontal-stepper linear (selectionChange)="selectionChange($event)">
           <mat-step *ngFor="let step of field.fieldGroup; let index = index; let last = last"

@@ -5,13 +5,19 @@ export interface CategoryItem {
   imageSrc: string;
   description: string;
 }
-
-// Définissez une interface pour les éléments de logoData
 export interface LogoItem {
   id: number;
   alt: string;
   src: string;
-  tooltip: string;
+  buttonText: string;
+  link: string;
+}
+export interface ProductItem {
+  id: number;
+  title: string;
+  imageSrc: string;
+  description: string[];
+  price: string;
 }
 export const categoryData: CategoryItem[] = [
   {
@@ -44,8 +50,132 @@ export const categoryData: CategoryItem[] = [
   }
 ]
 export const logoData: LogoItem[] = [
-  { id: 1, alt: 'Google Logo', src: '../../../assets/logo/logo-google.png', tooltip: 'Nos produits Google' },
-  { id: 2, alt: 'Xiaomi Logo', src: '../../../assets/logo/logo-xiaomi.png', tooltip: 'Nos produits Xiaomi' },
-  { id: 3, alt: 'Apple Logo', src: '../../../assets/logo/apple-logo-0.png', tooltip: 'Nos produits Apple' },
-  { id: 4, alt: 'Samsung Logo', src: '../../../assets/logo/logo-samsung.png', tooltip: 'Nos produits Samsung' },
+  {
+    id: 1,
+    alt: 'Logo Apple',
+    src: '../../../assets/logo/apple-logo.svg',
+    buttonText: 'En savoir plus',
+    link: '#'
+
+  },
+  {
+    id: 2,
+    alt: 'Logo Samsung',
+    src: '../../../assets/logo/samsung-logo.svg',
+    buttonText: 'En savoir plus',
+    link: '#'
+  },
+  {
+    id: 3,
+    alt: 'Logo Google',
+    src: '../../../assets/logo/logo-google.png',
+    buttonText: 'En savoir plus',
+    link: '#'
+  },
+  {
+    id: 4,
+    alt: 'Logo Huawei',
+    src: '../../../assets/logo/huwawei-logo.svg',
+    buttonText: 'En savoir plus',
+    link: '#'
+  },
+];
+
+export const products: ProductItem[] = [
+  {
+    id: 1,
+    title: "Iphone 15 pro",
+    imageSrc: "../../../assets/15-basic.jpeg",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 2,
+    title: "Iphone 15 pro",
+    imageSrc: "../../../assets/15-pro.jpeg",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 3,
+    title: "Airpods Max",
+    imageSrc: "../../../assets/airpods-mac.png",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 4,
+    title: "Macbook Air 15 pouces",
+    imageSrc: "../../../assets/mabook-air.jpeg",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 5,
+    title: "iPad Pro M2",
+    imageSrc: "../../../assets/ipad-air.jpeg",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 6,
+    title: "iPad 10gen",
+    imageSrc: "../../../assets/ipad-pro.jpeg",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 7,
+    title: "Google Pixel 7a",
+    imageSrc: "../../../assets/pixel-7a.webp",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  },
+  {
+    id: 8,
+    title: "Google Pixel 8",
+    imageSrc: "../../../assets/pixel-pro.jpeg",
+    description: [
+      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
+      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
+      "Nouvelle puce Apple Bionic A17 Pro",
+      "Triple Capteur photo arrière"
+    ],
+    price: "1 259,00 €"
+  }
 ];

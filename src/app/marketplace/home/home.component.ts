@@ -5,10 +5,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {categoryData, CategoryItem, logoData, LogoItem} from "./home.constants";
 import {FooterComponent} from "../../shared/components/footer/footer.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, MatIconModule, MatButtonModule, MatCardModule, FooterComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatCardModule, FooterComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,

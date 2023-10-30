@@ -22,9 +22,9 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 70%; /* Ajustez la largeur en fonction de vos besoins */
+  width: 70%;
   background: white;
-  z-index: 1000; /* Assurez-vous qu'il est au-dessus du contenu existant */
+  z-index: 1000;
   transform: translateX(0);
   transition: transform 0.3s ease-in-out;
 }

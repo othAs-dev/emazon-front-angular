@@ -144,7 +144,7 @@ export const products: ProductItem[] = [
   },
   {
     id: 6,
-    title: "iPad 10gen",
+    title: "iPad 10ème génération",
     imageSrc: "../../../assets/ipad-pro.jpeg",
     description: [
       "OS iOS 17 - 128Go de ROM, 8Go de RAM",

@@ -1,10 +1,16 @@
 import {Routes} from "@angular/router";
+import MarketplaceComponent from "./marketplace.component";
 
 export default [
   {
     path: '',
-    loadComponent: () => import('./marketplace.component'),
+    component: MarketplaceComponent,
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home',
+      },
       {
         path: 'home',
         loadComponent: () => import('./home/home.component'),
@@ -12,7 +18,8 @@ export default [
     ]
   },
   {
-    path: '**',
+    path: '',
+    pathMatch: 'full',
     redirectTo: 'home',
   }
 ] as Routes;

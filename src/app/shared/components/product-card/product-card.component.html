@@ -1,0 +1,26 @@
+<div class="gap-4 flex justify-center tablet:gap-10 flex-wrap">
+  <mat-card *ngFor="let p of products; trackBy: trackByProductsData"
+            class="w-11/12 h-[22rem] shadow-none flex-row tablet:w-72 laptop:w-64 laptop:h-[27rem]">
+    <div class="flex justify-center h-1/2">
+      <img [src]="p.imageSrc" class="w-32 pt-3 tablet:w-48"/>
+    </div>
+    <div class="h-1/2">
+      <mat-card-header>
+        <mat-card-title>
+          <p class="font-bold text-sm pb-2">{{ p.title }}</p>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="pt-3">
+        <ul class="text-justify text-gray-600 list-disc pr-3 pl-3">
+          <li *ngFor="let d of p.description" class="text-xs">{{ d }}</li>
+        </ul>
+        <div class="flex justify-between items-center pt-3">
+          <p>À partir de <span class="text-[#f6a636] font-bold">{{ p.price }}</span></p>
+          <button color="accent" mat-mini-fab>
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

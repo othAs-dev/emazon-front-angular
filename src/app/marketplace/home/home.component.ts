@@ -6,10 +6,12 @@ import {MatCardModule} from "@angular/material/card";
 import {categoryData, CategoryItem, logoData, LogoItem, ProductItem, products} from "./home.constants";
 import {FooterComponent} from "../../shared/components/footer/footer.component";
 import {RouterLink} from "@angular/router";
+import {ProductCardComponent} from "../../shared/components/product-card/product-card.component";
+import {VideoCardComponent} from "../../shared/components/video-card/video-card.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, MatIconModule, MatButtonModule, MatCardModule, FooterComponent, RouterLink],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatCardModule, FooterComponent, RouterLink, ProductCardComponent, VideoCardComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
@@ -25,8 +27,4 @@ export default class HomeComponent {
   protected trackByCategoryData(id: number, item: CategoryItem): number {
     return item.id;
   }
-  protected trackByProductsData(id: number, item: ProductItem): number {
-    return item.id;
-  }
-
 }

@@ -1,0 +1,27 @@
+<section
+  class="flex flex-col justify-center bg-black mt-14 mb-2 w-11/12 mr-auto ml-auto border border-gray-200 rounded-lg shadow"
+  [ngClass]="{'bg-black': darkCard, 'laptop:flex-row-reverse': rightSide, 'laptop:flex-row': !rightSide}" >
+  <video autoplay class="w-4/6 mr-auto ml-auto laptop:w-1/2 laptop:rounded-md" loop muted>
+    <source [src]="src" type="video/mp4" />
+    Votre navigateur ne prend pas en charge la lecture de vidéos.
+  </video>
+  <div class="flex flex-col items-center laptop:flex-row laptop:max-w-xl">
+    <div class="flex flex-col justify-between p-4 leading-normal h-full">
+      <div>
+        <h5 class="mb-2 text-xl tablet:text-2xl font-bold tracking-tight hover:cursor-pointer" [ngClass]="{'text-white': darkCard}"
+            routerLink="#" [title]="title">{{title}}</h5>
+        <strong [ngClass]="{'orange-gradient': darkCard, 'blue-gradient': !darkCard}">
+          {{subtitle}}</strong>
+        <p class="mb-3 text-sm text-white tablet:text-base" [ngClass]="{'text-white': darkCard}">{{description}}</p>
+      </div>
+      <div class="flex" [ngClass]="{'justify-start': rightSide, 'justify-end': !rightSide}">
+        <button class="w-full tablet:w-3/6 laptop:w-2/6 text-sm"
+                [color]="darkCard ? 'accent' : 'primary'"
+                mat-raised-button [routerLink]="link">
+          Ajouter au panier
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

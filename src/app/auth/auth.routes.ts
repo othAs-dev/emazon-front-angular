@@ -1,22 +1,31 @@
 import {Routes} from "@angular/router";
+import LoginComponent from "./login/login.component";
+import SignupComponent from "./signup/signup.component";
+import AuthComponent from "./auth.component";
 
 export default [
   {
     path: '',
-    loadComponent: () => import('./auth.component'),
+    component: AuthComponent,
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login',
+      },
       {
         path: 'login',
         loadComponent: () => import('./login/login.component'),
       },
       {
         path: 'signup',
-        loadComponent: () => import('./signup/signup.component'),
+        component: SignupComponent,
       }
     ]
   },
   {
     path: '**',
+    pathMatch: 'full',
     redirectTo: 'login',
   }
 ] as Routes;

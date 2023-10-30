@@ -2,7 +2,7 @@
   <mat-card *ngFor="let p of products; trackBy: trackByProductsData"
             class="w-11/12 h-[22rem] shadow-none flex-row tablet:w-72 laptop:w-64 laptop:h-[27rem]">
     <div class="flex justify-center h-1/2">
-      <img [src]="p.imageSrc" class="w-32 pt-3 tablet:w-48"/>
+      <img [src]="p.imageSrc" class="w-32 pt-3 tablet:w-48" [alt]="p.title"/>
     </div>
     <div class="h-1/2">
       <mat-card-header>

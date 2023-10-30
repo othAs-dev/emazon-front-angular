@@ -1,6 +1,6 @@
 <section
-  class="flex flex-col justify-center bg-black mt-14 mb-2 w-11/12 mr-auto ml-auto border border-gray-200 rounded-lg shadow"
-  [ngClass]="{'bg-black': darkCard, 'laptop:flex-row-reverse': rightSide, 'laptop:flex-row': !rightSide}" >
+  class="flex flex-col justify-center mt-14 mb-2 w-11/12 mr-auto ml-auto border border-gray-200 rounded-lg shadow"
+  [ngClass]="{'bg-black': darkCard, 'bg-white': !darkCard, 'laptop:flex-row-reverse': rightSide, 'laptop:flex-row': !rightSide}" >
   <video autoplay class="w-4/6 mr-auto ml-auto laptop:w-1/2 laptop:rounded-md" loop muted>
     <source [src]="src" type="video/mp4" />
     Votre navigateur ne prend pas en charge la lecture de vidéos.

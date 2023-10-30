@@ -16,7 +16,7 @@ export interface ProductItem {
   id: number;
   title: string;
   imageSrc: string;
-  description: string[];
+  description: string;
   price: string;
 }
 export const categoryData: CategoryItem[] = [
@@ -54,7 +54,7 @@ export const logoData: LogoItem[] = [
     id: 1,
     alt: 'Logo Apple',
     src: '../../../assets/logo/apple-logo.svg',
-    buttonText: 'En savoir plus',
+    buttonText: 'Gamme Apple',
     link: '#'
 
   },
@@ -62,21 +62,21 @@ export const logoData: LogoItem[] = [
     id: 2,
     alt: 'Logo Samsung',
     src: '../../../assets/logo/samsung-logo.svg',
-    buttonText: 'En savoir plus',
+    buttonText: 'Gamme Samsung',
     link: '#'
   },
   {
     id: 3,
     alt: 'Logo Google',
-    src: '../../../assets/logo/logo-google.png',
-    buttonText: 'En savoir plus',
+    src: '../../../assets/logo/google-logo.svg',
+    buttonText: 'Gamme Google',
     link: '#'
   },
   {
     id: 4,
     alt: 'Logo Huawei',
     src: '../../../assets/logo/huwawei-logo.svg',
-    buttonText: 'En savoir plus',
+    buttonText: 'Gamme Huawei',
     link: '#'
   },
 ];
@@ -86,96 +86,56 @@ export const products: ProductItem[] = [
     id: 1,
     title: "Iphone 15 pro",
     imageSrc: "../../../assets/15-basic.jpeg",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 2,
     title: "Iphone 15 pro",
     imageSrc: "../../../assets/15-pro.jpeg",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 3,
     title: "Airpods Max",
     imageSrc: "../../../assets/airpods-mac.png",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 4,
     title: "Macbook Air 15 pouces",
     imageSrc: "../../../assets/mabook-air.jpeg",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 5,
     title: "iPad Pro M2",
     imageSrc: "../../../assets/ipad-air.jpeg",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 6,
     title: "iPad 10ème génération",
     imageSrc: "../../../assets/ipad-pro.jpeg",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 7,
     title: "Google Pixel 7a",
     imageSrc: "../../../assets/pixel-7a.webp",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   },
   {
     id: 8,
     title: "Google Pixel 8",
     imageSrc: "../../../assets/pixel-pro.jpeg",
-    description: [
-      "OS iOS 17 - 128Go de ROM, 8Go de RAM",
-      "Écran AMOLED 6,1\" Dynamic Island 120Hz",
-      "Nouvelle puce Apple Bionic A17 Pro",
-      "Triple Capteur photo arrière"
-    ],
+    description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
     price: "1 259,00 €"
   }
 ];

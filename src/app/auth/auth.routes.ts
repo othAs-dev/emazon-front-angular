@@ -18,7 +18,7 @@ export default [
       },
       {
         path: 'signup',
-        component: SignupComponent,
+        loadComponent: () => import('./signup/signup.component'),
       }
     ]
   },

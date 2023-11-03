@@ -1,0 +1,73 @@
+<div class="flex justify-center ">
+  <img alt="image avec des smartphones" src="../../../assets/carousel/ipad-banner.png"/>
+</div>
+<section class="mt-10 w-full">
+  <div class="text-center">
+    <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl">Catégories poids lourds <span
+      class="text-gray-600 text-lg font-normal">Des appareils qui en mettent plein la vue !</span>
+    </h2>
+  </div>
+  <div class=" gap-4 flex justify-center tablet:gap-10 flex-wrap">
+    <mat-card *ngFor="let c of categoryData; trackBy: trackByCategoryData"
+              [title]="c.tooltip"
+              class="w-44 shadow-none tablet:w-72 laptop:w-64 hover:drop-shadow-lg transition-all cursor-pointer">
+      <div class="flex justify-center">
+        <img [alt]="c.title" [src]="c.imageSrc" class="w-48 pt-3 tablet:w-56"/>
+      </div>
+      <mat-card-header>
+        <mat-card-title>{{c.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="p-3">
+        <p class="text-justify text-sm text-gray-600">{{c.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+<section class="mt-10 mb-10 w-full flex justify-center">
+  <div class="flex justify-center pb-10 pt-10 flex-col rounded-md w-11/12 bg-[#fcf2e3]">
+    <div class="text-center">
+      <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl">Nos partenaires <span
+        class="text-gray-600 text-lg font-normal">Nos supers héros invinsibles, qui nous font briller chaque jour.</span>
+      </h2>
+    </div>
+    <div class="flex justify-center gap-5 laptop:gap-20 desktop:gap-24 rounded-md flex-wrap">
+      <div class="flex justify-center min-w-[120px] flex-col gap-6" *ngFor="let l of logoData; trackBy: trackByLogoData">
+        <img [alt]="l.alt" class="w-28 laptop:w-32 object-container mr-auto ml-auto border border-slate-300  bg-white p-5 rounded-md" [src]="l.src"/>
+        <button class="text-sm hover:bg-[#f6a636]" color="primary" mat-stroked-button [routerLink]="l.link">{{l.buttonText}}</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="flex justify-center mt-14 mb-20 w-full">
+  <img alt="image avec des smartphones" class="hover:cursor-pointer"
+       src="../../../assets/carousel/iphone-15-pro-banner.webp" title="Découvrez nos iPhones 15 "/>
+</section>
+<section class="mt-10 w-full">
+  <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl text-center">Nos meilleurs ventes <span
+    class="text-gray-600 text-lg font-normal">Ça part aussi vite que des petits pains (au chocolat).
+</span>
+  </h2>
+  <app-product-card [products]="productsData"/>
+</section>
+<app-video-card
+    src="../../../assets/mac_videos.mp4"
+    title="Macbook Pro M2 16GB"
+    description="Boosté par la puce M2 Pro ou M2 Max, le MacBook Pro offre une puissance et une efficacité énergétique inédites.
+          Ses performances sont exceptionnelles, qu’il soit branché ou non. Et il offre désormais une autonomie encore plus longue.
+          Ajoutez à cela un sublime écran Liquid Retina XDR et tous les ports dont vous avez besoin, et vous obtenez un
+          ordinateur portable pro définitivement sans égal."
+    subtitle="Choisissez la taille. Choisissez la puce. Et accrochez-vous."
+    [rightSide]="true"
+    [darkCard]="false"
+  />
+<app-video-card
+    src="../../../assets/ipad-10.mp4"
+    title="iPad Air 64GB"
+    description="Avec l’iPad Air, plongez dans tout ce que vous lisez,
+    regardez ou créez. Son écran Liquid Retina 10,9 pouces dispose de technologies avancées,
+    telles que l’affichage True Tone, la large gamme de couleurs P3 et un revêtement antireflet."
+    subtitle="Sous la couleur, la puissance"
+    [rightSide]="false"
+    [darkCard]="true"
+  />
+<app-footer/>

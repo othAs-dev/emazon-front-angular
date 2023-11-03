@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormlyFieldConfig, FormlyFormOptions, FormlyModule} from "@ngx-formly/core";
 import {MatButtonModule} from "@angular/material/button";
@@ -15,6 +15,7 @@ import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-signup',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [CommonModule, FormlyModule, MatButtonModule, MatCardModule, ReactiveFormsModule, RouterLink, MatStepperModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './signup.component.html',

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
@@ -10,6 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-login',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MatCardModule, ReactiveFormsModule, FormlyModule, MatButtonModule, RouterLink, MatIconModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],

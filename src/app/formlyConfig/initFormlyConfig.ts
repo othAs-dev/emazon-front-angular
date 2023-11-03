@@ -2,6 +2,7 @@ import {DatepickerComponent} from "./date-picker.component";
 import {FormlyFieldStepperComponent} from "./formly-stepper.component";
 import {ConfigOption} from "@ngx-formly/core";
 import {PasswordFieldComponent} from "./password-field.component";
+import {SearchFieldComponent} from "./search-field.component";
 
 export function initFormly(): ConfigOption {
   return {
@@ -19,6 +20,11 @@ export function initFormly(): ConfigOption {
       {
         name: 'password',
         component: PasswordFieldComponent,
+        wrappers: []
+      },
+      {
+        name: 'search',
+        component: SearchFieldComponent,
         wrappers: []
       }
     ],

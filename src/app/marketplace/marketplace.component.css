@@ -1,0 +1,41 @@
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-left: 30px;
+  height: 0;
+}
+.submenu.expanded {
+  transform: scaleY(1);
+  height: auto;
+}
+.menu-open {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  background: white;
+  z-index: 1000;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+mat-toolbar{
+  padding-left: 4px !important;
+}
+.menu-open.mat-sidenav-closed {
+  transform: translateX(-100%);
+}
+@media screen and (max-width: 450px) {
+  .hidden-important {
+    display: none !important;
+  }
+}

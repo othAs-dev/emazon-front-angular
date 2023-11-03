@@ -3,15 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  height: 100%
-}
+html, body {height: 100%}
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #F6F4EB;
-}
-::ng-deep {
-
+  font-family: "Gill Sans", "Helvetica Neue", sans-serif;
+  background-color: #efefef;
 }

@@ -1,0 +1,6 @@
+.blue-gradient{
+  color: transparent; background-image: linear-gradient(90deg, #123fff, #b500ff); background-clip: text; -webkit-background-clip: text;
+}
+.orange-gradient {
+  color: transparent; background-image: linear-gradient(90deg, #ffa40b, #fc1717); background-clip: text; -webkit-background-clip: text;
+}

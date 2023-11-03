@@ -23,7 +23,6 @@ export default class HomeComponent {
   protected trackByLogoData(id: number, item: LogoItem): number {
     return item.id;
   }
-
   protected trackByCategoryData(id: number, item: CategoryItem): number {
     return item.id;
   }

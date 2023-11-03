@@ -14,6 +14,10 @@ export default [
       {
         path: 'home',
         loadComponent: () => import('./home/home.component'),
+      },
+      {
+        path: 'cart',
+        loadComponent: () => import('./cart/cart.component'),
       }
     ]
   },

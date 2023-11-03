@@ -87,55 +87,55 @@ export const products: ProductItem[] = [
     title: "Iphone 15 pro",
     imageSrc: "../../../assets/15-basic.jpeg",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 2,
     title: "Iphone 15 pro",
     imageSrc: "../../../assets/15-pro.jpeg",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 3,
     title: "Airpods Max",
     imageSrc: "../../../assets/airpods-mac.png",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 4,
     title: "Macbook Air 15 pouces",
     imageSrc: "../../../assets/mabook-air.jpeg",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 5,
     title: "iPad Pro M2",
     imageSrc: "../../../assets/ipad-air.jpeg",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 6,
     title: "iPad 10ème génération",
     imageSrc: "../../../assets/ipad-pro.jpeg",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 7,
     title: "Google Pixel 7a",
     imageSrc: "../../../assets/pixel-7a.webp",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   },
   {
     id: 8,
     title: "Google Pixel 8",
     imageSrc: "../../../assets/pixel-pro.jpeg",
     description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
-    price: "1 259,00 €"
+    price: "1 259 €"
   }
 ];

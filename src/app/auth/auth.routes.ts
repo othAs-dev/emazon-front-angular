@@ -1,5 +1,4 @@
 import {Routes} from "@angular/router";
-import SignupComponent from "./signup/signup.component";
 import AuthComponent from "./auth.component";
 
 export default [

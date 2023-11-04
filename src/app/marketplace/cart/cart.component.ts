@@ -1,20 +1,31 @@
-import { Component } from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {CommonModule, NgFor, NgOptimizedImage} from '@angular/common';
 import {FooterComponent} from "../../shared/components/footer/footer.component";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
 import {ProductItem} from "../home/home.constants";
 import {MatIconModule} from "@angular/material/icon";
-import {benefitsData, benefitsModel, payementMethodData, payementMethodModel, products} from "./cart.constants";
+import {
+  benefitsData,
+  benefitsModel,
+  payementMethodData,
+  payementMethodModel, ProductRecap,
+  products,
+  productsRecap
+} from "./cart.constants";
 import {MatCardModule} from "@angular/material/card";
 import {FormlyFieldConfig, FormlyFormOptions, FormlyModule} from "@ngx-formly/core";
-import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductCardComponent} from "../../shared/components/product-card/product-card.component";
 import {ProductCarouselComponent} from "../../shared/components/product-carousel/product-carousel.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, FooterComponent, MatButtonModule, RouterLink, MatIconModule, MatCardModule, NgOptimizedImage, FormlyModule, ReactiveFormsModule, ProductCardComponent, ProductCarouselComponent],
+  imports: [CommonModule, FooterComponent, MatButtonModule, RouterLink, MatIconModule, MatCardModule, NgOptimizedImage,MatSnackBarModule, FormlyModule, ReactiveFormsModule, ProductCardComponent, ProductCarouselComponent, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
   standalone: true,
@@ -22,6 +33,7 @@ import {ProductCarouselComponent} from "../../shared/components/product-carousel
 export default class CartComponent {
   protected benefitsData: benefitsModel[] =  benefitsData;
   protected payementMethodData: payementMethodModel[] = payementMethodData;
+  protected productRecap: ProductRecap[] = productsRecap;
   protected giftWrap: boolean = false;
   protected productsData: ProductItem[] = products;
   protected form = new FormGroup({});
@@ -48,6 +60,7 @@ export default class CartComponent {
       price: "1 259,00 €"
     }
   ];
+  private _snackBar: MatSnackBar = inject(MatSnackBar);
   protected submit() {
     if (this.form.valid) {
       alert(JSON.stringify(this.model));
@@ -57,5 +70,12 @@ export default class CartComponent {
   protected trackByPayementMethodId = (index: number, payementMethod: payementMethodModel) => payementMethod.id;
   protected addGiftWrap() {
     this.giftWrap = true;
+  }
+  protected deleteFn(){
+    this._snackBar.open('Produit supprimé du panier', 'Fermer', {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: 'error-snackbar',
+    });
   }
 }

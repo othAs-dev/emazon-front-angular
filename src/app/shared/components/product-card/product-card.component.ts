@@ -1,18 +1,27 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ProductItem} from "../../../marketplace/home/home.constants";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-product-card',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, MatSnackBarModule],
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  styleUrls: ['./product-card.component.css'],
+  standalone: true,
 })
 export class ProductCardComponent {
+  private _snackBar: MatSnackBar = inject(MatSnackBar);
   @Input() products!: ProductItem[];
   protected trackByProductsData = (id: number, item: ProductItem) => item.id;
+  protected addToCart() {
+    this._snackBar.open('Produit ajouté au panier', 'Fermer', {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: 'success-snackbar',
+    });
+  }
 }

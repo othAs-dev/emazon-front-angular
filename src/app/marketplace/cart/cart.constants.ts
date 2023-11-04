@@ -11,7 +11,13 @@ export interface payementMethodModel {
   src: string;
   alt: string;
 }
-
+export interface ProductRecap {
+  imageSrc: string;
+  productName: string;
+  price: string;
+  delivery: string;
+  packaging: string;
+}
 export const benefitsData: benefitsModel[] = [
   {
     id: 1,
@@ -131,3 +137,20 @@ export const products: ProductItem[] = [
     price: "1 259,00 €"
   }
 ]
+export const productsRecap: ProductRecap[] = [
+  {
+    imageSrc: "../../../assets/ipad-pro.jpeg",
+    productName: "Iphone 15pro 128gb - Or",
+    price: "1259.99€",
+    delivery: "Gratuit",
+    packaging: "OUI"
+  },
+  {
+    imageSrc: "../../../assets/ipad-pro.jpeg",
+    productName: "Iphone 15pro 128gb - Or",
+    price: "1259.99€",
+    delivery: "5.99€",
+    packaging: "Non"
+  }
+];
+

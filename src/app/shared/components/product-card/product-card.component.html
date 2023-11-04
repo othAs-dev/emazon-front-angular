@@ -14,7 +14,7 @@
       <mat-card-content class="pt-3 pb-0 h-2/6">
         <div class="flex flex-col justify-between mt-auto gap-2 text-sm">
           <p>À partir de <span class="text-[#f6a636] font-bold text-sm  tablet:text-base laptop:text-base desktop:text-base">{{ p.price }}</span></p>
-          <button color="primary" mat-raised-button class="text-xs tablet:text-sm">
+          <button color="primary" mat-raised-button class="text-xs tablet:text-sm" (click)="addToCart()">
             Ajouter au panier
             <mat-icon>add_shopping_cart</mat-icon>
           </button>

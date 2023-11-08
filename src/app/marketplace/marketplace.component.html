@@ -51,11 +51,11 @@
           </mat-icon>
         </mat-list-item>
         <div *ngIf="isExpanded" [ngClass]="{'expanded' : showSmartphonesMenu}" class="submenu">
-          <a href="..." mat-list-item>Voir tout</a>
-          <a href="..." mat-list-item>iPhone</a>
-          <a href="..." mat-list-item>Google Pixel</a>
-          <a href="..." mat-list-item>Samsung</a>
-          <a href="..." mat-list-item>Xiaomi</a>
+          <a routerLink="./products/smartphones" mat-list-item>Voir tout</a>
+          <a  routerLink="./products/iphones" mat-list-item>iPhone</a>
+          <a  routerLink="./products/google-pixel" mat-list-item>Google Pixel</a>
+          <a  routerLink="./products/samsung" mat-list-item>Samsung</a>
+          <a  routerLink="./products/xiaomi" mat-list-item>Xiaomi</a>
         </div>
         <mat-list-item (click)="showComputersMenu = !showComputersMenu">
           <span *ngIf="isExpanded" class="full-width">Ordinateurs</span>
@@ -66,7 +66,7 @@
           </mat-icon>
         </mat-list-item>
         <div *ngIf="isExpanded" [ngClass]="{'expanded' : showComputersMenu}" class="submenu">
-          <a href="..." mat-list-item>Voir tout</a>
+          <a routerLink="./products/computers" mat-list-item>Voir tout</a>
           <mat-list-item (click)="showDesktopSubMenu = !showDesktopSubMenu">
             <span *ngIf="isExpanded" class="full-width">Bureau</span>
             <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showDesktopSubMenu}" class="menu-button">
@@ -74,9 +74,9 @@
             </mat-icon>
           </mat-list-item>
           <div *ngIf="isExpanded" [ngClass]="{'expanded' : showDesktopSubMenu}" class="submenu">
-            <mat-list-item>Voir tout</mat-list-item>
-            <mat-list-item>iMac</mat-list-item>
-            <mat-list-item>Unité centrale</mat-list-item>
+            <mat-list-item routerLink="./products/desktops">Voir tout</mat-list-item>
+            <mat-list-item routerLink="./products/imac">iMac</mat-list-item>
+            <mat-list-item routerLink="./products/computers">Unité centrale</mat-list-item>
           </div>
           <mat-list-item (click)="showLaptopSubMenu = !showLaptopSubMenu">
             <span *ngIf="isExpanded" class="full-width">Portable</span>
@@ -85,10 +85,10 @@
             </mat-icon>
           </mat-list-item>
           <div *ngIf="isExpanded" [ngClass]="{'expanded' : showLaptopSubMenu}" class="submenu">
-            <mat-list-item>Voir tout</mat-list-item>
-            <mat-list-item>Macbook</mat-list-item>
-            <mat-list-item>Microsoft Surface</mat-list-item>
-            <mat-list-item>Chromebook</mat-list-item>
+            <mat-list-item routerLink="./products/laptops">Voir tout</mat-list-item>
+            <mat-list-item routerLink="./products/macbook">Macbook</mat-list-item>
+            <mat-list-item routerLink="./products/microsoft-surface">Microsoft Surface</mat-list-item>
+            <mat-list-item routerLink="./products/chromebook">Chromebook</mat-list-item>
           </div>
         </div>
         <mat-list-item (click)="showTabletsMenu = !showTabletsMenu">
@@ -99,10 +99,10 @@
           </mat-icon>
         </mat-list-item>
         <div *ngIf="isExpanded" [ngClass]="{'expanded' : showTabletsMenu}" class="submenu">
-          <a href="..." mat-list-item>Voir tout</a>
-          <a href="..." mat-list-item>iPad</a>
-          <a href="..." mat-list-item>Samsung Galaxy</a>
-          <a href="..." mat-list-item>Lenovo Tab</a>
+          <a routerLink="./products/tablets" mat-list-item>Voir tout</a>
+          <a  routerLink="./products/ipad" mat-list-item>iPad</a>
+          <a  routerLink="./products/samsung-tabs" mat-list-item>Samsung Galaxy</a>
+          <a  routerLink="./products/lenovo-tabs" mat-list-item>Lenovo Tab</a>
         </div>
         <mat-list-item (click)="showAudioAndSoundMenu = !showAudioAndSoundMenu">
           <span *ngIf="isExpanded" class="full-width">Audio & Son</span>
@@ -113,39 +113,39 @@
           </mat-icon>
         </mat-list-item>
         <div *ngIf="isExpanded" [ngClass]="{'expanded' : showAudioAndSoundMenu}" class="submenu">
-          <a href="..." mat-list-item>Voir tout</a>
-          <mat-list-item (click)="showHeadphonesSubMenu = !showHeadphonesSubMenu">
-            <span *ngIf="isExpanded" class="full-width hover:text-[#f6a636]">Enceintes</span>
-            <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showHeadphonesSubMenu}" class="menu-button">
-              expand_more
-            </mat-icon>
-          </mat-list-item>
-          <div *ngIf="isExpanded" [ngClass]="{'expanded' : showHeadphonesSubMenu}" class="submenu">
-            <mat-list-item>Voir tout</mat-list-item>
-            <mat-list-item>HomePod</mat-list-item>
-            <mat-list-item>Google Home</mat-list-item>
-            <mat-list-item>Amazon Alexa</mat-list-item>
-          </div>
+          <a routerLink="./products/audio-and-sound" mat-list-item>Voir tout</a>
           <mat-list-item (click)="showSpeakersSubMenu = !showSpeakersSubMenu">
-            <span *ngIf="isExpanded" class="full-width">Casques</span>
+            <span *ngIf="isExpanded" class="full-width hover:text-[#f6a636]">Enceintes</span>
             <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showSpeakersSubMenu}" class="menu-button">
               expand_more
             </mat-icon>
           </mat-list-item>
           <div *ngIf="isExpanded" [ngClass]="{'expanded' : showSpeakersSubMenu}" class="submenu">
-            <mat-list-item>Voir tout</mat-list-item>
-            <mat-list-item>Airpods</mat-list-item>
-            <mat-list-item>Galaxy Buds</mat-list-item>
-            <mat-list-item>Dyson</mat-list-item>
+            <mat-list-item routerLink="./products/speakers">Voir tout</mat-list-item>
+            <mat-list-item routerLink="./products/homepod">HomePod</mat-list-item>
+            <mat-list-item routerLink="./products/google-home">Google Home</mat-list-item>
+            <mat-list-item routerLink="./products/amazon-alexa">Amazon Alexa</mat-list-item>
+          </div>
+          <mat-list-item (click)="showHeadphonesSubMenu = !showHeadphonesSubMenu">
+            <span *ngIf="isExpanded" class="full-width">Casques</span>
+            <mat-icon *ngIf="isExpanded" [ngClass]="{'rotated' : showHeadphonesSubMenu}" class="menu-button">
+              expand_more
+            </mat-icon>
+          </mat-list-item>
+          <div *ngIf="isExpanded" [ngClass]="{'expanded' : showHeadphonesSubMenu}" class="submenu">
+            <mat-list-item routerLink="./products/headphones">Voir tout</mat-list-item>
+            <mat-list-item routerLink="./products/airpods">Airpods</mat-list-item>
+            <mat-list-item routerLink="./products/galaxy-buds">Galaxy Buds</mat-list-item>
+            <mat-list-item routerLink="./products/dyson">Dyson</mat-list-item>
           </div>
         </div>
-        <mat-list-item>
+        <mat-list-item routerLink="./shops">
           <span *ngIf="isExpanded" class="full-width">Magasins</span>
-          <mat-icon (click)="isExpanded = true" *ngIf="!isExpanded" class="hover:text-[#f6a636]">place</mat-icon>
+          <mat-icon *ngIf="!isExpanded" class="hover:text-[#f6a636]">place</mat-icon>
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
-    <section class="scroll-auto">
+    <section class="scroll-auto" (click)="isExpanded = false">
       <router-outlet/>
     </section>
   </mat-sidenav-container>

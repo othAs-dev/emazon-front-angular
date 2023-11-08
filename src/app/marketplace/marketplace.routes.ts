@@ -18,6 +18,18 @@ export default [
       {
         path: 'cart',
         loadComponent: () => import('./cart/cart.component'),
+      },
+      {
+        path: 'products/:id',
+        loadComponent: () => import('./products/products.component'),
+      },
+      {
+        path: 'product/:id',
+        loadComponent: () => import('./product/product.component'),
+      },
+      {
+        path: 'shops',
+        loadComponent: () => import('./shops/shops.component'),
       }
     ]
   },

@@ -5,7 +5,7 @@
     </article>
     <div class="flex flex-col gap-2 justify-center laptop:mt-10 laptop:flex-row">
         <div class="mr-auto ml-auto laptop:mr-2 laptop:ml-0">
-            <img alt="ipad-air" class="w-80 tablet:w-96 laptop:w-96 desktop:w-96" src="../../../assets/ipad-air.jpeg">
+        <img alt="ipad-air" class="w-80 tablet:w-96 laptop:w-96 desktop:w-96" [src]=pageContent.urlImage>
         </div>
         <div class="h-fit w-11/12 ml-auto mr-auto laptop:w-2/5 mt-5 laptop:ml-0 laptop:mr-0">
             <div class="flex justify-start gap-4 items-center">
@@ -22,7 +22,7 @@
             <div class="border-b border-gray-400 pb-4 pt-4">
                 <article>
                     <p>{{ pageContent.shortDescription }}</p>
-                    <span class="ml-1 hover:cursor-pointer underline">En savoir plus</span>
+                    <a class="ml-1 hover:cursor-pointer underline" [routerLink]="'.'" fragment="description">En savoir plus</a>
                 </article>
             </div>
             <div class="pt-4">
@@ -41,7 +41,7 @@
             </div>
             <div class="pb-4 pt-4">
                 <mat-accordion>
-                    <mat-expansion-panel *ngFor="let item of pageContent.faqItems">
+                    <mat-expansion-panel *ngFor="let item of faqItems">
                         <mat-expansion-panel-header>
                             <mat-panel-title>{{ item.question }}</mat-panel-title>
                         </mat-expansion-panel-header>
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="w-full border-t border-gray-400">
-        <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mx-auto">
+        <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mx-auto" id="description">
             <h4 class="font-bold text-xl mb-2">Description</h4>
             <p>{{ pageContent.longDescription }}</p>
         </div>

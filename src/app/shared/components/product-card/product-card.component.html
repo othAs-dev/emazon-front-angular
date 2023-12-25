@@ -1,6 +1,9 @@
 <div class="gap-4 flex justify-center tablet:gap-10 flex-wrap">
-  <mat-card *ngFor="let p of products; trackBy: trackByProductsData"
-            class="w-5/12 h-[22rem] shadow-none flex-row tablet:w-72 laptop:w-64 laptop:h-[25rem]">
+  <mat-card
+    *ngFor="let p of products; trackBy: trackByProductsData"
+    class="h-[22rem] shadow-none flex-row tablet:w-72 laptop:w-64 laptop:h-[25rem]"
+    [class]="cardWdithPhoneViewPort"
+  >
     <div class="flex justify-center h-1/3 laptop:h-1/2 desktop:h-1/2">
       <img [src]="p.imageSrc" class="w-20 object-contain pt-3 tablet:w-48" [alt]="p.title"/>
     </div>

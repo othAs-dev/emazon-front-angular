@@ -1,4 +1,4 @@
-import {ApplicationConfig, importProvidersFrom} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {provideHttpClient} from "@angular/common/http";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideRouter, withComponentInputBinding} from "@angular/router";
@@ -24,3 +24,4 @@ export const appConfig: ApplicationConfig = {
     ),
   ],
 }
+

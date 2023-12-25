@@ -17,7 +17,6 @@ import {MatCardModule} from "@angular/material/card";
 import {FormlyFieldConfig, FormlyFormOptions, FormlyModule} from "@ngx-formly/core";
 import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductCardComponent} from "../../shared/components/product-card/product-card.component";
-import {ProductCarouselComponent} from "../../shared/components/product-carousel/product-carousel.component";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
@@ -25,7 +24,7 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, FooterComponent, MatButtonModule, RouterLink, MatIconModule, MatCardModule, NgOptimizedImage,MatSnackBarModule, FormlyModule, ReactiveFormsModule, ProductCardComponent, ProductCarouselComponent, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule],
+  imports: [CommonModule, FooterComponent, MatButtonModule, RouterLink, MatIconModule, MatCardModule, NgOptimizedImage,MatSnackBarModule, FormlyModule, ReactiveFormsModule, ProductCardComponent, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
   standalone: true,
@@ -55,7 +54,7 @@ export default class CartComponent {
     {
       id: 7,
       title: "Google Pixel 7a",
-      imageSrc: "../../../assets/pixel-7a.webp",
+      imageSrc: "assets/pixel-7a.webp",
       description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
       price: "1 259,00 €"
     }

@@ -4,7 +4,6 @@ import {SwiperDirective} from "../swiper.directive";
 import {SwiperContainer} from "swiper/swiper-element";
 import {SwiperOptions} from "swiper/types";
 import {register} from "swiper/element/bundle";
-import {ProductItem} from "../../home/home.constants";
 
 register();
 @Component({

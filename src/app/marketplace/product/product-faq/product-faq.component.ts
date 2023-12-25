@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FaqItem, faqItems} from "../product.constants";
+import {FaqItem} from "../product.constants";
 import {MatExpansionModule} from "@angular/material/expansion";
 
 @Component({

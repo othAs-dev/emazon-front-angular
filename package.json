@@ -28,6 +28,7 @@
     "@ngx-formly/material": "^6.2.1",
     "@ngx-formly/schematics": "^6.2.1",
     "rxjs": "~7.8.0",
+    "swiper": "^11.0.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

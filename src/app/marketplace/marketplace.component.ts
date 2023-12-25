@@ -7,7 +7,6 @@ import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {RouterLink, RouterOutlet} from "@angular/router";
-import {LoginFields} from "../formlyConfig/formly-presets/login-form";
 import {FormlyFieldConfig, FormlyFormOptions, FormlyModule} from "@ngx-formly/core";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {SearchFields} from "../formlyConfig/formly-presets/search-form";

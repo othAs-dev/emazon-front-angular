@@ -17,7 +17,7 @@
       <div class="flex" [ngClass]="{'justify-start': rightSide, 'justify-end': !rightSide}">
         <button class="w-full tablet:w-3/6 laptop:w-2/6 text-sm"
                 [color]="darkCard ? 'accent' : 'primary'"
-                mat-raised-button [routerLink]="link">
+                mat-raised-button [routerLink]="link" (click)="addToCart(title)">
           Ajouter au panier
           <mat-icon>add_shopping_cart</mat-icon>
         </button>

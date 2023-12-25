@@ -1,0 +1,15 @@
+<table class="text-sm text-left" style="table-layout: auto">
+  <tr *ngFor="let row of productDetail">
+    <th class="px-3 py-1.5" scope="col">{{ row.label }}</th>
+    <td>{{ row.value }}</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <span class="font-bold">Mentions légales</span>
+      Le débit d'absorption spécifique (DAS) local quantifie l'exposition de l'utilisateur aux ondes
+      électromagnétiques de l'équipement concerné. Le DAS maximal autorisé est de 2 W/kg pour la tête
+      et le tronc et de 4 W/kg pour les membres.
+    </td>
+
+  </tr>
+</table>

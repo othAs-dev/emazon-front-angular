@@ -5,10 +5,11 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
-  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, MatSnackBarModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, MatSnackBarModule, RouterLink],
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
   standalone: true,

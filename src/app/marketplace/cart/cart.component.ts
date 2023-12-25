@@ -21,10 +21,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {
+  ProductCardCarouselComponent
+} from "../../shared/components/product-card-carousel/product-card-carousel.component";
+import {PageContent, pageContent} from "../product/product.constants";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, FooterComponent, MatButtonModule, RouterLink, MatIconModule, MatCardModule, NgOptimizedImage,MatSnackBarModule, FormlyModule, ReactiveFormsModule, ProductCardComponent, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule],
+  imports: [CommonModule, FooterComponent, MatButtonModule, RouterLink, MatIconModule, MatCardModule, NgOptimizedImage, MatSnackBarModule, FormlyModule, ReactiveFormsModule, ProductCardComponent, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule, ProductCardCarouselComponent],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
   standalone: true,
@@ -35,6 +39,7 @@ export default class CartComponent {
   protected productRecap: ProductRecap[] = productsRecap;
   protected giftWrap: boolean = false;
   protected productsData: ProductItem[] = products;
+  protected readonly pageContent: PageContent = pageContent;
   protected form = new FormGroup({});
   protected model: any = {};
   protected options: FormlyFormOptions = {};

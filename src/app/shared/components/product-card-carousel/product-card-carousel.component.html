@@ -1,8 +1,4 @@
-<swiper-container
-  class="w-9/12"
-  appSwiper
-  [config]="swiperConfig"
->
+<swiper-container appSwiper class="w-11/12" [config]="swiperConfig">
   <swiper-slide *ngFor="let product of products">
     <app-product-card [products]="[product]" cardWdithPhoneViewPort="w-full"/>
   </swiper-slide>

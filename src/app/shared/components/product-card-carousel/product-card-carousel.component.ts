@@ -4,7 +4,7 @@ import {SwiperContainer} from "swiper/swiper-element";
 import {SwiperOptions} from "swiper/types";
 import {ProductItem} from "../../../marketplace/product/product.constants";
 import {ProductCardComponent} from "../product-card/product-card.component";
-import {SwiperDirective} from "../../../marketplace/product/swiper.directive";
+import {SwiperDirective} from "../../directives/swiper.directive";
 
 @Component({
   selector: 'app-product-card-carousel',
@@ -28,7 +28,10 @@ export class ProductCardCarouselComponent implements AfterViewInit{
   swiperConfig: SwiperOptions = {
     spaceBetween: 10,
     pagination: { clickable: true },
-    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
     slidesPerView: "auto",
     breakpoints: {
       400: {
@@ -40,7 +43,7 @@ export class ProductCardCarouselComponent implements AfterViewInit{
         spaceBetween: 20,
       },
       1024: {
-        slidesPerView: 3.5,
+        slidesPerView: 3.3,
         spaceBetween: 20,
       },
     },

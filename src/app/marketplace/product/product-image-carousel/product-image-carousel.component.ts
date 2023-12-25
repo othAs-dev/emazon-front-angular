@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Input, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SwiperDirective} from "../swiper.directive";
+import {SwiperDirective} from "../../../shared/directives/swiper.directive";
 import {SwiperContainer} from "swiper/swiper-element";
 import {SwiperOptions} from "swiper/types";
 import {register} from "swiper/element/bundle";

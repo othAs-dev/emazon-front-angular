@@ -63,6 +63,20 @@ export const pageContent: PageContent = {
       description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
       price: "1 259 €"
     },
+    {
+      id: 2,
+      title: "Iphone 15 pro",
+      imageSrc: "assets/15-pro.jpeg",
+      description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
+      price: "1 259 €"
+    },
+    {
+      id: 3,
+      title: "Airpods Max",
+      imageSrc: "assets/airpods-mac.png",
+      description: "L’iPhone 15 Pro présente un design en titane de qualité aérospatiale",
+      price: "1 259 €"
+    },
   ]
 };
 

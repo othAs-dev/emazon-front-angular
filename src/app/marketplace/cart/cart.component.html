@@ -80,10 +80,9 @@
         </mat-card>
       </section>
       <section class="mb-10">
-        <div class="flex flex-col justify-center gap-y-3 ">
-          <div>
+        <div class="flex flex-col justify-center gap-y-3">
             <h3 class="font-bold text-lg  laptop:text-xl">Complétez votre panier :</h3>
-          </div>
+            <app-product-card-carousel [products]="pageContent.products"/>
         </div>
       </section>
       <section class="mb-10">

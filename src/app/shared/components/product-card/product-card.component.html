@@ -8,9 +8,11 @@
       <img [src]="p.imageSrc" class="w-20 object-contain pt-3 tablet:w-48" [alt]="p.title"/>
     </div>
     <div class="h-2/3 laptop:h-1/2 desktop:h-1/2 flex flex-col justify-evenly">
-      <mat-card-header class="h-3/6 flex flex-col">
+      <mat-card-header
+        class="h-3/6 flex flex-col cursor-pointer">
         <mat-card-title>
-          <p class="font-bold text-sm pb-2">{{ p.title }}</p>
+          <a class="font-bold text-sm pb-2 hover:underline" routerLink="/marketplace/product/iphone"
+          >{{ p.title }}</a>
         </mat-card-title>
         <p class="text-sm tablet:text-base laptop:text-base desktop:text-base">{{ p.description }}</p>
       </mat-card-header>

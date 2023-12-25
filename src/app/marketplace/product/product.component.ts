@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
@@ -14,6 +14,8 @@ import {
 } from "../../shared/components/product-card-carousel/product-card-carousel.component";
 import {ProductTableDetailsComponent} from "./product-table-details/product-table-details.component";
 import {ProductFaqComponent} from "./product-faq/product-faq.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ProductItem} from "../home/home.constants";
 
 @Component({
   selector: 'app-product',
@@ -25,5 +27,14 @@ import {ProductFaqComponent} from "./product-faq/product-faq.component";
 export default class ProductComponent {
   protected readonly pageContent: PageContent = pageContent;
   protected readonly faqItems: FaqItem[] = faqItems;
+  private _snackBar: MatSnackBar = inject(MatSnackBar);protected trackByProductsData = (id: number, item: ProductItem) => item.id;
+  protected addToCart() {
+    this._snackBar.open('Produit ajouté au panier', 'Fermer', {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: 'success-snackbar',
+      duration: 3000
 
+    });
+  }
 }

@@ -24,6 +24,7 @@ export class ProductCardComponent {
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: 'success-snackbar',
+      duration: 3000
     });
   }
 }

@@ -1,1 +1,30 @@
-<p>products works!</p>
+<div class="p-4">
+  <div>
+    <h1 class="text-xl underline font-bold mb-8 tablet:text-2xl laptop:text-3xl">Macbook pro</h1>
+    <p class="text-gray-600 text-lg font-normal">
+      Les nouveaux MacBook Pro 14 et 16 pouces sont équipés des puces M3,
+      M3 Pro et M3 Max, qui offrent des performances exceptionnelles, une autonomie
+      record et un écran Retina XDR. Les puces M3, M3 Pro et M3 Max sont les plus
+      avancées jamais créées, elles intègrent jusqu'à 16 coeurs de CPU,
+      40 coeurs de GPU et 128 Go de mémoire unifiée.
+    </p>
+  </div>
+  <div class="bg-white rounded-md mt-10 p-2 flex">
+    <div>
+    <h2 class="text-md font-bold mb-3 tablet:text-lg laptop:text-xl">Vos Filtres</h2>
+    <mat-chip-listbox aria-label="Filters selection" class="bg-white">
+      <mat-chip>Apple</mat-chip>
+      <mat-chip>Macbook Pro</mat-chip>
+      <mat-chip>256gb</mat-chip>
+    </mat-chip-listbox>
+    </div>
+    <span class="flex-1"></span>
+    <div>
+      <p class="pr-3">10 produits</p>
+      <app-select [options]="options" [selected]="selected" (selectedChange)="onSelectedChange($event)"/>
+      <p>{{ selected }}</p>
+
+    </div>
+  </div>
+
+</div>

@@ -8,8 +8,8 @@
   <div class="flex flex-col items-center laptop:flex-row laptop:max-w-xl">
     <div class="flex flex-col justify-between p-4 leading-normal h-full">
       <div>
-        <h5 class="mb-2 text-xl tablet:text-2xl font-bold tracking-tight hover:cursor-pointer" [ngClass]="{'text-white': darkCard}"
-            routerLink="#" [title]="title">{{title}}</h5>
+        <h5 class="mb-2 text-xl tablet:text-2xl font-bold tracking-tight hover:cursor-pointer hover:underline" [ngClass]="{'text-white': darkCard}"
+            [routerLink]="['/marketplace/product', title]" [title]="title">{{title}}</h5>
         <strong [ngClass]="{'orange-gradient': darkCard, 'blue-gradient': !darkCard}">
           {{subtitle}}</strong>
         <p class="mb-3 text-sm text-white tablet:text-base" [ngClass]="{'text-white': darkCard}">{{description}}</p>

@@ -8,6 +8,7 @@ export interface CategoryItem {
     imageSrc: string;
     description: string;
 }
+
 export interface LogoItem {
     id: Id;
     alt: string;
@@ -52,7 +53,7 @@ export const categoryData: CategoryItem[] = [
         title: 'Airpods',
         tooltip: 'Tous nos casques audios',
         link: 'audio-and-sound',
-        imageSrc: '../../../assets/airpods_category.avif',
+        imageSrc: 'assets/airpods_category.avif',
         description: 'Le gadget le plus cool du 21eme siècle',
     },
 ];
@@ -60,28 +61,28 @@ export const logoData: LogoItem[] = [
     {
         id: 1,
         alt: 'Logo Apple',
-        src: '../../../assets/logo/apple-logo.svg',
+        src: 'assets/logo/apple-logo.svg',
         buttonText: 'Gamme Apple',
         link: '#',
     },
     {
         id: 2,
         alt: 'Logo Samsung',
-        src: '../../../assets/logo/samsung-logo.svg',
+        src: 'assets/logo/samsung-logo.svg',
         buttonText: 'Gamme Samsung',
         link: '#',
     },
     {
         id: 3,
         alt: 'Logo Google',
-        src: '../../../assets/logo/google-logo.svg',
+        src: 'assets/logo/google-logo.svg',
         buttonText: 'Gamme Google',
         link: '#',
     },
     {
         id: 4,
         alt: 'Logo Huawei',
-        src: '../../../assets/logo/huwawei-logo.svg',
+        src: 'assets/logo/huwawei-logo.svg',
         buttonText: 'Gamme Huawei',
         link: '#',
     },
@@ -91,7 +92,7 @@ export const products: ProductItem[] = [
     {
         id: 1,
         title: 'Iphone 15 pro',
-        imageSrc: '../../../assets/15-basic.jpeg',
+        imageSrc: 'assets/15-basic.jpeg',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -99,7 +100,7 @@ export const products: ProductItem[] = [
     {
         id: 2,
         title: 'Iphone 15 pro',
-        imageSrc: '../../../assets/15-pro.jpeg',
+        imageSrc: 'assets/15-pro.jpeg',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -107,7 +108,7 @@ export const products: ProductItem[] = [
     {
         id: 3,
         title: 'Airpods Max',
-        imageSrc: '../../../assets/airpods-mac.png',
+        imageSrc: 'assets/airpods-mac.png',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -115,7 +116,7 @@ export const products: ProductItem[] = [
     {
         id: 4,
         title: 'Macbook Air 15 pouces',
-        imageSrc: '../../../assets/mabook-air.jpeg',
+        imageSrc: 'assets/mabook-air.jpeg',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -123,7 +124,7 @@ export const products: ProductItem[] = [
     {
         id: 5,
         title: 'iPad Pro M2',
-        imageSrc: '../../../assets/ipad-air.jpeg',
+        imageSrc: 'assets/ipad-air.jpeg',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -131,7 +132,7 @@ export const products: ProductItem[] = [
     {
         id: 6,
         title: 'iPad 10ème génération',
-        imageSrc: '../../../assets/ipad-pro.jpeg',
+        imageSrc: 'assets/ipad-pro.jpeg',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -139,7 +140,7 @@ export const products: ProductItem[] = [
     {
         id: 7,
         title: 'Google Pixel 7a',
-        imageSrc: '../../../assets/pixel-7a.webp',
+        imageSrc: 'assets/pixel-7a.webp',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',
@@ -147,7 +148,7 @@ export const products: ProductItem[] = [
     {
         id: 8,
         title: 'Google Pixel 8',
-        imageSrc: '../../../assets/pixel-pro.jpeg',
+        imageSrc: 'assets/pixel-pro.jpeg',
         description:
             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
         price: '1 259 €',

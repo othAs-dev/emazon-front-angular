@@ -11,11 +11,11 @@ import {
     ProductItem,
     products,
 } from './home.constants';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { RouterLink } from '@angular/router';
-import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
-import { VideoCardComponent } from '../../shared/components/video-card/video-card.component';
-import { Id } from '../../shared/models/id';
+import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
+import { VideoCardComponent } from '@app/shared/components/video-card/video-card.component';
+import { Id } from '@app/shared/models/id';
 
 @Component({
     selector: 'app-home',
@@ -37,9 +37,11 @@ export default class HomeComponent {
     protected categoryData: CategoryItem[] = categoryData;
     protected logoData: LogoItem[] = logoData;
     protected productsData: ProductItem[] = products;
+
     protected trackByLogoData(id: Id, item: LogoItem): number {
         return item.id;
     }
+
     protected trackByCategoryData(id: Id, item: CategoryItem): number {
         return item.id;
     }

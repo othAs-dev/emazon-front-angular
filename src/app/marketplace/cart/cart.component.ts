@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, NgFor, NgOptimizedImage } from '@angular/common';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { ProductItem } from '../home/home.constants';
+import { ProductItem } from '@app/marketplace/home/home.constants';
 import { MatIconModule } from '@angular/material/icon';
 import {
     benefitsData,
@@ -18,16 +18,19 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
+import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { ProductCardCarouselComponent } from '../../shared/components/product-card-carousel/product-card-carousel.component';
-import { PageContent, pageContent } from '../product/product.constants';
-import { Id } from '../../shared/models/id';
-import { SelectOptions } from '../../shared/models/selectOptions';
-import { SelectComponent } from '../../shared/components/select/select.component';
+import { ProductCardCarouselComponent } from '@app/shared/components/product-card-carousel/product-card-carousel.component';
+import {
+    PageContent,
+    pageContent,
+} from '@app/marketplace/product/product.constants';
+import { Id } from '@app/shared/models/id';
+import { SelectOptions } from '@app/shared/models/selectOptions';
+import { SelectComponent } from '@app/shared/components/select/select.component';
 
 @Component({
     selector: 'app-cart',
@@ -89,20 +92,24 @@ export default class CartComponent {
         },
     ];
     private _snackBar: MatSnackBar = inject(MatSnackBar);
+
     protected submit() {
         if (this.form.valid) {
             alert(JSON.stringify(this.model));
         }
     }
+
     protected trackByBenefitsId = (index: Id, benefit: benefitsModel) =>
         benefit.id;
     protected trackByPayementMethodId = (
         index: Id,
         payementMethod: payementMethodModel
     ) => payementMethod.id;
+
     protected addGiftWrap() {
         this.giftWrap = true;
     }
+
     protected deleteFn() {
         this._snackBar.open('Produit supprimé du panier', 'Fermer', {
             horizontalPosition: 'right',

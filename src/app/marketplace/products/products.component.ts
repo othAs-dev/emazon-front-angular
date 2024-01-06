@@ -1,29 +1,49 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
-import { SelectComponent } from '../../shared/components/select/select.component';
-import { SelectOptions } from '../../shared/models/selectOptions';
-import { options } from './products.constants';
+import { SelectComponent } from '@app/shared/components/select/select.component';
+import { SelectOptions } from '@app/shared/models/selectOptions';
+import {
+    brandOptions,
+    defaultOptions,
+    priceOptions,
+} from './products.constants';
+import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
+import { products } from '@app/marketplace/home/home.constants';
 
 @Component({
     selector: 'app-products',
-    imports: [CommonModule, MatChipsModule, FormsModule, SelectComponent],
+    imports: [
+        CommonModule,
+        MatChipsModule,
+        FormsModule,
+        SelectComponent,
+        ProductCardComponent,
+    ],
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.css'],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ProductsComponent {
-    protected selected: string = 'Prix croissant';
-    protected options: SelectOptions = options;
+    protected defaultOptionsSelected: string = 'Prix croissant';
+    protected priceOptionsSelected: string = 'all';
+    protected brandOptionsSelected: string = 'Apple';
+    protected defaultOptions: SelectOptions = defaultOptions;
+    protected priceOptions: SelectOptions = priceOptions;
+    protected brandOptions: SelectOptions = brandOptions;
+    protected readonly products = products;
 
-    onSelectedChange(newSelected: string) {
-        this.selected = newSelected;
+    onDefaultOptionsSelected(newSelected: string) {
+        this.defaultOptionsSelected = newSelected;
+    }
+
+    onDefaultPriceOptionsSelected(newSelected: string) {
+        this.priceOptionsSelected = newSelected;
+    }
+
+    onDefaultBrandOptionsSelected(newSelected: string) {
+        this.brandOptionsSelected = newSelected;
     }
 }

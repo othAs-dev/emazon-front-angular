@@ -7,13 +7,14 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SelectOption, SelectOptions } from '../../models/selectOptions';
-import { Id } from '../../models/id';
+import { SelectOption, SelectOptions } from '@app/shared/models/selectOptions';
+import { Id } from '@app/shared/models/id';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'app-select',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, FormsModule],
+    imports: [CommonModule, ReactiveFormsModule, FormsModule, MatInputModule],
     template: `
         <select
             [(ngModel)]="selected"
@@ -23,9 +24,9 @@ import { Id } from '../../models/id';
         >
             <option
                 *ngFor="let option of options; trackBy: trackBySelectOptions"
-                [value]="option.value"
+                [value]="option.option"
             >
-                {{ option.option }}
+                {{ option.value }}
             </option>
         </select>
     `,

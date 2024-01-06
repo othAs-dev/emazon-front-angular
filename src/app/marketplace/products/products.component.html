@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 mb-20">
   <div>
     <h1 class="text-xl underline font-bold mb-8 tablet:text-2xl laptop:text-3xl">Macbook pro</h1>
     <p class="text-gray-600 text-lg font-normal">
@@ -11,20 +11,37 @@
   </div>
   <div class="bg-white rounded-md mt-10 p-2 flex">
     <div>
-    <h2 class="text-md font-bold mb-3 tablet:text-lg laptop:text-xl">Vos Filtres</h2>
-    <mat-chip-listbox aria-label="Filters selection" class="bg-white">
-      <mat-chip>Apple</mat-chip>
-      <mat-chip>Macbook Pro</mat-chip>
-      <mat-chip>256gb</mat-chip>
-    </mat-chip-listbox>
+      <h2 class="text-md font-bold mb-3 tablet:text-lg laptop:text-xl">Vos Filtres</h2>
+      <mat-chip-listbox aria-label="Filters selection" class="bg-white">
+        <mat-chip>Prix croissant</mat-chip>
+        <mat-chip>Tous les prix</mat-chip>
+        <mat-chip>Apple</mat-chip>
+      </mat-chip-listbox>
     </div>
     <span class="flex-1"></span>
     <div>
-      <p class="pr-3">10 produits</p>
-      <app-select [options]="options" [selected]="selected" (selectedChange)="onSelectedChange($event)"/>
-      <p>{{ selected }}</p>
-
+      <p class="pr-3 mb-2">10 produits trouvés</p>
     </div>
   </div>
+  <div class="mt-6 flex flex-wrap gap-5">
+    <div>
+      <p class="pr-3 mb-2">Ordre de prix</p>
+      <app-select [options]="defaultOptions" [selected]="defaultOptionsSelected"
+                  (selectedChange)="onDefaultOptionsSelected($event)"/>
+    </div>
+    <div>
+    <p class="mb-2">Tri par prix</p>
+    <app-select [options]="priceOptions" [selected]="priceOptionsSelected"
+                (selectedChange)="onDefaultPriceOptionsSelected($event)"/>
+    </div>
+    <div>
+    <p class="mb-2">Tri par marque</p>
+    <app-select [options]="brandOptions" [selected]="brandOptionsSelected"
+                (selectedChange)="onDefaultBrandOptionsSelected($event)"/>
+    </div>
 
+  </div>
+  <div class="mt-4">
+    <app-product-card [products]="products" />
+  </div>
 </div>

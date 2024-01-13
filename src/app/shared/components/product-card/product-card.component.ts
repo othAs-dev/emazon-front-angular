@@ -25,7 +25,9 @@ export class ProductCardComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);
     @Input({ required: false }) cardWdithPhoneViewPort: string = 'w-5/12';
     @Input() products!: ProductItem[];
+
     protected trackByProductsData = (id: number, item: ProductItem) => item.id;
+
     protected addToCart() {
         this._snackBar.open('Produit ajouté au panier', 'Fermer', {
             horizontalPosition: 'right',

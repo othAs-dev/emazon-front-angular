@@ -1,6 +1,6 @@
 import { ProductItem } from '../home/home.constants';
-import { Id } from '../../shared/models/id';
-import { SelectOptions } from '../../shared/models/selectOptions';
+import { Id } from '@app/shared/models/id';
+import { SelectOptions } from '@app/shared/models/selectOptions';
 
 export interface benefitsModel {
     id: Id;
@@ -45,52 +45,52 @@ export const benefitsData: benefitsModel[] = [
 export const payementMethodData: payementMethodModel[] = [
     {
         id: 1,
-        src: '../../../assets/icons/payements-methods-icons/Visa.svg',
+        src: 'assets/icons/payements-methods-icons/Visa.svg',
         alt: 'logo visa',
     },
     {
         id: 2,
-        src: '../../../assets/icons/payements-methods-icons/Mastercard.png',
+        src: 'assets/icons/payements-methods-icons/Mastercard.png',
         alt: 'logo mastercard',
     },
     {
         id: 3,
-        src: '../../../assets/icons/payements-methods-icons/Amex.svg',
+        src: 'assets/icons/payements-methods-icons/Amex.svg',
         alt: 'logo american express',
     },
     {
         id: 4,
-        src: '../../../assets/icons/payements-methods-icons/Discover.svg',
+        src: 'assets/icons/payements-methods-icons/Discover.svg',
         alt: 'logo discover',
     },
     {
         id: 5,
-        src: '../../../assets/icons/payements-methods-icons/PayPal.png',
+        src: 'assets/icons/payements-methods-icons/PayPal.png',
         alt: 'logo paypal',
     },
     {
         id: 6,
-        src: '../../../assets/icons/payements-methods-icons/ApplePay.svg',
+        src: 'assets/icons/payements-methods-icons/ApplePay.svg',
         alt: 'logo apple pay',
     },
     {
         id: 7,
-        src: '../../../assets/icons/payements-methods-icons/GooglePay.svg',
+        src: 'assets/icons/payements-methods-icons/GooglePay.svg',
         alt: 'logo google pay',
     },
     {
         id: 8,
-        src: '../../../assets/icons/payements-methods-icons/Alipay.svg',
+        src: 'assets/icons/payements-methods-icons/Alipay.svg',
         alt: 'logo alipay',
     },
     {
         id: 9,
-        src: '../../../assets/icons/payements-methods-icons/Klarna.svg',
+        src: 'assets/icons/payements-methods-icons/Klarna.svg',
         alt: 'logo klarna',
     },
     {
         id: 10,
-        src: '../../../assets/icons/payements-methods-icons/Stripe.svg',
+        src: 'assets/icons/payements-methods-icons/Stripe.svg',
         alt: 'logo stripe',
     },
 ];
@@ -161,30 +161,30 @@ export const productsRecap: ProductRecap[] = [
         packaging: 'Non',
     },
 ];
-export const options: SelectOptions = [
+export const numberProductsOptions: SelectOptions = [
     {
         id: 1,
-        option: '1',
-        value: 'ONE',
+        option: 'ONE',
+        value: '1',
     },
     {
         id: 2,
-        option: '2',
-        value: 'TWO',
+        option: 'TWO',
+        value: '2',
     },
     {
         id: 3,
-        option: '3',
-        value: 'THREE',
+        option: 'THREE',
+        value: '3',
     },
     {
         id: 4,
-        option: '4',
-        value: 'FOUR',
+        option: 'FOUR',
+        value: '4',
     },
     {
         id: 5,
-        option: '5',
-        value: 'FIVE',
+        option: 'FIVE',
+        value: '5',
     },
 ];

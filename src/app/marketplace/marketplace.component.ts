@@ -36,23 +36,19 @@ import { SearchFields } from '../formlyConfig/formly-presets/search-form';
     standalone: true,
 })
 export default class MarketplaceComponent {
-    protected isExpanded: boolean = false;
-    protected showSmartphonesMenu: boolean = false;
-    protected showTabletsMenu: boolean = false;
-    protected showComputersMenu: boolean = false;
-    protected showAudioAndSoundMenu: boolean = false;
-    protected showDesktopSubMenu: boolean = false;
-    protected showLaptopSubMenu: boolean = false;
-    protected showHeadphonesSubMenu: boolean = false;
-    protected showSpeakersSubMenu: boolean = false;
+    protected isExpanded = false;
+    protected showSmartphonesMenu = false;
+    protected showTabletsMenu = false;
+    protected showComputersMenu = false;
+    protected showAudioAndSoundMenu = false;
+    protected showDesktopSubMenu = false;
+    protected showLaptopSubMenu = false;
+    protected showHeadphonesSubMenu = false;
+    protected showSpeakersSubMenu = false;
     protected form = new FormGroup({});
     protected model: any = {};
     protected options: FormlyFormOptions = {};
     protected fields: FormlyFieldConfig[] = SearchFields;
-
-    toggleMenu() {
-        this.isExpanded = !this.isExpanded;
-    }
 
     submit() {
         if (this.form.valid) {

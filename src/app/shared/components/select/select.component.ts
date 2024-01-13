@@ -35,7 +35,7 @@ import { MatInputModule } from '@angular/material/input';
 export class SelectComponent {
     @Input() selected!: string;
     @Input({ required: true }) options!: SelectOptions;
-    @Output() selectedChange = new EventEmitter<string>(); // Événement de sortie
+    @Output() selectedChange = new EventEmitter<string>();
 
     trackBySelectOptions = (index: Id, option: SelectOption): Id => option.id;
 

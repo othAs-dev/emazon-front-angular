@@ -11,6 +11,7 @@ import {
 } from './products.constants';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { products } from '@app/marketplace/home/home.constants';
+import { FooterComponent } from '@app/shared/components/footer/footer.component';
 
 @Component({
     selector: 'app-products',
@@ -20,6 +21,7 @@ import { products } from '@app/marketplace/home/home.constants';
         FormsModule,
         SelectComponent,
         ProductCardComponent,
+        FooterComponent,
     ],
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.css'],

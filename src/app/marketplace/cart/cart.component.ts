@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {
     benefitsData,
     benefitsModel,
-    options,
+    numberProductsOptions,
     payementMethodData,
     payementMethodModel,
     ProductRecap,
@@ -60,8 +60,9 @@ import { SelectComponent } from '@app/shared/components/select/select.component'
 })
 export default class CartComponent {
     protected benefitsData: benefitsModel[] = benefitsData;
-    protected readonly options: SelectOptions = options;
-    protected readonly selected: string = 'ONE';
+    protected readonly numberProductsOptions: SelectOptions =
+        numberProductsOptions;
+    protected numberProductsSelected: string = 'ONE';
     protected payementMethodData: payementMethodModel[] = payementMethodData;
     protected productRecap: ProductRecap[] = productsRecap;
     protected giftWrap: boolean = false;
@@ -116,5 +117,8 @@ export default class CartComponent {
             verticalPosition: 'top',
             panelClass: 'error-snackbar',
         });
+    }
+    onDefaultNumberOptionsSelected(newSelected: string) {
+        this.numberProductsSelected = newSelected;
     }
 }

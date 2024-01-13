@@ -36,7 +36,11 @@
                     <span class="text-green-500">Plus que 10 en stock</span>
                     <div class="flex justify-end mt-2">
                       <div class="flex flex-row gap-2 items-center">
-                        <app-select [options]="options" [selected]="selected"/>
+                        <app-select
+                            [options]="numberProductsOptions"
+                            [selected]="numberProductsSelected"
+                            (selectedChange)="onDefaultNumberOptionsSelected($event)"
+                        />
                         <button mat-stroked-button (click)="deleteFn()" color="warn" class="text-sm">
                           Supprimer
                           <mat-icon>delete</mat-icon>

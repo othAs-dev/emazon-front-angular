@@ -1,10 +1,4 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Directive,
-    ElementRef,
-    Input,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 

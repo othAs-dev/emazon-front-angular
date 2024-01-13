@@ -1,4 +1,4 @@
-import { Id } from '../../shared/models/id';
+import { Id } from '@app/shared/models/id';
 
 export interface CategoryItem {
     id: Id;

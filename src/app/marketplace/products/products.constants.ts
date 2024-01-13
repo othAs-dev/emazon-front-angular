@@ -1,4 +1,4 @@
-import { SelectOptions } from '../../shared/models/selectOptions';
+import { SelectOptions } from '@app/shared/models/selectOptions';
 
 export const defaultOptions: SelectOptions = [
     {

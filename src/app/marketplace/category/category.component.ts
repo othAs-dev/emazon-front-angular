@@ -8,13 +8,13 @@ import {
     brandOptions,
     defaultOptions,
     priceOptions,
-} from './products.constants';
+} from './category.constants';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { products } from '@app/marketplace/home/home.constants';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 
 @Component({
-    selector: 'app-products',
+    selector: 'app-category',
     imports: [
         CommonModule,
         MatChipsModule,
@@ -23,12 +23,12 @@ import { FooterComponent } from '@app/shared/components/footer/footer.component'
         ProductCardComponent,
         FooterComponent,
     ],
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
+    templateUrl: './category.component.html',
+    styleUrls: ['./category.component.css'],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ProductsComponent {
+export default class CategoryComponent {
     protected defaultOptionsSelected: string = 'Prix croissant';
     protected priceOptionsSelected: string = 'all';
     protected brandOptionsSelected: string = 'Apple';

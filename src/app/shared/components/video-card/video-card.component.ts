@@ -1,4 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +22,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     ],
     templateUrl: './video-card.component.html',
     styleUrls: ['./video-card.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VideoCardComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);

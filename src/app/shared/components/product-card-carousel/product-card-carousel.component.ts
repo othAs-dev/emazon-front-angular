@@ -1,5 +1,6 @@
 import {
     AfterViewInit,
+    ChangeDetectionStrategy,
     Component,
     CUSTOM_ELEMENTS_SCHEMA,
     ElementRef,
@@ -17,6 +18,7 @@ import { SwiperDirective } from '@app/shared/directives/swiper.directive';
     selector: 'app-product-card-carousel',
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule, ProductCardComponent, SwiperDirective],
     templateUrl: './product-card-carousel.component.html',
     styleUrls: ['./product-card-carousel.component.css'],

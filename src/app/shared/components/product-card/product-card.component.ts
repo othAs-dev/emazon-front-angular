@@ -1,4 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductItem } from '@app/marketplace/home/home.constants';
 import { MatCardModule } from '@angular/material/card';
@@ -20,6 +25,7 @@ import { RouterLink } from '@angular/router';
     templateUrl: './product-card.component.html',
     styleUrls: ['./product-card.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);

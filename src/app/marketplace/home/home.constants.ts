@@ -29,7 +29,7 @@ export const categoryData: CategoryItem[] = [
         title: 'Ordinateurs',
         tooltip: 'Tous nos ordinateurs',
         link: 'computers',
-        imageSrc: '../../../assets/MacBook_Air__2022__M2.avif',
+        imageSrc: 'assets/MacBook_Air__2022__M2.avif',
         description: "Au prix d'un McMorning. Ou presque.",
     },
     {
@@ -37,7 +37,7 @@ export const categoryData: CategoryItem[] = [
         title: 'Tablettes',
         tooltip: 'Toutes nos tablettes',
         link: 'tablets',
-        imageSrc: '../../../assets/ipad_category.avif',
+        imageSrc: 'assets/ipad_category.avif',
         description: 'Pour ceux qui voient la vie en grand',
     },
     {
@@ -45,7 +45,7 @@ export const categoryData: CategoryItem[] = [
         title: 'Smartphones',
         tooltip: 'Tous nos smartphones',
         link: 'smartphones',
-        imageSrc: '../../../assets/iphone_category.avif',
+        imageSrc: 'assets/iphone_category.avif',
         description: 'Le monde dans sa poche',
     },
     {

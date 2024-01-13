@@ -20,8 +20,9 @@ export default [
                 loadComponent: () => import('./cart/cart.component'),
             },
             {
-                path: 'products/:id',
-                loadComponent: () => import('./products/products.component'),
+                path: 'category/:id',
+                loadComponent: () =>
+                    import('@app/marketplace/category/category.component'),
             },
             {
                 path: 'product/:id',

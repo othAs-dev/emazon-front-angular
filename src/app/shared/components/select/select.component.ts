@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
     selector: 'app-select',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule, ReactiveFormsModule, FormsModule, MatInputModule],
     template: `
         <select
@@ -30,7 +31,6 @@ import { MatInputModule } from '@angular/material/input';
             </option>
         </select>
     `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent {
     @Input() selected!: string;

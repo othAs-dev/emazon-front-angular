@@ -11,7 +11,7 @@
     </div>
   </div>
   <div>
-    <img alt="empty-cart" class="w-96" src="../../../assets/404.svg">
+    <img alt="empty-cart" class="w-96" src="assets/404.svg">
   </div>
 </section>
 <ng-template #cartNotEmpty>
@@ -36,13 +36,11 @@
                     <span class="text-green-500">Plus que 10 en stock</span>
                     <div class="flex justify-end mt-2">
                       <div class="flex flex-row gap-2 items-center">
-                        <select class="py-2 px-2 pr-2 block w-14 border-gray-300 rounded-md h-9 text-sm focus:border-blue-500 focus:ring-blue-500 border">
-                          <option value="ONE">1</option>
-                          <option value="TWO">2</option>
-                          <option value="THREE">3</option>
-                          <option value="FOUR">4</option>
-                          <option value="FIVE">5</option>
-                        </select>
+                        <app-select
+                            [options]="numberProductsOptions"
+                            [selected]="numberProductsSelected"
+                            (selectedChange)="onDefaultNumberOptionsSelected($event)"
+                        />
                         <button mat-stroked-button (click)="deleteFn()" color="warn" class="text-sm">
                           Supprimer
                           <mat-icon>delete</mat-icon>
@@ -171,7 +169,7 @@
         <mat-card-content class="mt-5">
           <div class="flex flex-row flex-wrap">
             <form (ngSubmit)="submit()" [formGroup]="form" class="w-full">
-              <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
+              <formly-form [fields]="fields" [form]="form" [model]="model"></formly-form>
               <div class="flex w-full">
                 <button
                   [disabled]="!form.valid"

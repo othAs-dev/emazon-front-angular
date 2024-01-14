@@ -1,41 +1,38 @@
-import {Routes} from "@angular/router";
-import MarketplaceComponent from "./marketplace.component";
+import { Routes } from '@angular/router';
+import MarketplaceComponent from './marketplace.component';
 
 export default [
-  {
-    path: '',
-    component: MarketplaceComponent,
-    children: [
-      {
+    {
+        path: '',
+        component: MarketplaceComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'home',
+            },
+            {
+                path: 'home',
+                loadComponent: () => import('./home/home.component'),
+            },
+            {
+                path: 'cart',
+                loadComponent: () => import('./cart/cart.component'),
+            },
+            {
+                path: 'category/:id',
+                loadComponent: () =>
+                    import('@app/marketplace/category/category.component'),
+            },
+            {
+                path: 'product/:id',
+                loadComponent: () => import('./product/product.component'),
+            },
+        ],
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: 'home',
-      },
-      {
-        path: 'home',
-        loadComponent: () => import('./home/home.component'),
-      },
-      {
-        path: 'cart',
-        loadComponent: () => import('./cart/cart.component'),
-      },
-      {
-        path: 'products/:id',
-        loadComponent: () => import('./products/products.component'),
-      },
-      {
-        path: 'product/:id',
-        loadComponent: () => import('./product/product.component'),
-      },
-      {
-        path: 'shops',
-        loadComponent: () => import('./shops/shops.component'),
-      }
-    ]
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home',
-  }
+    },
 ] as Routes;

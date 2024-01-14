@@ -1,16 +1,23 @@
 @import "theme.config.scss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body {height: 100%}
-html{scroll-behavior:smooth}
+html, body {
+  height: 100%
+}
+
+html {
+  scroll-behavior: smooth
+}
 
 body {
   margin: 0;
   font-family: "Gill Sans", "Helvetica Neue", sans-serif;
   background-color: #efefef;
 }
+
 :root {
   --primary-color: #d2c0c0;
   --secondary-color: #6c757d;
@@ -24,11 +31,13 @@ body {
   --mdc-snackbar-container-color: var(--success-color);
   --mat-snack-bar-button-color: var(--white-color);
 }
+
 .error-snackbar {
   color: white;
   --mdc-snackbar-container-color: var(--delete-color);
   --mat-snack-bar-button-color: var(--white-color);
 }
+
 .info-snackbar {
   color: white;
   --mdc-snackbar-container-color: var(--secondary-color);

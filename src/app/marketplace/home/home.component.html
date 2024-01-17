@@ -8,7 +8,7 @@
     </h2>
   </div>
   <div class=" gap-4 flex justify-center tablet:gap-10 flex-wrap">
-    <mat-card *ngFor="let c of categoryData; trackBy: trackByCategoryData"
+    <mat-card *ngFor="let c of (categoryData | async); trackBy: trackByCategoryData"
               [title]="c.tooltip"
               [routerLink]="['/marketplace/category', c.link]"
               class="w-44 shadow-none tablet:w-72 laptop:w-64 hover:drop-shadow-lg transition-all cursor-pointer">
@@ -28,7 +28,7 @@
   <div class="flex justify-center pb-10 pt-10 flex-col rounded-md w-11/12 bg-[#fcf2e3]">
     <div class="text-center">
       <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl">Nos partenaires <span
-        class="text-gray-600 text-lg font-normal">Nos supers héros invinsibles, qui nous font briller chaque jour.</span>
+        class="text-gray-600 text-lg font-normal">Nos supers héros invisibles, qui nous font briller chaque jour.</span>
       </h2>
     </div>
     <div class="flex justify-center gap-5 laptop:gap-20 desktop:gap-24 rounded-md flex-wrap">

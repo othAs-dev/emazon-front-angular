@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {
-    categoryData,
     CategoryItem,
     logoData,
     LogoItem,
@@ -16,6 +15,8 @@ import { RouterLink } from '@angular/router';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { VideoCardComponent } from '@app/shared/components/video-card/video-card.component';
 import { Id } from '@app/shared/models/id';
+import {CategoryService} from "@app/service/category.service";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-home',
@@ -34,9 +35,10 @@ import { Id } from '@app/shared/models/id';
     standalone: true,
 })
 export default class HomeComponent {
-    protected categoryData: CategoryItem[] = categoryData;
     protected logoData: LogoItem[] = logoData;
     protected productsData: ProductItem[] = products;
+    private _categoryService: CategoryService = inject(CategoryService);
+    protected categoryData: Observable<CategoryItem[]> = this._categoryService.getAllCategories();
 
     protected trackByLogoData(id: Id, item: LogoItem): number {
         return item.id;

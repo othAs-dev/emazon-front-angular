@@ -8,12 +8,13 @@ import {
     FormlyModule,
 } from '@ngx-formly/core';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginFields } from '@app/formlyConfig/formly-presets/login-form';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginService } from '@app/auth/login/login.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoginResponse } from '@app/auth/login/login.models';
+import { AccessToken } from '@app/shared/models/access-token';
+import { Login } from '@app/shared/models/login';
 
 @Component({
     selector: 'app-login',
@@ -35,17 +36,19 @@ import { LoginResponse } from '@app/auth/login/login.models';
 export default class LoginComponent {
     private _loginService = inject(LoginService);
     private _snackBar: MatSnackBar = inject(MatSnackBar);
+    private _router: Router = inject(Router);
     protected form = new FormGroup({});
     protected model: any = {};
     protected options: FormlyFormOptions = {};
     protected fields: FormlyFieldConfig[] = LoginFields;
     submit() {
-        this._loginService.login({ emailPassword: this.model }).subscribe(
-            (response: LoginResponse) => {
+        this._loginService.login(this.model).subscribe(
+            (response: AccessToken) => {
                 sessionStorage.setItem('token', response.token);
                 this._snackBar.open('Login successful', 'Close', {
                     duration: 2000,
                 });
+                this._router.navigate(['/marketplace/home']);
             },
             (error) => {
                 this._snackBar.open('Login failed', 'Close', {

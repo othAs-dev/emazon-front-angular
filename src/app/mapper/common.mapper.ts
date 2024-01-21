@@ -1,6 +1,5 @@
 import { CategoryApi } from '@app/model/api.model';
 import { CategoryItem } from '@app/marketplace/home/home.constants';
-import { Signup } from '@app/auth/signup/signup.models';
 
 export const CommonMapper = {
     mapCategoryApiToCategoryItem(categoryApi: CategoryApi): CategoryItem {

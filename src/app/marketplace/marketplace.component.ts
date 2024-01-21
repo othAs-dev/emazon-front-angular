@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +14,8 @@ import {
 } from '@ngx-formly/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchFields } from '../formlyConfig/formly-presets/search-form';
+import { AuthService } from '@app/auth/auth.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
     selector: 'app-marketplace',
@@ -30,6 +32,7 @@ import { SearchFields } from '../formlyConfig/formly-presets/search-form';
         RouterOutlet,
         FormlyModule,
         ReactiveFormsModule,
+        MatTooltipModule,
     ],
     templateUrl: './marketplace.component.html',
     styleUrls: ['./marketplace.component.css'],
@@ -49,6 +52,23 @@ export default class MarketplaceComponent {
     protected model: any = {};
     protected options: FormlyFormOptions = {};
     protected fields: FormlyFieldConfig[] = SearchFields;
+    private readonly _authService: AuthService = inject(AuthService);
+    protected readonly isLoggedIn: boolean =
+        this._authService.isAuthenticated();
+
+    isLogged() {
+        if (this.isLoggedIn) {
+            const userDetailsString = localStorage.getItem('user_details');
+
+            if (userDetailsString) {
+                const userDetails: { firstname: string; lastname: string } =
+                    JSON.parse(userDetailsString);
+                return `${userDetails.firstname} 👋`;
+            }
+        }
+
+        return 'Se connecter';
+    }
 
     submit() {
         if (this.form.valid) {

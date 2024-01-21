@@ -1,4 +1,4 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from '@app/auth/auth.service';
 import { UserDetail } from '@app/shared/models/user-detail';
@@ -18,6 +18,7 @@ export const initGuard: CanActivateFn = (route, state) => {
                     };
                 }),
                 tap((userDetails) => {
+                    console.log(userDetails);
                     localStorage.setItem(
                         'user_details',
                         JSON.stringify(userDetails)

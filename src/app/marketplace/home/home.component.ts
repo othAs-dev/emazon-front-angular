@@ -16,7 +16,7 @@ import { ProductCardComponent } from '@app/shared/components/product-card/produc
 import { VideoCardComponent } from '@app/shared/components/video-card/video-card.component';
 import { Id } from '@app/shared/models/id';
 import { CategoryService } from '@app/service/category.service';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-home',
@@ -38,9 +38,8 @@ export default class HomeComponent {
     protected logoData: LogoItem[] = logoData;
     protected productsData: ProductItem[] = products;
     private _categoryService: CategoryService = inject(CategoryService);
-    protected categoryData: Observable<CategoryItem[]> = this._categoryService
-        .getAllCategories()
-        .pipe(tap(console.log));
+    protected categoryData: Observable<CategoryItem[]> =
+        this._categoryService.getAllCategories();
 
     protected trackByLogoData = (id: Id, item: LogoItem) => item.id;
 

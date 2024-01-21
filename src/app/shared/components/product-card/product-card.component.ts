@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
+import { Id } from '@app/shared/models/id';
 
 @Component({
     selector: 'app-product-card',
@@ -32,7 +33,7 @@ export class ProductCardComponent {
     @Input({ required: false }) cardWdithPhoneViewPort: string = 'w-5/12';
     @Input() products!: ProductItem[];
 
-    protected trackByProductsData = (id: number, item: ProductItem) => item.id;
+    protected trackByProductsData = (id: Id, item: ProductItem) => item.id;
 
     protected addToCart() {
         this._snackBar.open('Produit ajouté au panier', 'Fermer', {

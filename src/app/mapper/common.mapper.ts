@@ -7,10 +7,10 @@ export const CommonMapper = {
         return {
             id: categoryApi.id,
             title: categoryApi.name,
-            description: '',
+            description: categoryApi.description,
             imageSrc: '',
-            tooltip: '',
-            link: '',
+            tooltip: categoryApi.name,
+            link: categoryApi.name,
         };
     },
 };

@@ -1,4 +1,7 @@
+import { Id } from '@app/shared/models/id';
+
 export interface CategoryApi {
-    name: string
-    id: number
+    id: Id;
+    name: string;
+    description: string;
 }

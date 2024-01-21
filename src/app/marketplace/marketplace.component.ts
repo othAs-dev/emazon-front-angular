@@ -70,6 +70,8 @@ export default class MarketplaceComponent {
         return 'Se connecter';
     }
 
+    protected logout = () => this._authService.logout();
+
     submit() {
         if (this.form.valid) {
             alert(JSON.stringify(this.model));

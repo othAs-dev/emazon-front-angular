@@ -22,13 +22,18 @@
             mat-button
             mat-flat-button
             color="primary"
+            [matMenuTriggerFor]="menu"
             [matTooltip]="isLoggedIn ? 'Mon compte' : 'Se connecter'"
-            [routerLink]="isLoggedIn ? '../account/infos' : '../auth/login'"
+            [routerLink]="!isLoggedIn ? '../auth/login': null"
 
         >
             <mat-icon class="text-white" iconPositionEnd>person</mat-icon>
             {{ isLogged() }}
         </button>
+        <mat-menu #menu="matMenu" overlapTrigger="false">
+            <button mat-menu-item *ngIf="isLoggedIn" routerLink="../account/login">Mon Compte</button>
+            <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()">Déconnexion</button>
+        </mat-menu>
     </div>
   </mat-toolbar>
   <mat-sidenav-container class="h-full fixed">

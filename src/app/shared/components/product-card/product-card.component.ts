@@ -36,11 +36,6 @@ export class ProductCardComponent {
     protected trackByProductsData = (id: Id, item: ProductItem) => item.id;
 
     protected addToCart() {
-        this._snackBar.open('Produit ajouté au panier', 'Fermer', {
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            panelClass: 'success-snackbar',
-            duration: 3000,
-        });
+        this._snackBar.open('Produit ajouté au panier');
     }
 }

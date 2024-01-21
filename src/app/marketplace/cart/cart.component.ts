@@ -112,11 +112,7 @@ export default class CartComponent {
     }
 
     protected deleteFn() {
-        this._snackBar.open('Produit supprimé du panier', 'Fermer', {
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            panelClass: 'error-snackbar',
-        });
+        this._snackBar.open('Produit supprimé du panier');
     }
     onDefaultNumberOptionsSelected(newSelected: string) {
         this.numberProductsSelected = newSelected;

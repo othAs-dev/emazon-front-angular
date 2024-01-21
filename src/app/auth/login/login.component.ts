@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginService } from '@app/auth/login/login.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccessToken } from '@app/shared/models/access-token';
-import { Login } from '@app/shared/models/login';
 
 @Component({
     selector: 'app-login',
@@ -45,15 +44,10 @@ export default class LoginComponent {
         this._loginService.login(this.model).subscribe(
             (response: AccessToken) => {
                 sessionStorage.setItem('token', response.token);
-                this._snackBar.open('Login successful', 'Close', {
-                    duration: 2000,
-                });
                 this._router.navigate(['/marketplace/home']);
             },
             (error) => {
-                this._snackBar.open('Login failed', 'Close', {
-                    duration: 2000,
-                });
+                this._snackBar.open('Authentification échouée');
             }
         );
     }

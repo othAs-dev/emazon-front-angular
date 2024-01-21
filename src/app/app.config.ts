@@ -9,6 +9,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { MatNativeDateModule } from '@angular/material/core';
 import { initFormly } from './formlyConfig/initFormlyConfig';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { matsnackbarConfig } from '../../matsnackbar.config';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -17,7 +18,7 @@ export const appConfig: ApplicationConfig = {
         provideAnimations(),
         {
             provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-            useValue: { duration: 902500 },
+            useValue: matsnackbarConfig,
         },
         importProvidersFrom(
             MatNativeDateModule,

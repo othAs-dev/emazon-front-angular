@@ -35,10 +35,6 @@ export class VideoCardComponent {
     @Input() link!: string;
 
     protected addToCart(product: string) {
-        this._snackBar.open(`${product} ajouté au panier`, 'Fermer', {
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            panelClass: 'success-snackbar',
-        });
+        this._snackBar.open(`${product} ajouté au panier`);
     }
 }

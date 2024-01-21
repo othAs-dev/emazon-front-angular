@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserDetail } from '@app/shared/models/user-detail';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -21,5 +22,10 @@ export class AuthService {
                 },
             }
         );
+    }
+    public logout(): void {
+        sessionStorage.removeItem('token');
+        localStorage.removeItem('user_details');
+        window.location.href = '/marketplace/home';
     }
 }

@@ -52,6 +52,7 @@ export default class SignupComponent {
         this._signupService.signup(this.model).subscribe(
             (response: AccessToken) => {
                 sessionStorage.setItem('token', response.token);
+                window.location.href = '/marketplace/home';
                 this._snackBar.open('Login successful');
             },
             (error) => {

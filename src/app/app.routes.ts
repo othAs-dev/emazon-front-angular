@@ -5,7 +5,7 @@ import { isLoggedGuard } from '@app/shared/guards/is-logged.guard';
 export const routes: Routes = [
     {
         path: '',
-        canActivate: [initGuard],
+        canActivateChild: [initGuard],
         children: [
             {
                 path: 'auth',

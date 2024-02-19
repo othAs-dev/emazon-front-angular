@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
 import { Id } from '@app/shared/models/id';
+import { CartService } from '@app/marketplace/cart/cart.service';
 
 @Component({
     selector: 'app-product-card',
@@ -30,12 +31,20 @@ import { Id } from '@app/shared/models/id';
 })
 export class ProductCardComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);
+    private _cartService: CartService = inject(CartService);
     @Input({ required: false }) cardWdithPhoneViewPort: string = 'w-5/12';
     @Input() products!: ProductItem[];
 
     protected trackByProductsData = (id: Id, item: ProductItem) => item.id;
 
-    protected addToCart() {
+    protected addToCart(p: ProductItem) {
         this._snackBar.open('Produit ajouté au panier');
+        this._cartService.addItem({
+            delivery: '',
+            imageSrc: p.imageSrc,
+            packaging: '',
+            price: p.price.replace("€", "").replace(" ", "").trim(),
+            productName: p.title
+        })
     }
 }

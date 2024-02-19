@@ -35,6 +35,7 @@ export class ProductCardCarouselComponent implements AfterViewInit {
     }
 
     swiperConfig: SwiperOptions = {
+        direction: 'horizontal',
         spaceBetween: 10,
         pagination: { clickable: true },
         autoplay: {

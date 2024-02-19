@@ -1,11 +1,9 @@
 import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Input, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SwiperDirective} from "../../../shared/directives/swiper.directive";
+import {SwiperDirective} from "src/app/shared/directives/swiper.directive";
 import {SwiperContainer} from "swiper/swiper-element";
 import {SwiperOptions} from "swiper/types";
-import {register} from "swiper/element/bundle";
 
-register();
 @Component({
   selector: 'app-product-image-carousel',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

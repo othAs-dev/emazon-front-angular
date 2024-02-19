@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, LOCALE_ID } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
@@ -10,6 +10,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { initFormly } from './formlyConfig/initFormlyConfig';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { matsnackbarConfig } from '../../matsnackbar.config';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { CartState } from '@app/marketplace/cart/cart.state';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr)
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -24,7 +30,15 @@ export const appConfig: ApplicationConfig = {
             MatNativeDateModule,
             FormlyPresetModule,
             FormlyModule.forRoot(initFormly()),
-            FormlyMaterialModule
+            FormlyMaterialModule,
+            NgxsModule.forRoot([CartState], {
+                developmentMode: true,
+                selectorOptions: {suppressErrors : false, injectContainerState: false}
+            }),
+            NgxsStoragePluginModule.forRoot(),
         ),
+        {
+            provide: LOCALE_ID, useValue: "fr-FR"
+        }
     ],
 };

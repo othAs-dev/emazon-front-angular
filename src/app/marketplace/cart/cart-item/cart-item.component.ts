@@ -1,35 +1,40 @@
 import { Component, inject, Input } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { numberProductsOptions, ProductRecap } from '@app/marketplace/cart/cart.constants';
+import { numberProductsOptions } from '@app/marketplace/cart/cart.constants';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { SelectComponent } from '@app/shared/components/select/select.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartService } from '@app/marketplace/cart/cart.service';
+import { Product, Products } from '@app/shared/models/product';
 
 @Component({
-  selector: 'app-cart-item',
-  standalone: true,
-  imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, NgOptimizedImage, SelectComponent],
-  templateUrl: './cart-item.component.html',
-  styleUrls: ['./cart-item.component.css']
+    selector: 'app-cart-item',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        NgOptimizedImage,
+        SelectComponent,
+    ],
+    templateUrl: './cart-item.component.html',
 })
 export class CartItemComponent {
+    @Input({ required: true }) productRecap: Products;
+    protected readonly numberProductsOptions = numberProductsOptions;
+    protected numberProductsSelected: string = 'ONE';
+    private _cartService: CartService = inject(CartService);
+    private _snackBar: MatSnackBar = inject(MatSnackBar);
 
-  @Input({ required: true }) productRecap: ProductRecap[];
-  protected readonly numberProductsOptions = numberProductsOptions;
-  protected numberProductsSelected: string = 'ONE';
-  private _cartService: CartService = inject(CartService);
-  private _snackBar: MatSnackBar = inject(MatSnackBar);
+    onDefaultNumberOptionsSelected(newSelected: string) {
+        this.numberProductsSelected = newSelected;
+    }
 
-
-  onDefaultNumberOptionsSelected(newSelected: string) {
-    this.numberProductsSelected = newSelected;
-  }
-
-  protected deleteFn(currProd: ProductRecap) {
-    this._snackBar.open('Produit supprimé du panier');
-    this._cartService.deleteItem(currProd);
-  }
+    protected deleteFn(currProd: Product) {
+        this._snackBar.open('Produit supprimé du panier');
+        this._cartService.deleteItem(currProd);
+    }
 }

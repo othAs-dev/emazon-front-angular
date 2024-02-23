@@ -10,9 +10,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { SwiperContainer } from 'swiper/swiper-element';
 import { SwiperOptions } from 'swiper/types';
-import { ProductItem } from '@app/marketplace/product/product.constants';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { SwiperDirective } from '@app/shared/directives/swiper.directive';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product-card-carousel',
@@ -26,7 +26,7 @@ import { SwiperDirective } from '@app/shared/directives/swiper.directive';
 export class ProductCardCarouselComponent implements AfterViewInit {
     @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
     @ViewChild('swiperThumbs') swiperThumbs!: ElementRef<SwiperContainer>;
-    @Input({ required: true }) products!: ProductItem[];
+    @Input({ required: true }) products!: Products;
     protected index = 0;
 
     ngAfterViewInit() {

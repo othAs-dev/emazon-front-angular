@@ -3,19 +3,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartSummaryComponent } from './cart-summary.component';
 
 describe('CartSummaryComponent', () => {
-  let component: CartSummaryComponent;
-  let fixture: ComponentFixture<CartSummaryComponent>;
+    let component: CartSummaryComponent;
+    let fixture: ComponentFixture<CartSummaryComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [CartSummaryComponent]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [CartSummaryComponent],
+        });
+        fixture = TestBed.createComponent(CartSummaryComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
     });
-    fixture = TestBed.createComponent(CartSummaryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

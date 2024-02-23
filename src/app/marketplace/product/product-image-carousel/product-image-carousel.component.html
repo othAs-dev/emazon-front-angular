@@ -1,23 +1,23 @@
 <swiper-container
-  class="w-80 tablet:w-96 laptop:w-96 desktop:w-96"
-  appSwiper
-  #swiper
-  [config]="swiperConfig"
-  thumbs-swiper=".mySwiper2"
-  (slidechange)="slideChange($event)"
+    class="w-80 tablet:w-96 laptop:w-96 desktop:w-96"
+    appSwiper
+    #swiper
+    [config]="swiperConfig"
+    thumbs-swiper=".mySwiper2"
+    (slidechange)="slideChange($event)"
 >
-  <swiper-slide *ngFor="let image of images">
-    <img alt="ipad-air" class="w-80 tablet:w-96 laptop:w-96 desktop:w-96" [src]="image">
-  </swiper-slide>
+    <swiper-slide *ngFor="let image of images">
+        <img alt="ipad-air" class="w-80 tablet:w-96 laptop:w-96 desktop:w-96" [src]="image">
+    </swiper-slide>
 </swiper-container>
 <swiper-container
-  appSwiper
-  #swiperThumbs
-  [config]="swiperThumbsConfig"
-  class="mySwiper2 w-80 tablet:w-96 laptop:w-full desktop:w-96 "
-  *ngIf="images.length > 1"
+    appSwiper
+    #swiperThumbs
+    [config]="swiperThumbsConfig"
+    class="mySwiper2 w-80 tablet:w-96 laptop:w-full desktop:w-96 "
+    *ngIf="images.length > 1"
 >
-  <swiper-slide *ngFor="let image of images">
-    <img alt="ipad-air" class="w-80" [src]="image" role="button">
-  </swiper-slide>
+    <swiper-slide *ngFor="let image of images">
+        <img alt="ipad-air" class="w-80" [src]="image" role="button">
+    </swiper-slide>
 </swiper-container>

@@ -22,9 +22,10 @@
         color="primary"
         mat-raised-button
         type="submit"
-        [disabled]="!form.valid"
+        [class.spinner]="loadingSucceed$ | async"
+        [disabled]="!form.valid && !(loadingSucceed$ | async)"
       >
-        Se connecter
+        {{!(loadingSucceed$ | async) ? 'Se connecter' : ''}}
       </button>
     </div>
   </form>

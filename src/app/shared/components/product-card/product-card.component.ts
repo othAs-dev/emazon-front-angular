@@ -5,7 +5,6 @@ import {
     Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductItem } from '@app/marketplace/home/home.constants';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +12,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
 import { Id } from '@app/shared/models/id';
 import { CartService } from '@app/marketplace/cart/cart.service';
+import { Product, Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product-card',
@@ -33,18 +33,20 @@ export class ProductCardComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);
     private _cartService: CartService = inject(CartService);
     @Input({ required: false }) cardWdithPhoneViewPort: string = 'w-5/12';
-    @Input() products!: ProductItem[];
+    @Input() products!: Products;
 
-    protected trackByProductsData = (id: Id, item: ProductItem) => item.id;
+    protected trackByProductsData = (id: Id, item: Product) => item.id;
 
-    protected addToCart(p: ProductItem) {
+    protected addToCart(p: Product) {
         this._snackBar.open('Produit ajouté au panier');
         this._cartService.addItem({
+            id: 1,
+            description: '',
             delivery: '',
-            imageSrc: p.imageSrc,
+            imgSrc: p.imgSrc,
             packaging: '',
-            price: p.price.replace("€", "").replace(" ", "").trim(),
-            productName: p.title
-        })
+            price: p.price,
+            name: p.name,
+        });
     }
 }

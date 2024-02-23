@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +17,12 @@ import {
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { products } from '@app/marketplace/home/home.constants';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
+import { Category } from '@app/shared/models/category';
+import { CategoryService } from '@app/service/category.service';
+import { BehaviorSubject, defer, Observable, take, tap } from 'rxjs';
+import { Products } from '@app/shared/models/product';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ErrorComponent } from '@app/shared/components/error/error.component';
 
 @Component({
     selector: 'app-category',
@@ -22,13 +33,14 @@ import { FooterComponent } from '@app/shared/components/footer/footer.component'
         SelectComponent,
         ProductCardComponent,
         FooterComponent,
+        ErrorComponent,
     ],
     templateUrl: './category.component.html',
-    styleUrls: ['./category.component.css'],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CategoryComponent {
+    @Input() category!: Category;
     protected defaultOptionsSelected: string = 'Prix croissant';
     protected priceOptionsSelected: string = 'all';
     protected brandOptionsSelected: string = 'Apple';
@@ -36,6 +48,20 @@ export default class CategoryComponent {
     protected priceOptions: SelectOptions = priceOptions;
     protected brandOptions: SelectOptions = brandOptions;
     protected readonly products = products;
+    private readonly _categoryService = inject(CategoryService);
+    private readonly _snackBar = inject(MatSnackBar);
+    protected productsAvailabled$ = new BehaviorSubject(true);
+    protected productsByCategory$: Observable<Products> = defer(() =>
+        this._categoryService.getProductsByCategory$(this.category.name).pipe(
+            take(1),
+            tap((products) => {
+                if (products.length === 0) {
+                    this._snackBar.open("Aucun produit n'existe");
+                    this.productsAvailabled$.next(false);
+                }
+            })
+        )
+    );
 
     onDefaultOptionsSelected(newSelected: string) {
         this.defaultOptionsSelected = newSelected;

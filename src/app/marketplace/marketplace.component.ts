@@ -16,6 +16,10 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchFields } from '../formlyConfig/formly-presets/search-form';
 import { AuthService } from '@app/auth/auth.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CartService } from '@app/marketplace/cart/cart.service';
+import { BehaviorSubject, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @Component({
     selector: 'app-marketplace',
@@ -33,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         FormlyModule,
         ReactiveFormsModule,
         MatTooltipModule,
+        MatBadgeModule,
     ],
     templateUrl: './marketplace.component.html',
     styleUrls: ['./marketplace.component.css'],
@@ -55,26 +60,36 @@ export default class MarketplaceComponent {
     private readonly _authService: AuthService = inject(AuthService);
     protected readonly isLoggedIn: boolean =
         this._authService.isAuthenticated();
+    private _cartService = inject(CartService);
+    protected productsAddedToCart$ = new BehaviorSubject<number>(0);
 
     isLogged() {
         if (this.isLoggedIn) {
             const userDetailsString = localStorage.getItem('user_details');
-
             if (userDetailsString) {
                 const userDetails: { firstname: string; lastname: string } =
                     JSON.parse(userDetailsString);
                 return `${userDetails.firstname} 👋`;
             }
         }
-
         return 'Se connecter';
     }
 
     protected logout = () => this._authService.logout();
 
-    submit() {
+    protected submit(): void {
         if (this.form.valid) {
             alert(JSON.stringify(this.model));
         }
     }
+
+    private _productsInCart$ = this._cartService
+        .getAllProducts()
+        .pipe(
+            tap((product) => {
+                return this.productsAddedToCart$.next(product.length);
+            }),
+            takeUntilDestroyed()
+        )
+        .subscribe();
 }

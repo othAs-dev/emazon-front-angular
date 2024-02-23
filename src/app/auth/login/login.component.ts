@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginService } from '@app/auth/login/login.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccessToken } from '@app/shared/models/access-token';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -40,13 +41,17 @@ export default class LoginComponent {
     protected model: any = {};
     protected options: FormlyFormOptions = {};
     protected fields: FormlyFieldConfig[] = LoginFields;
-    submit() {
+    protected loadingSucceed$ = new BehaviorSubject(false);
+
+    protected submit(): void {
+        this.loadingSucceed$.next(true);
         this._loginService.login(this.model).subscribe(
             (response: AccessToken) => {
                 sessionStorage.setItem('token', response.token);
                 this._router.navigate(['/marketplace/home']);
             },
             (error) => {
+                this.loadingSucceed$.next(false);
                 this._snackBar.open('Authentification échouée');
             }
         );

@@ -2,7 +2,7 @@ import { ResolveFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { catchError, EMPTY } from 'rxjs';
 import { CategoryService } from '@app/service/category.service';
-import { Category } from '@app/model/category';
+import { Category } from '@app/shared/models/category';
 
 export const CategoryResolver: ResolveFn<Category> = (
     route,

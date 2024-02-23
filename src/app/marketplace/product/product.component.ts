@@ -6,9 +6,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import {
     FaqItem,
-    PageContent,
-    pageContent,
     faqItems,
+    pageContent,
+    PageContent,
 } from './product.constants';
 import { MatTableModule } from '@angular/material/table';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
@@ -18,8 +18,8 @@ import { ProductCardCarouselComponent } from '@app/shared/components/product-car
 import { ProductTableDetailsComponent } from './product-table-details/product-table-details.component';
 import { ProductFaqComponent } from './product-faq/product-faq.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductItem } from '../home/home.constants';
 import { Id } from '@app/shared/models/id';
+import { Product } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product',
@@ -38,14 +38,14 @@ import { Id } from '@app/shared/models/id';
         ProductFaqComponent,
     ],
     templateUrl: './product.component.html',
-    styleUrls: ['./product.component.css'],
     standalone: true,
 })
 export default class ProductComponent {
     protected readonly pageContent: PageContent = pageContent;
     protected readonly faqItems: FaqItem[] = faqItems;
     private _snackBar: MatSnackBar = inject(MatSnackBar);
-    protected trackByProductsData = (id: Id, item: ProductItem) => item.id;
+    protected trackByProductsData = (id: Id, item: Product) => item.id;
+
     protected addToCart() {
         this._snackBar.open('Produit ajouté au panier');
     }

@@ -1,14 +1,4 @@
 import { Id } from '@app/shared/models/id';
-
-export interface CategoryItem {
-    id: Id;
-    title: string;
-    tooltip: string;
-    link: string;
-    imageSrc: string;
-    description: string;
-}
-
 export interface LogoItem {
     id: Id;
     alt: string;
@@ -23,40 +13,6 @@ export interface ProductItem {
     description: string;
     price: string;
 }
-export const categoryData: CategoryItem[] = [
-    {
-        id: 1,
-        title: 'Ordinateurs',
-        tooltip: 'Tous nos ordinateurs',
-        link: 'computers',
-        imageSrc: 'assets/MacBook_Air__2022__M2.avif',
-        description: "Au prix d'un McMorning. Ou presque.",
-    },
-    {
-        id: 2,
-        title: 'Tablettes',
-        tooltip: 'Toutes nos tablettes',
-        link: 'tablets',
-        imageSrc: 'assets/ipad_category.avif',
-        description: 'Pour ceux qui voient la vie en grand',
-    },
-    {
-        id: 3,
-        title: 'Smartphones',
-        tooltip: 'Tous nos smartphones',
-        link: 'smartphones',
-        imageSrc: 'assets/iphone_category.avif',
-        description: 'Le monde dans sa poche',
-    },
-    {
-        id: 4,
-        title: 'Airpods',
-        tooltip: 'Tous nos casques audios',
-        link: 'audio-and-sound',
-        imageSrc: 'assets/airpods_category.avif',
-        description: 'Le gadget le plus cool du 21eme siècle',
-    },
-];
 export const logoData: LogoItem[] = [
     {
         id: 1,

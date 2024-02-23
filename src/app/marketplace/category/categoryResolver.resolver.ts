@@ -2,9 +2,9 @@ import { ResolveFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { catchError, EMPTY } from 'rxjs';
 import { CategoryService } from '@app/service/category.service';
-import { CategoryItem } from '@app/marketplace/home/home.constants';
+import { Category } from '@app/model/category';
 
-export const CategoryResolver: ResolveFn<CategoryItem> = (
+export const CategoryResolver: ResolveFn<Category> = (
     route,
     state,
     router = inject(Router)

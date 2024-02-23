@@ -1,67 +1,68 @@
 <section>
-  <article class="flex flex-row gap-2 items-center bg-amber-100 w-full h-10 justify-center">
-    <img alt="dollar-bills" class="w-10 h-10" src="../../../assets/dollar-bills.png">
-    <span>Profitez d'une livraison gratuite à partir de 100€ !</span>
-  </article>
-  <div class="flex flex-col gap-2 justify-center laptop:mt-10 laptop:flex-row">
-    <div class="mr-auto ml-auto laptop:mr-2 laptop:ml-0">
-      <app-product-image-carousel [images]="pageContent.urlImage"/>
-    </div>
-    <div class="h-fit w-11/12 ml-auto mr-auto laptop:w-2/3 mt-5 laptop:ml-0 laptop:mr-0">
-      <div class="flex justify-start gap-4 items-center">
-        <h1 class="font-bold text-xl laptop:text-3xl">iPad Air 2020</h1>
-        <span class="font-bold laptop:text-xl">699.00€</span>
-      </div>
-      <div class="flex justify-start flex-col laptop:flex-row border-b border-gray-400 pb-4 gap-3">
-        <div class="flex justify-center items-center">
-          <img alt="paypal" class="w-12" src="assets/icons/payements-methods-icons/PayPal.png"/>
-          <span>Payez en 4x sans frais par carte bancaire.</span>
+    <article class="flex flex-row gap-2 items-center bg-amber-100 w-full h-10 justify-center">
+        <img alt="dollar-bills" class="w-10 h-10" src="../../../assets/dollar-bills.png">
+        <span>Profitez d'une livraison gratuite à partir de 100€ !</span>
+    </article>
+    <div class="flex flex-col gap-2 justify-center laptop:mt-10 laptop:flex-row">
+        <div class="mr-auto ml-auto laptop:mr-2 laptop:ml-0">
+            <app-product-image-carousel [images]="pageContent.urlImage" />
         </div>
-        <button color="primary" mat-raised-button (click)="addToCart()">Ajouter au panier</button>
-      </div>
-      <div class="border-b border-gray-400 pb-4 pt-4">
-        <article>
-          <p>{{ pageContent.shortDescription }}</p>
-          <a class="ml-1 hover:cursor-pointer underline" [routerLink]="'.'" fragment="description">En savoir plus</a>
-        </article>
-      </div>
-      <div class="pt-4">
-        <span class="font-bold pb-2">Couleurs</span>
-        <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option *ngFor="let option of pageContent.chipOptionsColors"
-                           [selected]="option == pageContent.chipOptionsColors[0]">{{ option }}
-          </mat-chip-option>
-        </mat-chip-listbox>
-      </div>
-      <div class="border-b border-gray-400 pb-4 pt-4">
-        <span class="font-bold pb-2">Stockages</span>
-        <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option *ngFor="let option of pageContent.chipOptionsStorage"
-                           [selected]="option == pageContent.chipOptionsStorage[0]">{{ option }}
-          </mat-chip-option>
-        </mat-chip-listbox>
-      </div>
-      <div class="pb-4 pt-4">
-        <app-product-faq [faq]="faqItems"/>
-      </div>
+        <div class="h-fit w-11/12 ml-auto mr-auto laptop:w-2/3 mt-5 laptop:ml-0 laptop:mr-0">
+            <div class="flex justify-start gap-4 items-center">
+                <h1 class="font-bold text-xl laptop:text-3xl">iPad Air 2020</h1>
+                <span class="font-bold laptop:text-xl">699.00€</span>
+            </div>
+            <div class="flex justify-start flex-col laptop:flex-row border-b border-gray-400 pb-4 gap-3">
+                <div class="flex justify-center items-center">
+                    <img alt="paypal" class="w-12" src="assets/icons/payements-methods-icons/PayPal.png" />
+                    <span>Payez en 4x sans frais par carte bancaire.</span>
+                </div>
+                <button color="primary" mat-raised-button (click)="addToCart()">Ajouter au panier</button>
+            </div>
+            <div class="border-b border-gray-400 pb-4 pt-4">
+                <article>
+                    <p>{{ pageContent.shortDescription }}</p>
+                    <a class="ml-1 hover:cursor-pointer underline" [routerLink]="'.'" fragment="description">En savoir
+                        plus</a>
+                </article>
+            </div>
+            <div class="pt-4">
+                <span class="font-bold pb-2">Couleurs</span>
+                <mat-chip-listbox aria-label="Fish selection">
+                    <mat-chip-option *ngFor="let option of pageContent.chipOptionsColors"
+                                     [selected]="option == pageContent.chipOptionsColors[0]">{{ option }}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+            <div class="border-b border-gray-400 pb-4 pt-4">
+                <span class="font-bold pb-2">Stockages</span>
+                <mat-chip-listbox aria-label="Fish selection">
+                    <mat-chip-option *ngFor="let option of pageContent.chipOptionsStorage"
+                                     [selected]="option == pageContent.chipOptionsStorage[0]">{{ option }}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+            <div class="pb-4 pt-4">
+                <app-product-faq [faq]="faqItems" />
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="w-full border-t border-gray-400">
-    <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mx-auto" id="description">
-      <h4 class="font-bold text-xl mb-2">Description</h4>
-      <p>{{ pageContent.longDescription }}</p>
-    </div>
-    <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mx-auto">
-      <h4 class="font-bold text-xl mb-4">Caractéristiques</h4>
-      <app-product-table-details [productDetail]="pageContent.tableData"/>
-    </div>
-    <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mb-4 mx-auto">
-      <h4 class="font-bold text-xl mb-4">Ça pourrait vous intéresser</h4>
-      <div>
+    <div class="w-full border-t border-gray-400">
+        <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mx-auto" id="description">
+            <h4 class="font-bold text-xl mb-2">Description</h4>
+            <p>{{ pageContent.longDescription }}</p>
+        </div>
+        <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mx-auto">
+            <h4 class="font-bold text-xl mb-4">Caractéristiques</h4>
+            <app-product-table-details [productDetail]="pageContent.tableData" />
+        </div>
+        <div class="w-11/12 mt-4 bg-white p-3 rounded-lg mb-4 mx-auto">
+            <h4 class="font-bold text-xl mb-4">Ça pourrait vous intéresser</h4>
+            <div>
 
-      <app-product-card-carousel [products]="pageContent.products"/>
-      </div>
+                <app-product-card-carousel [products]="pageContent.products" />
+            </div>
+        </div>
     </div>
-  </div>
 </section>
-<app-footer/>
+<app-footer />

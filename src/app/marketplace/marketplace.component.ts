@@ -16,10 +16,10 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchFields } from '../formlyConfig/formly-presets/search-form';
 import { AuthService } from '@app/auth/auth.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CartService } from '@app/marketplace/cart/cart.service';
 import { BehaviorSubject, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBadgeModule } from '@angular/material/badge';
+import { CartService } from '@app/service/cart.service';
 
 @Component({
     selector: 'app-marketplace',
@@ -60,7 +60,7 @@ export default class MarketplaceComponent {
     private readonly _authService: AuthService = inject(AuthService);
     protected readonly isLoggedIn: boolean =
         this._authService.isAuthenticated();
-    private _cartService = inject(CartService);
+    private _cartService: CartService = inject(CartService);
     protected productsAddedToCart$ = new BehaviorSubject<number>(0);
 
     isLogged() {

@@ -1,49 +1,47 @@
 <ng-container *ngIf="productsByCategory$ | async"></ng-container>
 <div class="p-4 mb-20">
-    <div>
-        <h1 class="text-xl underline font-bold mb-8 tablet:text-2xl laptop:text-3xl">{{ category.name }}</h1>
-        <p class="text-gray-600 text-lg font-normal">{{ category.description }}</p>
+  <div>
+    <h1 class="text-xl underline font-bold mb-8 tablet:text-2xl laptop:text-3xl">{{ category.name }}</h1>
+    <p class="text-gray-600 text-lg font-normal">{{ category.description }}</p>
+  </div>
+  <ng-container *ngIf="productsAvailabled$ | async; else noProducts">
+    <div class="bg-white rounded-md mt-10 p-2 flex">
+      <div>
+        <h2 class="text-md font-bold mb-3 tablet:text-lg laptop:text-xl">Vos Filtres</h2>
+        <mat-chip-listbox aria-label="Filters selection" class="bg-white">
+          <mat-chip>Prix croissant</mat-chip>
+          <mat-chip>Tous les prix</mat-chip>
+          <mat-chip>Apple</mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <span class="flex-1"></span>
+      <div>
+        <p class="pr-3 mb-2">10 produits trouvés</p>
+      </div>
     </div>
-    <ng-container *ngIf="productsAvailabled$ | async; else noProducts">
-        <div class="bg-white rounded-md mt-10 p-2 flex">
-            <div>
-                <h2 class="text-md font-bold mb-3 tablet:text-lg laptop:text-xl">Vos Filtres</h2>
-                <mat-chip-listbox aria-label="Filters selection" class="bg-white">
-                    <mat-chip>Prix croissant</mat-chip>
-                    <mat-chip>Tous les prix</mat-chip>
-                    <mat-chip>Apple</mat-chip>
-                </mat-chip-listbox>
-            </div>
-            <span class="flex-1"></span>
-            <div>
-                <p class="pr-3 mb-2">10 produits trouvés</p>
-            </div>
-        </div>
-        <div class="mt-6 flex flex-wrap gap-5">
-            <div>
-                <p class="pr-3 mb-2">Ordre de prix</p>
-                <app-select [options]="defaultOptions" [selected]="defaultOptionsSelected"
-                            (selectedChange)="onDefaultOptionsSelected($event)" />
-            </div>
-            <div>
-                <p class="mb-2">Tri par prix</p>
-                <app-select [options]="priceOptions" [selected]="priceOptionsSelected"
-                            (selectedChange)="onDefaultPriceOptionsSelected($event)" />
-            </div>
-            <div>
-                <p class="mb-2">Tri par marque</p>
-                <app-select [options]="brandOptions" [selected]="brandOptionsSelected"
-                            (selectedChange)="onDefaultBrandOptionsSelected($event)" />
-            </div>
-
-        </div>
-        <div class="mt-4">
-            <app-product-card [products]="(productsByCategory$ | async)!" />
-        </div>
-    </ng-container>
-    <ng-template #noProducts>
-        <app-error />
-    </ng-template>
-
+    <div class="mt-6 flex flex-wrap gap-5">
+      <div>
+        <p class="pr-3 mb-2">Ordre de prix</p>
+        <app-select [options]="defaultOptions" [selected]="defaultOptionsSelected"
+                    (selectedChange)="onDefaultOptionsSelected($event)" />
+      </div>
+      <div>
+        <p class="mb-2">Tri par prix</p>
+        <app-select [options]="priceOptions" [selected]="priceOptionsSelected"
+                    (selectedChange)="onDefaultPriceOptionsSelected($event)" />
+      </div>
+      <div>
+        <p class="mb-2">Tri par marque</p>
+        <app-select [options]="brandOptions" [selected]="brandOptionsSelected"
+                    (selectedChange)="onDefaultBrandOptionsSelected($event)" />
+      </div>
+    </div>
+    <div class="mt-4" *ngIf="recommendationProducts | async as products">
+      <app-product-card [products]="products" />
+    </div>
+  </ng-container>
+  <ng-template #noProducts>
+    <app-error />
+  </ng-template>
 </div>
 <app-footer />

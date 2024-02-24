@@ -4,5 +4,5 @@ export interface CategoryApi {
     id: Id;
     name: string;
     description: string;
-    image: string;
+    imgSrc: string
 }

@@ -41,5 +41,6 @@ export class SelectComponent {
 
     onSelectionChange() {
         this.selectedChange.emit(this.selected);
+        console.log(this.selected);
     }
 }

@@ -2,6 +2,8 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { AddItem, DeleteItem } from '@app/marketplace/cart/cart.action';
 import { Products } from '@app/shared/models/product';
+import { isNumber } from '@ngxs/store/operators/utils';
+import { toNumbers } from '@angular/compiler-cli/src/version_helpers';
 
 export interface CartModel {
     products: Products;
@@ -16,7 +18,10 @@ export class CartState {
     @Selector()
     static getCartProductTotalAmount(state: CartModel): number {
         return (
-            state && state.products.reduce((acc, curr) => acc + +curr.price, 0)
+            state && state.products.reduce((acc, curr) => acc +
+              this.toNumber(curr.price) +
+              this.toNumber(curr.packaging) +
+              this.toNumber(curr.delivery), 0)
         );
     }
 
@@ -54,5 +59,12 @@ export class CartState {
         ctx.patchState({
             products: newProductList,
         });
+    }
+
+    static toNumber(num?: string | undefined): number {
+        if (!num)
+            return 0;
+        const isNumber = !isNaN(+num);
+        return isNumber ? +num: 0;
     }
 }

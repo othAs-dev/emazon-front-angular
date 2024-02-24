@@ -6,8 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { SelectComponent } from '@app/shared/components/select/select.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartService } from '@app/marketplace/cart/cart.service';
 import { Product, Products } from '@app/shared/models/product';
+import { CartService } from '@app/service/cart.service';
 
 @Component({
     selector: 'app-cart-item',

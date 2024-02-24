@@ -5,14 +5,14 @@ import {
     CUSTOM_ELEMENTS_SCHEMA,
     ElementRef,
     Input,
-    ViewChild,
+    ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SwiperContainer } from 'swiper/swiper-element';
 import { SwiperOptions } from 'swiper/types';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { SwiperDirective } from '@app/shared/directives/swiper.directive';
-import { Products } from '@app/shared/models/product';
+import { ProductApi } from '@app/marketplace/home/home.constants';
 
 @Component({
     selector: 'app-product-card-carousel',
@@ -26,7 +26,7 @@ import { Products } from '@app/shared/models/product';
 export class ProductCardCarouselComponent implements AfterViewInit {
     @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
     @ViewChild('swiperThumbs') swiperThumbs!: ElementRef<SwiperContainer>;
-    @Input({ required: true }) products!: Products;
+    @Input({ required: true }) products!: ProductApi[];
     protected index = 0;
 
     ngAfterViewInit() {

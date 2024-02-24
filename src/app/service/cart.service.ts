@@ -29,6 +29,9 @@ export class CartService {
         return this.productTotalAmount$;
     }
 
+    getTotalShipping() : Observable<number>{ return new Observable<number>()}
+    getTotalPackaging():  Observable<number>{ return new Observable<number>()}
+
     getAllProducts(): Observable<Products> {
         return this.allProductRecap$;
     }

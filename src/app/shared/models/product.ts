@@ -1,8 +1,7 @@
-import { Id } from '@app/shared/models/id';
 import { Brand } from '@app/shared/enums/brand';
 
 export interface Product {
-    id: Id;
+    id: string;
     name: string;
     description: string;
     imgSrc: string;

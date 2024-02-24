@@ -14,7 +14,7 @@
                   class="w-40 shadow-none tablet:w-72 laptop:w-72 hover:drop-shadow-lg transition-all cursor-pointer pb-2 pt-2"
                   style="display: flex; flex-direction: column;">
             <div style="flex: 1; display: flex; justify-content: center;">
-                <img [alt]="c.name" [src]="c.image" class="w-28 pt-3 tablet:w-4O laptop:w-44" />
+                <img [alt]="c.name" [src]="'http://localhost:8000/'+c.image" class="w-28 pt-3 tablet:w-4O laptop:w-44" />
             </div>
             <mat-card-header>
                 <mat-card-title>{{ c.name }}</mat-card-title>
@@ -56,8 +56,8 @@
     <h2 class="text-xl font-bold mb-8 tablet:text-2xl laptop:text-3xl text-center">Nos meilleurs ventes <span
         class="text-gray-600 text-lg font-normal">Ça part aussi vite que des petits pains (au chocolat).
 </span>
-    </h2>
-    <app-product-card [products]="productsData" />
+  </h2>
+  <app-product-card *ngIf="productsData | async as productList" [products]="productList"/>
 </section>
 <app-video-card
     src="assets/mac_videos.mp4"

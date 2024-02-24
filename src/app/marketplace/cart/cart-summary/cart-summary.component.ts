@@ -3,8 +3,9 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { CartService } from '@app/marketplace/cart/cart.service';
 import { Products } from '@app/shared/models/product';
+import { CartService } from '@app/service/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-cart-summary',
@@ -20,5 +21,10 @@ import { Products } from '@app/shared/models/product';
 })
 export class CartSummaryComponent {
     @Input({ required: true }) productRecap: Products;
-    protected cartService: CartService = inject(CartService);
+    private cartService: CartService = inject(CartService);
+
+    protected totalWithoutTaxes: Observable<number> = this.cartService.getTotalWithoutTaxes();
+    protected totalPackaging: Observable<number> = this.cartService.getTotalPackaging();
+    protected totalShipping : Observable<number> = this.cartService.getTotalShipping();
+    protected totalProductAmount: Observable<number> = this.cartService.getProductTotalAmount();
 }

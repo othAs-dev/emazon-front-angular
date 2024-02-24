@@ -5,7 +5,7 @@
             <div class="border-b border-gray-300">
                 <div *ngFor="let pr of productRecap " class="flex flex-row pb-3 pt-3">
                     <div class="p-1 h-fit border rounded-md border-gray-400 mr-3">
-                        <img [alt]="pr.name" [ngSrc]="pr.imgSrc" height="50" width="50">
+                        <img [alt]="pr.name" [ngSrc]="'http://localhost:8000/'+pr.imgSrc" height="50" width="50">
                     </div>
                     <div class="w-full">
                         <div>
@@ -15,21 +15,33 @@
                         <div>
                             <div class="flex justify-between">
                                 <p>Livraison</p>
-                                <p>{{ pr.delivery }}</p>
+                                <p>{{ pr.delivery | currency : 'EUR' }}</p>
                             </div>
                             <div class="flex justify-between">
                                 <p>Emballage</p>
-                                <p>{{ pr.packaging }}</p>
+                                <p>{{ pr.packaging | currency : 'EUR' }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div *ngIf="cartService.getTotalWithoutTaxes() | async as total" class="mt-3 pb-3 border-b border-gray-300">
+            <div *ngIf="totalWithoutTaxes | async as total" class="mt-3 pb-3 border-b border-gray-300">
                 <div class="flex justify-between">
                     <p>Sous-total</p>
                     <p>
                         {{ total | currency : "EUR" }}
+                    </p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Emballage</p>
+                    <p>
+                        {{ totalPackaging | async | currency : "EUR" }}
+                    </p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Livraison</p>
+                    <p>
+                        {{ totalShipping | async | currency : "EUR" }}
                     </p>
                 </div>
                 <div class="flex justify-between">
@@ -44,7 +56,7 @@
             <div class="pt-3 flex flex-col">
                 <div class="flex justify-between">
                     <p class="font-bold">Total TTC</p>
-                    <p>{{ cartService.getProductTotalAmount() | async | currency : 'EUR' }}</p>
+                    <p>{{ totalProductAmount | async | currency : 'EUR' }}</p>
                 </div>
                 <div>
                     <button class="w-full mt-3" color="primary" mat-raised-button>Passer la commande</button>
@@ -54,11 +66,12 @@
                         </mat-icon>
                         <span class="text-gray-600">Paiement sécurisé</span>
                     </div>
-                    <p class="text-xs mt-2">En passant commande vous acceptez nos <span class="font-bold">Conditions générales
-            d'utilisation</span>,
+                    <p class="text-xs mt-2">En passant commande vous acceptez nos <span class="font-bold">Conditions
+                        générales
+                        d'utilisation</span>,
                         nos <span class="font-bold">Conditions générales de vente</span> et notre <span
-                            class="font-bold">politique
-              de protection des données</span>
+                                class="font-bold">politique
+                            de protection des données</span>
                     </p>
                 </div>
             </div>

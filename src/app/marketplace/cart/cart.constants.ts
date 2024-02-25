@@ -1,6 +1,6 @@
 import { Id } from '@app/shared/models/id';
 import { SelectOptions } from '@app/shared/models/selectOptions';
-import { Products } from '@app/shared/models/product';
+import { Product, Products } from '@app/shared/models/product';
 
 export interface benefitsModel {
     id: Id;
@@ -13,6 +13,8 @@ export interface payementMethodModel {
     src: string;
     alt: string;
 }
+
+export type CartProduct = Pick<Product, 'name'| 'imgSrc' | 'price'>
 
 export const benefitsData: benefitsModel[] = [
     {

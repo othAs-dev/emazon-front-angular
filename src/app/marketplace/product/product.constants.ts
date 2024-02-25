@@ -43,48 +43,6 @@ export const pageContent: PageContent = {
         { label: 'SKU', value: '17996901' },
         { label: 'EAN', value: '0194252794692' },
     ],
-    // products: [
-    //     {
-    //         id: 1,
-    //         title: 'Iphone 15 pro',
-    //         imageSrc: 'assets/15-basic.jpeg',
-    //         description:
-    //             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-    //         price: '1 259 €',
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Iphone 15 pro',
-    //         imageSrc: 'assets/15-pro.jpeg',
-    //         description:
-    //             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-    //         price: '1 259 €',
-    //     },
-    //     {
-    //         id: 3,
-    //         title: 'Airpods Max',
-    //         imageSrc: 'assets/airpods-mac.png',
-    //         description:
-    //             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-    //         price: '1 259 €',
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Iphone 15 pro',
-    //         imageSrc: 'assets/15-pro.jpeg',
-    //         description:
-    //             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-    //         price: '1 259 €',
-    //     },
-    //     {
-    //         id: 3,
-    //         title: 'Airpods Max',
-    //         imageSrc: 'assets/airpods-mac.png',
-    //         description:
-    //             'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-    //         price: '1 259 €',
-    //     },
-    // ],
 };
 
 export const faqItems: FaqItem[] = [

@@ -6,7 +6,7 @@ import { CartState } from '@app/marketplace/cart/cart.state';
 import { Product, Products } from '@app/shared/models/product';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class CartService {
     private _store: Store = inject(Store);
@@ -29,8 +29,13 @@ export class CartService {
         return this.productTotalAmount$;
     }
 
-    getTotalShipping() : Observable<number>{ return new Observable<number>()}
-    getTotalPackaging():  Observable<number>{ return new Observable<number>()}
+    getTotalShipping(): Observable<number> {
+        return this._store.select(CartState.getShippingTotal);
+    }
+
+    getTotalPackaging(): Observable<number> {
+        return this._store.select(CartState.getPackageTotal);
+    }
 
     getAllProducts(): Observable<Products> {
         return this.allProductRecap$;

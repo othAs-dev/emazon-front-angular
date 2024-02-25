@@ -2,8 +2,6 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { AddItem, DeleteItem } from '@app/marketplace/cart/cart.action';
 import { Products } from '@app/shared/models/product';
-import { isNumber } from '@ngxs/store/operators/utils';
-import { toNumbers } from '@angular/compiler-cli/src/version_helpers';
 
 export interface CartModel {
     products: Products;
@@ -11,7 +9,7 @@ export interface CartModel {
 
 @State<CartModel>({
     name: 'cart',
-    defaults: { products: [] },
+    defaults: { products: [] }
 })
 @Injectable()
 export class CartState {
@@ -19,9 +17,9 @@ export class CartState {
     static getCartProductTotalAmount(state: CartModel): number {
         return (
             state && state.products.reduce((acc, curr) => acc +
-              this.toNumber(curr.price) +
-              this.toNumber(curr.packaging) +
-              this.toNumber(curr.delivery), 0)
+                this.toNumber(curr.price) +
+                this.toNumber(curr.packaging) +
+                this.toNumber(curr.delivery), 0)
         );
     }
 
@@ -35,10 +33,20 @@ export class CartState {
         const EmazonFees = 0.05;
         const VATFrance = 0.2;
         const total = state.products.reduce(
-            (acc, curr) => acc + +curr.price,
+            (acc, curr) => acc + this.toNumber(curr.price),
             0
         );
         return state && total + total * EmazonFees + total * VATFrance;
+    }
+
+    @Selector()
+    static getShippingTotal(state: CartModel): number {
+        return state && state.products.reduce((acc, curr) => acc + this.toNumber(curr.delivery), 0);
+    }
+
+    @Selector()
+    static getPackageTotal(state: CartModel): number {
+        return state && state.products.reduce((acc, curr) => acc + this.toNumber(curr.packaging), 0);
     }
 
     @Action(AddItem)
@@ -46,7 +54,7 @@ export class CartState {
         const state = ctx.getState();
         ctx.setState({
             ...state,
-            products: [...state.products, action.item],
+            products: [...state.products, action.item]
         });
     }
 
@@ -57,7 +65,7 @@ export class CartState {
             (item) => item !== action.item
         );
         ctx.patchState({
-            products: newProductList,
+            products: newProductList
         });
     }
 
@@ -65,6 +73,6 @@ export class CartState {
         if (!num)
             return 0;
         const isNumber = !isNaN(+num);
-        return isNumber ? +num: 0;
+        return isNumber ? +num : 0;
     }
 }

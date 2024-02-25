@@ -1,5 +1,15 @@
-import { ApplicationConfig, importProvidersFrom, LOCALE_ID } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import {
+    ApplicationConfig,
+    importProvidersFrom,
+    LOCALE_ID,
+} from '@angular/core';
+import {
+    HttpEvent,
+    HttpHandlerFn,
+    HttpRequest,
+    provideHttpClient,
+    withInterceptors,
+} from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
@@ -15,11 +25,26 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { CartState } from '@app/marketplace/cart/cart.state';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-registerLocaleData(localeFr)
+import { Observable } from 'rxjs';
+import { environment } from '@app/environment';
+registerLocaleData(localeFr);
+
+export function apiUrlInterceptor(
+    req: HttpRequest<unknown>,
+    next: HttpHandlerFn
+): Observable<HttpEvent<unknown>> {
+    return next(
+        req.clone({
+            url: `${environment.apiUrl}/${req.url}`,
+        })
+    );
+}
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideHttpClient(),
+        provideHttpClient(
+            withInterceptors([(req, next) => apiUrlInterceptor(req, next)])
+        ),
         provideRouter(routes, withComponentInputBinding()),
         provideAnimations(),
         {
@@ -33,12 +58,16 @@ export const appConfig: ApplicationConfig = {
             FormlyMaterialModule,
             NgxsModule.forRoot([CartState], {
                 developmentMode: true,
-                selectorOptions: {suppressErrors : false, injectContainerState: false}
+                selectorOptions: {
+                    suppressErrors: false,
+                    injectContainerState: false,
+                },
             }),
-            NgxsStoragePluginModule.forRoot(),
+            NgxsStoragePluginModule.forRoot()
         ),
         {
-            provide: LOCALE_ID, useValue: "fr-FR"
-        }
+            provide: LOCALE_ID,
+            useValue: 'fr-FR',
+        },
     ],
 };

@@ -12,19 +12,15 @@ import { Products } from '@app/shared/models/product';
 export class CategoryService {
     private _http: HttpClient = inject(HttpClient);
     public getAllCategories(): Observable<Categories> {
-        return this._http.get<CategoryApi[]>(
-            'http://localhost:8000/api/v1/category/list'
-        );
+        return this._http.get<CategoryApi[]>('api/v1/category/list');
     }
     public getCategory(id: Id): Observable<Category> {
-        return this._http.get<Category>(
-            `http://localhost:8000/api/v1/category/${id}`
-        );
+        return this._http.get<Category>(`api/v1/category/${id}`);
     }
 
     public getProductsByCategory$(categoryName: string): Observable<Products> {
         return this._http.get<Products>(
-            `http://localhost:8000/api/v1/inventory/search/category/${categoryName}`
+            `api/v1/inventory/search/category/${categoryName}`
         );
     }
 }

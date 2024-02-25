@@ -9,7 +9,7 @@ export const UserInfos: FormlyFieldConfig[] = [
         fieldGroupClassName: '',
         fieldGroup: [
             {
-                className: 'w-full laptop:w-5/12',
+                className: 'w-full laptop:w-3/12',
                 key: 'firstname',
                 type: 'input',
                 props: {
@@ -17,7 +17,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                 },
             },
             {
-                className: 'w-full laptop:w-5/12',
+                className: 'w-full laptop:w-4/12',
                 key: 'lastname',
                 type: 'input',
                 props: {
@@ -25,15 +25,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                 },
             },
             {
-                className: 'w-full laptop:w-5/12',
-                key: 'birthdate',
-                type: 'date-picker',
-                props: {
-                    label: 'Date de naissance',
-                },
-            },
-            {
-                className: 'w-full laptop:w-5/12',
+                className: 'w-full laptop:w-4/12',
                 key: 'email',
                 type: 'input',
                 props: {
@@ -44,7 +36,15 @@ export const UserInfos: FormlyFieldConfig[] = [
                 },
             },
             {
-                className: 'w-full laptop:w-5/12',
+                className: 'w-full laptop:w-3/12',
+                key: 'birthdate',
+                type: 'date-picker',
+                props: {
+                    label: 'Date de naissance',
+                },
+            },
+            {
+                className: 'w-full laptop:w-4/12',
                 key: 'phone',
                 type: 'input',
                 props: {
@@ -56,7 +56,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                 },
             },
             {
-                className: 'w-full laptop:w-5/12',
+                className: 'w-full laptop:w-4/12',
                 key: 'password',
                 type: 'input',
                 props: {
@@ -72,7 +72,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                 className: 'w-full',
                 fieldGroup: [
                     {
-                        className: 'w-full laptop:w-5/12',
+                        className: 'w-full laptop:w-[93.6%]',
                         key: 'street',
                         type: 'input',
                         props: {
@@ -80,7 +80,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                         },
                     },
                     {
-                        className: 'w-full laptop:w-5/12',
+                        className: 'w-full laptop:w-4/12',
 
                         key: 'localilty',
                         type: 'input',
@@ -89,7 +89,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                         },
                     },
                     {
-                        className: 'w-full laptop:w-5/12',
+                        className: 'w-full laptop:w-3/12',
                         key: 'postalCode',
                         type: 'input',
                         props: {
@@ -98,7 +98,7 @@ export const UserInfos: FormlyFieldConfig[] = [
                         },
                     },
                     {
-                        className: 'w-full laptop:w-5/12',
+                        className: 'w-full laptop:w-4/12',
                         key: 'country',
                         type: 'input',
                         props: {

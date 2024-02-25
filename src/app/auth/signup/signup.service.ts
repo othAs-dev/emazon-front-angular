@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Signup, SignupForm } from '@app/auth/signup/signup.models';
+import { SignupForm } from '@app/auth/signup/signup.models';
 import { AccessToken } from '@app/shared/models/access-token';
 import { mapSignupFormToSignupApi } from '@app/auth/signup/signup.mapper';
 
@@ -13,7 +13,7 @@ export class SignupService {
         const customerInfoForm = mapSignupFormToSignupApi(customerInfo);
         console.log(customerInfoForm);
         return this._http.post<AccessToken>(
-            'http://localhost:8000/api/v1/auth/register',
+            'api/v1/auth/register',
             customerInfoForm
         );
     }

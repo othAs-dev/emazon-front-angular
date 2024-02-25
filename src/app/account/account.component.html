@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <img class="w-10 mr-4" src="assets/icons/ez.png" alt="logo">
+    <img class="w-10 mr-4 cursor-pointer" src="assets/icons/ez.png" alt="logo" routerLink="../marketplace/home">
     <button
         mat-button
         mat-flat-button
@@ -18,7 +18,15 @@
         Mes commandes
     </button>
     <span class="spacer"></span>
-
+    <button
+        mat-button
+        mat-flat-button
+        routerLink="../marketplace/home"
+        class="mr-3"
+    >
+        <mat-icon>shopping_cart</mat-icon>
+        Marketplace
+    </button>
     <button
         mat-button
         mat-flat-button
@@ -30,5 +38,10 @@
     </button>
 </mat-toolbar>
 <ng-container>
+    <p>
+        <mat-toolbar>
+            <span class="text-lg tablet:text-2xl font-bold">Bonjour {{ userInfos() }}</span>
+        </mat-toolbar>
+    </p>
     <router-outlet />
 </ng-container>

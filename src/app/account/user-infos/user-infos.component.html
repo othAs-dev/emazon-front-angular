@@ -1,0 +1,16 @@
+<section class=" flex justify-center m-3" >
+    <form [formGroup]="form">
+        <formly-form [fields]="fields" [form]="form" [model]="model"></formly-form>
+        <div class="flex w-full justify-end pt-3">
+            <button
+                class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+                color="primary"
+                mat-raised-button
+                type="submit"
+                (click)="openSaveDialog(model)"
+            >
+                Enregistrer les modifications
+            </button>
+        </div>
+    </form>
+</section>

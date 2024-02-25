@@ -25,4 +25,14 @@ export default class AccountComponent {
     protected logout() {
         this._authService.logout();
     }
+
+    userInfos() {
+        const userDetailsString = localStorage.getItem('user_details');
+        if (userDetailsString) {
+            const userDetails: { firstname: string; lastname: string } =
+                JSON.parse(userDetailsString);
+            return `${userDetails.firstname} ${userDetails.lastname} 👋`;
+        }
+        return 'Hello, user 👋';
+    }
 }

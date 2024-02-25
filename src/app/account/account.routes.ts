@@ -7,8 +7,9 @@ export default [
         canActivate: [authGuard],
         children: [
             {
-                path: 'infos',
-                loadComponent: () => import('./infos/infos.component'),
+                path: 'user-infos',
+                loadComponent: () =>
+                    import('@app/account/user-infos/user-infos.component'),
             },
             {
                 path: 'orders',
@@ -19,6 +20,6 @@ export default [
     {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'infos',
+        redirectTo: 'user-infos',
     },
 ] as Routes;

@@ -1,6 +1,6 @@
-import { ProductItem } from '../home/home.constants';
 import { Id } from '@app/shared/models/id';
 import { SelectOptions } from '@app/shared/models/selectOptions';
+import { Product, Products } from '@app/shared/models/product';
 
 export interface benefitsModel {
     id: Id;
@@ -13,13 +13,9 @@ export interface payementMethodModel {
     src: string;
     alt: string;
 }
-export interface ProductRecap {
-    imageSrc: string;
-    productName: string;
-    price: string;
-    delivery: string;
-    packaging: string;
-}
+
+export type CartProduct = Pick<Product, 'name'| 'imgSrc' | 'price'> & { quantity: number }
+
 export const benefitsData: benefitsModel[] = [
     {
         id: 1,
@@ -95,72 +91,6 @@ export const payementMethodData: payementMethodModel[] = [
     },
 ];
 
-export const products: ProductItem[] = [
-    {
-        id: 1,
-        title: 'Iphone 15 pro',
-        imageSrc: '../../../assets/15-basic.jpeg',
-        description:
-            'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-        price: '1 259,00 €',
-    },
-    {
-        id: 2,
-        title: 'Iphone 15 pro',
-        imageSrc: '../../../assets/15-pro.jpeg',
-        description:
-            'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-        price: '1 259,00 €',
-    },
-    {
-        id: 3,
-        title: 'Airpods Max',
-        imageSrc: '../../../assets/airpods-mac.png',
-        description:
-            'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-        price: '1 259,00 €',
-    },
-    {
-        id: 4,
-        title: 'Macbook Air 15 pouces',
-        imageSrc: '../../../assets/mabook-air.jpeg',
-        description:
-            'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-        price: '1 259,00 €',
-    },
-    {
-        id: 5,
-        title: 'Google Pixel 5',
-        imageSrc: '../../../assets/pixel-pro.jpeg',
-        description:
-            'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-        price: '1 259,00 €',
-    },
-    {
-        id: 6,
-        title: 'ipad 10ème génération',
-        imageSrc: '../../../assets/ipad-pro.jpeg',
-        description:
-            'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-        price: '1 259,00 €',
-    },
-];
-export const productsRecap: ProductRecap[] = [
-    {
-        imageSrc: '../../../assets/ipad-pro.jpeg',
-        productName: 'Iphone 15pro 128gb - Or',
-        price: '1259.99€',
-        delivery: 'Gratuit',
-        packaging: 'OUI',
-    },
-    {
-        imageSrc: '../../../assets/ipad-pro.jpeg',
-        productName: 'Iphone 15pro 128gb - Or',
-        price: '1259.99€',
-        delivery: '5.99€',
-        packaging: 'Non',
-    },
-];
 export const numberProductsOptions: SelectOptions = [
     {
         id: 1,

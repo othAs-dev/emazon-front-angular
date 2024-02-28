@@ -19,7 +19,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         RouterOutlet,
     ],
     templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.css'],
     standalone: true,
 })
 export default class AuthComponent {}

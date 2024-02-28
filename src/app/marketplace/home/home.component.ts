@@ -1,21 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import {
-    categoryData,
-    CategoryItem,
-    logoData,
-    LogoItem,
-    ProductItem,
-    products,
-} from './home.constants';
+import { logoData, LogoItem, ProductApi } from './home.constants';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { VideoCardComponent } from '@app/shared/components/video-card/video-card.component';
 import { Id } from '@app/shared/models/id';
+import { CategoryService } from '@app/service/category.service';
+import { Observable } from 'rxjs';
+import { ProductService } from '@app/service/product.service';
+import { Categories, Category } from '@app/shared/models/category';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-home',
@@ -30,19 +28,18 @@ import { Id } from '@app/shared/models/id';
         VideoCardComponent,
     ],
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
     standalone: true,
 })
 export default class HomeComponent {
-    protected categoryData: CategoryItem[] = categoryData;
+    private _productService: ProductService = inject(ProductService);
+    private _categoryService: CategoryService = inject(CategoryService);
+
     protected logoData: LogoItem[] = logoData;
-    protected productsData: ProductItem[] = products;
+    protected productsData: Observable<Products> = this._productService.getProducts();
+    protected categoryData$: Observable<Categories> =
+        this._categoryService.getAllCategories();
 
-    protected trackByLogoData(id: Id, item: LogoItem): number {
-        return item.id;
-    }
+    protected trackByLogoData = (id: Id, item: LogoItem) => item.id;
 
-    protected trackByCategoryData(id: Id, item: CategoryItem): number {
-        return item.id;
-    }
+    protected trackByCategoryData = (id: Id, item: Category) => item.id;
 }

@@ -1,16 +1,14 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductItem } from '@app/marketplace/home/home.constants';
+import { ProductApi } from '@app/marketplace/home/home.constants';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
+import { Id } from '@app/shared/models/id';
+import { CartService } from '@app/service/cart.service';
+import { Product, Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product-card',
@@ -29,17 +27,21 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductCardComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);
+    private _cartService: CartService = inject(CartService);
     @Input({ required: false }) cardWdithPhoneViewPort: string = 'w-5/12';
-    @Input() products!: ProductItem[];
+    @Input() products : Products;
 
-    protected trackByProductsData = (id: number, item: ProductItem) => item.id;
+    protected trackByProductsData = (id: Id, item: Product) => item.uid;
 
-    protected addToCart() {
-        this._snackBar.open('Produit ajouté au panier', 'Fermer', {
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            panelClass: 'success-snackbar',
-            duration: 3000,
-        });
+    protected addToCart(p: Product) {
+        this._snackBar.open('Produit ajouté au panier');
+
+        this._cartService
+            .addItem({
+                name: p.name,
+                imgSrc: p.imgSrc,
+                price: p.price,
+                quantity: 1
+            })
     }
 }

@@ -3,23 +3,26 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
-import {
-    FaqItem,
-    PageContent,
-    pageContent,
-    faqItems,
-} from './product.constants';
+import { FooterComponent } from '@app/shared/components/footer/footer.component';
+import { FaqItem, faqItems, PageContentV2 } from './product.constants';
 import { MatTableModule } from '@angular/material/table';
-import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
-import { RouterLink } from '@angular/router';
-import { ProductImageCarouselComponent } from './product-image-carousel/product-image-carousel.component';
-import { ProductCardCarouselComponent } from '../../shared/components/product-card-carousel/product-card-carousel.component';
-import { ProductTableDetailsComponent } from './product-table-details/product-table-details.component';
+import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import {
+    ProductImageCarouselComponent
+} from './product-image-carousel/product-image-carousel.component';
+import {
+    ProductCardCarouselComponent
+} from '@app/shared/components/product-card-carousel/product-card-carousel.component';
+import {
+    ProductTableDetailsComponent
+} from './product-table-details/product-table-details.component';
 import { ProductFaqComponent } from './product-faq/product-faq.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductItem } from '../home/home.constants';
-import { Id } from '../../shared/models/id';
+import { ProductApi } from '../home/home.constants';
+import { ProductService } from '@app/service/product.service';
+import { Observable } from 'rxjs';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product',
@@ -38,20 +41,18 @@ import { Id } from '../../shared/models/id';
         ProductFaqComponent,
     ],
     templateUrl: './product.component.html',
-    styleUrls: ['./product.component.css'],
     standalone: true,
 })
 export default class ProductComponent {
-    protected readonly pageContent: PageContent = pageContent;
+    private _productService: ProductService = inject(ProductService);
+    private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+    private id: string = this._activatedRoute.snapshot.params['id'];
+
+    protected readonly pageContent: Observable<PageContentV2> = this._productService.getProductFromId(this.id);
+    protected readonly recommendationProducts : Observable<Products> = this._productService.getProducts();
     protected readonly faqItems: FaqItem[] = faqItems;
     private _snackBar: MatSnackBar = inject(MatSnackBar);
-    protected trackByProductsData = (id: Id, item: ProductItem) => item.id;
     protected addToCart() {
-        this._snackBar.open('Produit ajouté au panier', 'Fermer', {
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            panelClass: 'success-snackbar',
-            duration: 3000,
-        });
+        this._snackBar.open('Produit ajouté au panier')
     }
 }

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import MarketplaceComponent from './marketplace.component';
+import { CategoryResolver } from '@app/marketplace/category/categoryResolver.resolver';
 
 export default [
     {
@@ -23,6 +24,7 @@ export default [
                 path: 'category/:id',
                 loadComponent: () =>
                     import('@app/marketplace/category/category.component'),
+                resolve: { category: CategoryResolver },
             },
             {
                 path: 'product/:id',

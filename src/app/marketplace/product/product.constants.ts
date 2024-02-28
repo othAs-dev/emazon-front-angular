@@ -1,19 +1,12 @@
-import { Id } from '../../shared/models/id';
 
 export interface FaqItem {
     question: string;
     answer: string;
 }
+
 export interface TableRow {
     label: string;
     value: string;
-}
-export interface ProductItem {
-    id: Id;
-    title: string;
-    imageSrc: string;
-    description: string;
-    price: string;
 }
 
 export interface PageContent {
@@ -23,8 +16,9 @@ export interface PageContent {
     chipOptionsColors: string[];
     chipOptionsStorage: string[];
     tableData: TableRow[];
-    products: ProductItem[];
 }
+
+export type PageContentV2 = Omit<PageContent, 'chipOptionsColors' | 'chipOptionsStorage' | 'tableData'> & {colors: string[], name: string, price: string}
 
 export const pageContent: PageContent = {
     urlImage: [
@@ -48,48 +42,6 @@ export const pageContent: PageContent = {
         { label: 'Poids du produit', value: '461 g' },
         { label: 'SKU', value: '17996901' },
         { label: 'EAN', value: '0194252794692' },
-    ],
-    products: [
-        {
-            id: 1,
-            title: 'Iphone 15 pro',
-            imageSrc: 'assets/15-basic.jpeg',
-            description:
-                'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-            price: '1 259 €',
-        },
-        {
-            id: 2,
-            title: 'Iphone 15 pro',
-            imageSrc: 'assets/15-pro.jpeg',
-            description:
-                'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-            price: '1 259 €',
-        },
-        {
-            id: 3,
-            title: 'Airpods Max',
-            imageSrc: 'assets/airpods-mac.png',
-            description:
-                'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-            price: '1 259 €',
-        },
-        {
-            id: 2,
-            title: 'Iphone 15 pro',
-            imageSrc: 'assets/15-pro.jpeg',
-            description:
-                'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-            price: '1 259 €',
-        },
-        {
-            id: 3,
-            title: 'Airpods Max',
-            imageSrc: 'assets/airpods-mac.png',
-            description:
-                'L’iPhone 15 Pro présente un design en titane de qualité aérospatiale',
-            price: '1 259 €',
-        },
     ],
 };
 

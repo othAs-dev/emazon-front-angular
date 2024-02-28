@@ -1,16 +1,15 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule, NgFor, NgOptimizedImage } from '@angular/common';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { ProductApi } from '@app/marketplace/home/home.constants';
 import { MatIconModule } from '@angular/material/icon';
 import {
     benefitsData,
     benefitsModel,
     CartProduct,
     payementMethodData,
-    payementMethodModel
+    payementMethodModel,
 } from './cart.constants';
 import { MatCardModule } from '@angular/material/card';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
@@ -20,9 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {
-    ProductCardCarouselComponent
-} from '@app/shared/components/product-card-carousel/product-card-carousel.component';
+import { ProductCardCarouselComponent } from '@app/shared/components/product-card-carousel/product-card-carousel.component';
 import { Id } from '@app/shared/models/id';
 import { SelectComponent } from '@app/shared/components/select/select.component';
 import { CartItemComponent } from '@app/marketplace/cart/cart-item/cart-item.component';
@@ -61,32 +58,29 @@ import { Products } from '@app/shared/models/product';
     templateUrl: './cart.component.html',
     standalone: true,
 })
-export default class CartComponent implements AfterViewInit {
-  private _productService: ProductService = inject(ProductService);
-  protected cartService = inject(CartService);
-  protected benefitsData: benefitsModel[] = benefitsData;
-
-  protected payementMethodData: payementMethodModel[] = payementMethodData;
-  protected productRecap: Observable<CartProduct[]> = this.cartService.getAllProducts();
-  protected giftWrap: boolean = false;
-  protected recommendationProducts: Observable<Products> = this._productService.getProducts()
-  protected form = new FormGroup({});
-  protected model: any = {};
-  protected fields: FormlyFieldConfig[] = [
-    {
-      key: 'promoCode',
-      type: 'input',
-      props: {
-        placeholder: 'Écrivez le ici',
-        type: 'text',
-        required: true
-      }
-    }
-  ];
-
-    ngAfterViewInit(): void {
-        this.cartService.getProductTotalAmount().subscribe(console.log);
-    }
+export default class CartComponent {
+    private _productService: ProductService = inject(ProductService);
+    private _cartService = inject(CartService);
+    protected benefitsData: benefitsModel[] = benefitsData;
+    protected payementMethodData: payementMethodModel[] = payementMethodData;
+    protected productRecap$: Observable<CartProduct[]> =
+        this._cartService.getAllProducts();
+    protected giftWrap: boolean = false;
+    protected recommendationProducts$: Observable<Products> =
+        this._productService.getProducts();
+    protected form = new FormGroup({});
+    protected model: any = {};
+    protected fields: FormlyFieldConfig[] = [
+        {
+            key: 'promoCode',
+            type: 'input',
+            props: {
+                placeholder: 'Écrivez le ici',
+                type: 'text',
+                required: true,
+            },
+        },
+    ];
 
     protected submit() {
         if (this.form.valid) {

@@ -5,14 +5,13 @@ import {
     CUSTOM_ELEMENTS_SCHEMA,
     ElementRef,
     Input,
-    ViewChild
+    ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SwiperContainer } from 'swiper/swiper-element';
 import { SwiperOptions } from 'swiper/types';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { SwiperDirective } from '@app/shared/directives/swiper.directive';
-import { ProductApi } from '@app/marketplace/home/home.constants';
 import { Products } from '@app/shared/models/product';
 
 @Component({
@@ -25,14 +24,18 @@ import { Products } from '@app/shared/models/product';
     styleUrls: ['./product-card-carousel.component.css'],
 })
 export class ProductCardCarouselComponent implements AfterViewInit {
-    @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
-    @ViewChild('swiperThumbs') swiperThumbs!: ElementRef<SwiperContainer>;
+    @ViewChild('swiper')
+    swiper!: ElementRef<SwiperContainer>;
+    @ViewChild('swiperThumbs')
+    swiperThumbs!: ElementRef<SwiperContainer>;
     @Input({ required: true }) products!: Products;
     protected index = 0;
 
     ngAfterViewInit() {
-        this.swiper.nativeElement.swiper.activeIndex = this.index;
-        this.swiperThumbs.nativeElement.swiper.activeIndex = this.index;
+        if (this.swiper && this.swiperThumbs) {
+            this.swiper.nativeElement.swiper.activeIndex = this.index;
+            this.swiperThumbs.nativeElement.swiper.activeIndex = this.index;
+        }
     }
 
     swiperConfig: SwiperOptions = {

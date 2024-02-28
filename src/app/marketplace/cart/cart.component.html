@@ -1,8 +1,8 @@
-<section *ngIf="(productRecap | async)?.length === 0; else cartNotEmpty">
+<section *ngIf="(productRecap$ | async)?.length === 0; else cartNotEmpty">
     <app-error />
 </section>
 <ng-template #cartNotEmpty>
-  <section *ngIf="productRecap | async as product" class="flex flex-col tablet:flex-row laptop:flex-row flex-wrap">
+  <section *ngIf="productRecap$ | async as product" class="flex flex-col tablet:flex-row laptop:flex-row flex-wrap">
     <section class="p-5 w-full tablet:w-7/12 laptop:w-8/12">
       <section class="mb-10">
         <app-cart-item [productRecap]="product" />
@@ -31,7 +31,7 @@
           </mat-card-content>
         </mat-card>
       </section>
-      <section *ngIf="recommendationProducts | async as products" class="mb-10">
+      <section *ngIf="recommendationProducts$ | async as products" class="mb-10">
         <div class="flex flex-col justify-center gap-y-3">
           <h3 class="font-bold text-lg  laptop:text-xl">Complétez votre panier :</h3>
           <app-product-card-carousel [products]="products" />

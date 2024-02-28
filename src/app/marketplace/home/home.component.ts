@@ -13,6 +13,7 @@ import { CategoryService } from '@app/service/category.service';
 import { Observable } from 'rxjs';
 import { ProductService } from '@app/service/product.service';
 import { Categories, Category } from '@app/shared/models/category';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-home',
@@ -34,7 +35,7 @@ export default class HomeComponent {
     private _categoryService: CategoryService = inject(CategoryService);
 
     protected logoData: LogoItem[] = logoData;
-    protected productsData: Observable<ProductApi[]> = this._productService.getProducts();
+    protected productsData: Observable<Products> = this._productService.getProducts();
     protected categoryData$: Observable<Categories> =
         this._categoryService.getAllCategories();
 

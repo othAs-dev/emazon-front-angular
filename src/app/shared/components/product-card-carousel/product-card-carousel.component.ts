@@ -13,6 +13,7 @@ import { SwiperOptions } from 'swiper/types';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { SwiperDirective } from '@app/shared/directives/swiper.directive';
 import { ProductApi } from '@app/marketplace/home/home.constants';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product-card-carousel',
@@ -26,7 +27,7 @@ import { ProductApi } from '@app/marketplace/home/home.constants';
 export class ProductCardCarouselComponent implements AfterViewInit {
     @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
     @ViewChild('swiperThumbs') swiperThumbs!: ElementRef<SwiperContainer>;
-    @Input({ required: true }) products!: ProductApi[];
+    @Input({ required: true }) products!: Products;
     protected index = 0;
 
     ngAfterViewInit() {

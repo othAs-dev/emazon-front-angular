@@ -18,9 +18,9 @@
                     <div class="flex justify-end mt-2">
                         <div class="flex flex-row gap-2 items-center">
                             <app-select
-                                (selectedChange)="onDefaultNumberOptionsSelected($event)"
-                                [options]="numberProductsOptions"
-                                [selected]="numberProductsSelected"
+                                (selectedChange)="onDefaultNumberOptionsSelected($event, pr)"
+                                [options]="getOptions()"
+                                [selected]="pr.quantity.toString()"
                             />
                             <button (click)="deleteFn(pr)" class="text-sm" color="warn" mat-stroked-button>
                                 Supprimer

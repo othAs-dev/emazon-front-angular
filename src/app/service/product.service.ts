@@ -11,8 +11,8 @@ import { Product, Products } from '@app/shared/models/product';
 export class ProductService {
   private http: HttpClient = inject(HttpClient);
 
-  getProducts(): Observable<Product> {
-    return this.http.get<Product>("http://localhost:8000/api/v1/inventory/list")
+  getProducts(): Observable<Products> {
+    return this.http.get<Products>("http://localhost:8000/api/v1/inventory/list")
   }
 
   getProductFromId(uid: string): Observable<PageContentV2> {

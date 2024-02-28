@@ -56,7 +56,7 @@ export default class CategoryComponent {
             })
         )
     );
-    protected readonly recommendationProducts: Observable<ProductApi[]> = this._productService.getProducts();
+    protected readonly recommendationProducts: Observable<Products> = this._productService.getProducts();
 
     onDefaultOptionsSelected(newSelected: string) {
         this.defaultOptionsSelected = newSelected;

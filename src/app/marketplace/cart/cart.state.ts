@@ -1,10 +1,11 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { AddItem, DeleteItem } from '@app/marketplace/cart/cart.action';
-import { Products } from '@app/shared/models/product';
+import { AddProductToCart, DeleteItem, UpdateQuantity } from '@app/marketplace/cart/cart.action';
+import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { patch, updateItem } from '@ngxs/store/operators';
 
 export interface CartModel {
-    products: Products;
+    products: CartProduct[];
 }
 
 @State<CartModel>({
@@ -17,14 +18,12 @@ export class CartState {
     static getCartProductTotalAmount(state: CartModel): number {
         return (
             state && state.products.reduce((acc, curr) => acc +
-                this.toNumber(curr.price) +
-                this.toNumber(curr.packaging) +
-                this.toNumber(curr.delivery), 0)
+                this.toNumber(curr.price) , 0)
         );
     }
 
     @Selector()
-    static getProductRecap(state: CartModel): Products {
+    static getAllCartProduct(state: CartModel): CartProduct[] {
         return state && state.products;
     }
 
@@ -39,18 +38,8 @@ export class CartState {
         return state && total + total * EmazonFees + total * VATFrance;
     }
 
-    @Selector()
-    static getShippingTotal(state: CartModel): number {
-        return state && state.products.reduce((acc, curr) => acc + this.toNumber(curr.delivery), 0);
-    }
-
-    @Selector()
-    static getPackageTotal(state: CartModel): number {
-        return state && state.products.reduce((acc, curr) => acc + this.toNumber(curr.packaging), 0);
-    }
-
-    @Action(AddItem)
-    addItem(ctx: StateContext<CartModel>, action: AddItem): void {
+    @Action(AddProductToCart)
+    addProductToCart(ctx: StateContext<CartModel>, action: AddProductToCart): void {
         const state = ctx.getState();
         ctx.setState({
             ...state,
@@ -67,6 +56,19 @@ export class CartState {
         ctx.patchState({
             products: newProductList
         });
+    }
+
+    @Action(UpdateQuantity)
+    updateQuantity(ctx: StateContext<CartModel>, action: UpdateQuantity): void {
+        const item: CartProduct = { ...action.item, quantity: +action.quantity };
+        ctx.setState(
+            patch<CartModel>({
+                products: updateItem<CartProduct>(
+                    value => value === action.item,
+                    item
+                )
+            })
+        )
     }
 
     static toNumber(num?: string | undefined): number {

@@ -6,10 +6,11 @@ import { RouterLink } from '@angular/router';
 import { ProductApi } from '@app/marketplace/home/home.constants';
 import { MatIconModule } from '@angular/material/icon';
 import {
-  benefitsData,
-  benefitsModel,
-  payementMethodData,
-  payementMethodModel
+    benefitsData,
+    benefitsModel,
+    CartProduct,
+    payementMethodData,
+    payementMethodModel
 } from './cart.constants';
 import { MatCardModule } from '@angular/material/card';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
@@ -20,7 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {
-  ProductCardCarouselComponent
+    ProductCardCarouselComponent
 } from '@app/shared/components/product-card-carousel/product-card-carousel.component';
 import { Id } from '@app/shared/models/id';
 import { SelectComponent } from '@app/shared/components/select/select.component';
@@ -29,8 +30,8 @@ import { CartService } from '@app/service/cart.service';
 import { CartSummaryComponent } from '@app/marketplace/cart/cart-summary/cart-summary.component';
 import { Observable } from 'rxjs';
 import { ProductService } from '@app/service/product.service';
-import { Products } from '@app/shared/models/product';
 import { ErrorComponent } from '@app/shared/components/error/error.component';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-cart',
@@ -66,9 +67,9 @@ export default class CartComponent implements AfterViewInit {
   protected benefitsData: benefitsModel[] = benefitsData;
 
   protected payementMethodData: payementMethodModel[] = payementMethodData;
-  protected productRecap: Observable<Products> = this.cartService.getAllProducts();
+  protected productRecap: Observable<CartProduct[]> = this.cartService.getAllProducts();
   protected giftWrap: boolean = false;
-  protected recommendationProducts: Observable<ProductApi[]>
+  protected recommendationProducts: Observable<Products> = this._productService.getProducts()
   protected form = new FormGroup({});
   protected model: any = {};
   protected fields: FormlyFieldConfig[] = [

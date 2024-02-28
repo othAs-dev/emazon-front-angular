@@ -1,9 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { AddItem, DeleteItem } from '@app/marketplace/cart/cart.action';
+import { AddProductToCart, DeleteItem, UpdateQuantity } from '@app/marketplace/cart/cart.action';
 import { map, Observable } from 'rxjs';
 import { CartState } from '@app/marketplace/cart/cart.state';
-import { Product, Products } from '@app/shared/models/product';
+import { Product } from '@app/shared/models/product';
+import { CartProduct } from '@app/marketplace/cart/cart.constants';
 
 @Injectable({
     providedIn: 'root'
@@ -13,15 +14,15 @@ export class CartService {
     private productTotalAmount$: Observable<number> = this._store.select(
         CartState.getCartProductTotalAmount
     );
-    private allProductRecap$: Observable<Products> = this._store.select(
-        CartState.getProductRecap
+    private allProductRecap$: Observable<CartProduct[]> = this._store.select(
+        CartState.getAllCartProduct
     );
 
-    addItem(item: Product): void {
-        this._store.dispatch(new AddItem(item));
+    addItem(item: CartProduct): void {
+        this._store.dispatch(new AddProductToCart(item));
     }
 
-    deleteItem(item: Product): void {
+    deleteItem(item: CartProduct): void {
         this._store.dispatch(new DeleteItem(item));
     }
 
@@ -29,15 +30,7 @@ export class CartService {
         return this.productTotalAmount$;
     }
 
-    getTotalShipping(): Observable<number> {
-        return this._store.select(CartState.getShippingTotal);
-    }
-
-    getTotalPackaging(): Observable<number> {
-        return this._store.select(CartState.getPackageTotal);
-    }
-
-    getAllProducts(): Observable<Products> {
+    getAllProducts(): Observable<CartProduct[]> {
         return this.allProductRecap$;
     }
 
@@ -49,5 +42,9 @@ export class CartService {
                 return val - vat - serviceFees;
             })
         );
+    }
+
+    updateQuantity(cartProduct: CartProduct, newSelected: string) {
+        this._store.dispatch(new UpdateQuantity(cartProduct, newSelected))
     }
 }

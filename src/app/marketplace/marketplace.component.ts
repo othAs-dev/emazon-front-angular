@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    inject,
+    OnDestroy,
+    OnInit
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,10 +23,12 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchFields } from '../formlyConfig/formly-presets/search-form';
 import { AuthService } from '@app/auth/auth.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartService } from '@app/service/cart.service';
+import { Store } from '@ngxs/store';
+import { CartState } from '@app/marketplace/cart/cart.state';
 
 @Component({
     selector: 'app-marketplace',
@@ -43,7 +52,7 @@ import { CartService } from '@app/service/cart.service';
     styleUrls: ['./marketplace.component.css'],
     standalone: true,
 })
-export default class MarketplaceComponent {
+export default class MarketplaceComponent implements OnInit{
     protected isExpanded = false;
     protected showSmartphonesMenu = false;
     protected showTabletsMenu = false;
@@ -60,8 +69,9 @@ export default class MarketplaceComponent {
     private readonly _authService: AuthService = inject(AuthService);
     protected readonly isLoggedIn: boolean =
         this._authService.isAuthenticated();
-    private _cartService: CartService = inject(CartService);
     protected productsAddedToCart$ = new BehaviorSubject<number>(0);
+    private store: Store = inject(Store);
+    private destroyRef: DestroyRef = inject(DestroyRef);
 
     isLogged() {
         if (this.isLoggedIn) {
@@ -83,13 +93,12 @@ export default class MarketplaceComponent {
         }
     }
 
-    private _productsInCart$ = this._cartService
-        .getAllProducts()
-        .pipe(
-            tap((product) => {
-                return this.productsAddedToCart$.next(product.length);
-            }),
-            takeUntilDestroyed()
-        )
-        .subscribe();
+    ngOnInit(): void {
+        this.store.select(CartState.getAllCartProduct)
+            .pipe(
+                tap( p => this.productsAddedToCart$.next(p.length)),
+                takeUntilDestroyed(this.destroyRef)
+            )
+            .subscribe()
+    }
 }

@@ -14,7 +14,7 @@
                 mat-flat-button
                 color="primary"
                 routerLink="./cart"
-                [matBadge]="productsAddedToCart$.getValue()"
+                [matBadge]="productsAddedToCart$ | async"
                 matBadgeColor="warn"
             >
                 <mat-icon class="text-white" iconPositionEnd>shopping_cart</mat-icon>

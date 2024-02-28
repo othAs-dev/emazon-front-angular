@@ -14,7 +14,7 @@ export interface payementMethodModel {
     alt: string;
 }
 
-export type CartProduct = Pick<Product, 'name'| 'imgSrc' | 'price'>
+export type CartProduct = Pick<Product, 'name'| 'imgSrc' | 'price'> & { quantity: number }
 
 export const benefitsData: benefitsModel[] = [
     {

@@ -22,6 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductApi } from '../home/home.constants';
 import { ProductService } from '@app/service/product.service';
 import { Observable } from 'rxjs';
+import { Products } from '@app/shared/models/product';
 
 @Component({
     selector: 'app-product',
@@ -48,7 +49,7 @@ export default class ProductComponent {
     private id: string = this._activatedRoute.snapshot.params['id'];
 
     protected readonly pageContent: Observable<PageContentV2> = this._productService.getProductFromId(this.id);
-    protected readonly recommendationProducts : Observable<ProductApi[]> = this._productService.getProducts();
+    protected readonly recommendationProducts : Observable<Products> = this._productService.getProducts();
     protected readonly faqItems: FaqItem[] = faqItems;
     private _snackBar: MatSnackBar = inject(MatSnackBar);
     protected addToCart() {

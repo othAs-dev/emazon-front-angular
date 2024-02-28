@@ -12,16 +12,16 @@
                             <p class="font-bold">{{ pr.name }}</p>
                             <p class="text-orange-500 text-right">{{ pr.price | currency : 'EUR' }}</p>
                         </div>
-                        <div>
-                            <div class="flex justify-between">
-                                <p>Livraison</p>
-                                <p>{{ pr.delivery | currency : 'EUR' }}</p>
-                            </div>
-                            <div class="flex justify-between">
-                                <p>Emballage</p>
-                                <p>{{ pr.packaging | currency : 'EUR' }}</p>
-                            </div>
-                        </div>
+<!--                        <div>-->
+<!--                            <div class="flex justify-between">-->
+<!--                                <p>Livraison</p>-->
+<!--                                <p>{{ pr.delivery | currency : 'EUR' }}</p>-->
+<!--                            </div>-->
+<!--                            <div class="flex justify-between">-->
+<!--                                <p>Emballage</p>-->
+<!--                                <p>{{ pr.packaging | currency : 'EUR' }}</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -30,18 +30,6 @@
                     <p>Sous-total</p>
                     <p>
                         {{ total | currency : "EUR" }}
-                    </p>
-                </div>
-                <div class="flex justify-between">
-                    <p>Emballage</p>
-                    <p>
-                        {{ totalPackaging | async | currency : "EUR" }}
-                    </p>
-                </div>
-                <div class="flex justify-between">
-                    <p>Livraison</p>
-                    <p>
-                        {{ totalShipping | async | currency : "EUR" }}
                     </p>
                 </div>
                 <div class="flex justify-between">

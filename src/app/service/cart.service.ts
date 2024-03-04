@@ -14,8 +14,8 @@ export class CartService {
     private productTotalAmount$: Observable<number> = this._store.select(
         CartState.getCartProductTotalAmount
     );
-    private allProductRecap$: Observable<CartProduct[]> = this._store.select(
-        CartState.getAllCartProduct
+    private allCartProducts$: Observable<CartProduct[]> = this._store.select(
+        CartState.getAllCartProducts
     );
 
     addItem(item: CartProduct): void {
@@ -31,7 +31,7 @@ export class CartService {
     }
 
     getAllProducts(): Observable<CartProduct[]> {
-        return this.allProductRecap$;
+        return this.allCartProducts$;
     }
 
     getTotalWithoutTaxes(): Observable<number> {

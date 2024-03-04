@@ -21,7 +21,7 @@ import { CartProduct } from '@app/marketplace/cart/cart.constants';
     templateUrl: './cart-summary.component.html',
 })
 export class CartSummaryComponent {
-    @Input({ required: true }) productRecap: CartProduct[];
+    @Input({ required: true }) cartProducts: CartProduct[];
     private cartService: CartService = inject(CartService);
 
     protected totalWithoutTaxes: Observable<number> = this.cartService.getTotalWithoutTaxes();

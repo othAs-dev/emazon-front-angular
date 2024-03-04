@@ -63,7 +63,7 @@ export default class CartComponent {
     private _cartService = inject(CartService);
     protected benefitsData: benefitsModel[] = benefitsData;
     protected payementMethodData: payementMethodModel[] = payementMethodData;
-    protected productRecap$: Observable<CartProduct[]> =
+    protected cartProducts$: Observable<CartProduct[]> =
         this._cartService.getAllProducts();
     protected giftWrap: boolean = false;
     protected recommendationProducts$: Observable<Products> =

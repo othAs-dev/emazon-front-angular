@@ -6,16 +6,16 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SwiperDirective } from 'src/app/shared/directives/swiper.directive';
-import { SwiperContainer } from 'swiper/swiper-element';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { SwiperDirective } from '@app/shared/directives/swiper.directive';
 import { SwiperOptions } from 'swiper/types';
+import { SwiperContainer } from 'swiper/element';
 
 @Component({
     selector: 'app-product-image-carousel',
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     standalone: true,
-    imports: [CommonModule, SwiperDirective],
+    imports: [CommonModule, SwiperDirective, NgOptimizedImage],
     templateUrl: './product-image-carousel.component.html',
 })
 export class ProductImageCarouselComponent implements AfterViewInit {

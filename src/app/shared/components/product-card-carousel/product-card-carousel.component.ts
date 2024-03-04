@@ -2,17 +2,15 @@ import {
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
-    CUSTOM_ELEMENTS_SCHEMA,
-    ElementRef,
-    Input,
-    ViewChild,
+    CUSTOM_ELEMENTS_SCHEMA, ElementRef,
+    Input, ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SwiperContainer } from 'swiper/swiper-element';
-import { SwiperOptions } from 'swiper/types';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
 import { SwiperDirective } from '@app/shared/directives/swiper.directive';
 import { Products } from '@app/shared/models/product';
+import { SwiperContainer } from 'swiper/element';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
     selector: 'app-product-card-carousel',

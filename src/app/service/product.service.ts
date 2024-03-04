@@ -13,6 +13,7 @@ export class ProductService {
 
   getProducts(): Observable<Products> {
     return this.http.get<Products>("http://localhost:8000/api/v1/inventory/list")
+        .pipe(tap(console.log))
   }
 
   getProductFromId(uid: string): Observable<PageContentV2> {

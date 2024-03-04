@@ -94,9 +94,9 @@ export default class MarketplaceComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.store.select(CartState.getAllCartProduct)
+        this.store.select(CartState.itemsInCart)
             .pipe(
-                tap( p => this.productsAddedToCart$.next(p.length)),
+                tap( itemCount => this.productsAddedToCart$.next(itemCount)),
                 takeUntilDestroyed(this.destroyRef)
             )
             .subscribe()

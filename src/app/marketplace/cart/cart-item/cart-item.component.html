@@ -3,11 +3,11 @@
         <h3 class="font-bold text-lg  laptop:text-xl">Votre panier :</h3>
     </div>
 
-    <mat-card *ngFor="let product of productRecap" class="p-6">
+    <mat-card *ngFor="let product of cartProducts" class="p-6">
         <mat-card-content class="mt-5">
             <div class="flex flex-row">
                 <div class="p-1 h-fit  mr-3">
-                    <img [alt]="product.name" [ngSrc]="'http://localhost:8000/'+product.imgSrc" height="80" width="80">
+                    <img [alt]="product.name" [src]="'http://localhost:8000/'+product.mainPic" height="80" width="80">
                 </div>
                 <div class="w-full flex flex-col">
                     <div class="flex justify-between">

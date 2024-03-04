@@ -3,14 +3,14 @@
     <mat-card class="flex flex-col">
         <mat-card-content class="mt-5">
             <div class="border-b border-gray-300">
-                <div *ngFor="let pr of productRecap " class="flex flex-row pb-3 pt-3">
+                <div *ngFor="let pr of cartProducts " class="flex flex-row pb-3 pt-3">
                     <div class="p-1 h-fit border rounded-md border-gray-400 mr-3">
-                        <img [alt]="pr.name" [ngSrc]="'http://localhost:8000/'+pr.imgSrc" height="50" width="50">
+                        <img [alt]="pr.name" [ngSrc]="'http://localhost:8000/'+pr.mainPic" height="50" width="50">
                     </div>
                     <div class="w-full">
                         <div>
                             <p class="font-bold">{{ pr.name }}</p>
-                            <p class="text-orange-500 text-right">{{ pr.price | currency : 'EUR' }}</p>
+                            <p class="text-orange-500 text-right">{{pr.quantity}} x {{pr.price | currency : 'EUR' }}</p>
                         </div>
 <!--                        <div>-->
 <!--                            <div class="flex justify-between">-->

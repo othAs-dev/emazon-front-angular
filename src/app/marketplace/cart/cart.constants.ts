@@ -14,7 +14,7 @@ export interface payementMethodModel {
     alt: string;
 }
 
-export type CartProduct = Pick<Product, 'name'| 'imgSrc' | 'price'> & { quantity: number }
+export type CartProduct = Pick<Product, 'name'| 'mainPic' | 'price' | 'uid'> & { quantity: number }
 
 export const benefitsData: benefitsModel[] = [
     {
@@ -91,30 +91,3 @@ export const payementMethodData: payementMethodModel[] = [
     },
 ];
 
-export const numberProductsOptions: SelectOptions = [
-    {
-        id: 1,
-        option: 'ONE',
-        value: '1',
-    },
-    {
-        id: 2,
-        option: 'TWO',
-        value: '2',
-    },
-    {
-        id: 3,
-        option: 'THREE',
-        value: '3',
-    },
-    {
-        id: 4,
-        option: 'FOUR',
-        value: '4',
-    },
-    {
-        id: 5,
-        option: 'FIVE',
-        value: '5',
-    },
-];

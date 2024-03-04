@@ -18,13 +18,18 @@ export class CartState {
     static getCartProductTotalAmount(state: CartModel): number {
         return (
             state && state.products.reduce((acc, curr) => acc +
-                this.toNumber(curr.price) , 0)
+                this.toNumber(curr.price) * curr.quantity , 0)
         );
     }
 
     @Selector()
-    static getAllCartProduct(state: CartModel): CartProduct[] {
+    static getAllCartProducts(state: CartModel): CartProduct[] {
         return state && state.products;
+    }
+
+    @Selector()
+    static itemsInCart(state: CartModel): number {
+        return state && state.products.reduce((acc, curr) => acc + curr.quantity, 0)
     }
 
     @Selector()
@@ -32,7 +37,7 @@ export class CartState {
         const EmazonFees = 0.05;
         const VATFrance = 0.2;
         const total = state.products.reduce(
-            (acc, curr) => acc + this.toNumber(curr.price),
+            (acc, curr) => acc + this.toNumber(curr.price) * curr.quantity,
             0
         );
         return state && total + total * EmazonFees + total * VATFrance;
@@ -41,6 +46,12 @@ export class CartState {
     @Action(AddProductToCart)
     addProductToCart(ctx: StateContext<CartModel>, action: AddProductToCart): void {
         const state = ctx.getState();
+        let item = state.products.find(v => v.uid === action.item.uid);
+        const isAlreadyInCart: boolean = item !== undefined;
+        if (isAlreadyInCart) {
+          ctx.dispatch(new UpdateQuantity(action.item, (item!.quantity +1).toString()))
+            return;
+        }
         ctx.setState({
             ...state,
             products: [...state.products, action.item]
@@ -51,7 +62,7 @@ export class CartState {
     deleteItem(ctx: StateContext<CartModel>, action: DeleteItem): void {
         const state = ctx.getState();
         const newProductList = state.products.filter(
-            (item) => item !== action.item
+            (item) => item.uid !== action.item.uid
         );
         ctx.patchState({
             products: newProductList
@@ -64,7 +75,7 @@ export class CartState {
         ctx.setState(
             patch<CartModel>({
                 products: updateItem<CartProduct>(
-                    value => value === action.item,
+                    value => value.uid === action.item.uid,
                     item
                 )
             })

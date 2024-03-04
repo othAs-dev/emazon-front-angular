@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { CartProduct, numberProductsOptions } from '@app/marketplace/cart/cart.constants';
+import { CartProduct } from '@app/marketplace/cart/cart.constants';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,9 +23,7 @@ import { SelectOption } from '@app/shared/models/selectOptions';
     templateUrl: './cart-item.component.html',
 })
 export class CartItemComponent {
-    @Input({ required: true }) productRecap: CartProduct[];
-    protected readonly numberProductsOptions = numberProductsOptions;
-    protected numberProductsSelected: string = 'ONE';
+    @Input({ required: true }) cartProducts: CartProduct[];
     private _cartService: CartService = inject(CartService);
     private _snackBar: MatSnackBar = inject(MatSnackBar);
 

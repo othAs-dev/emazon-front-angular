@@ -38,8 +38,9 @@ export class ProductCardComponent {
 
         this._cartService
             .addItem({
+                uid: p.uid,
                 name: p.name,
-                imgSrc: p.imgSrc,
+                mainPic: p.mainPic,
                 price: p.price,
                 quantity: 1
             })

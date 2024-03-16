@@ -1,25 +1,30 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {FieldType, FieldTypeConfig, FormlyFieldProps} from "@ngx-formly/core";
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FieldType, FieldTypeConfig, FormlyFieldProps } from '@ngx-formly/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  MatNativeDateModule
+} from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 type DateProps = FormlyFieldProps & {
   mode: 'date' | 'week' | 'month' | 'year';
 };
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: 'DD/MM/YYYY',
   },
   display: {
-    dateInput: 'DD-MM-YYYY',
-    monthYearLabel: 'YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY',
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MM/YYYY',
+    dateA11yLabel: 'DD/MM/YYYY',
+    monthYearA11yLabel: 'MM/YYYY',
   }
 };
 

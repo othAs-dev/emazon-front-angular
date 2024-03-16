@@ -4,8 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .formly-group {
+    @apply flex flex-row gap-4 flex-wrap
+  }
+}
+
+
 html, body {
-  height: 100%
+  height: auto
 }
 
 html {

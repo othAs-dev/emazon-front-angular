@@ -1,16 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { catchError, of, Subject } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { UserInfosService } from '@app/account/user-infos/user-infos.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { UpdateUserInfosDialogComponent } from '@app/account/user-infos/update-user-infos-dialog.component';
-import { UserDetail } from '@app/shared/models/user-detail';
-import { UserInfos } from '@app/formlyConfig/formly-presets/user-infos';
+import {
+    UpdateUserInfosDialogComponent
+} from '@app/account/user-infos/update-user-infos-dialog.component';
+import { PasswordModel, UserDetailModel } from '@app/shared/models/user-detail';
+import { passwordForm } from '@app/formlyConfig/formly-presets/user-infos';
+import { mapUserDetailToFormlyFieldConfig } from '@app/mapper/common.mapper';
 
 @Component({
     selector: 'app-user-infos',
@@ -28,23 +31,31 @@ import { UserInfos } from '@app/formlyConfig/formly-presets/user-infos';
     styleUrls: ['./user-infos.component.css'],
 })
 export default class UserInfosComponent {
-    private readonly _infosService = inject(UserInfosService);
-    private readonly _snackBar: MatSnackBar = inject(MatSnackBar);
     private readonly _dialog = inject(MatDialog);
-    protected readonly form = new FormGroup({});
-    protected readonly model: UserDetail = {} as UserDetail;
-    protected readonly fields: FormlyFieldConfig[] = UserInfos;
     private readonly _refreshUserInfos$: Subject<void> = new Subject<void>();
 
-    protected readonly userInfos$ = this._infosService.getUserInfos$().pipe(
-        catchError(() => {
-            this._snackBar.open('Impossible de charger vos informations');
-            return of(undefined);
-        })
-    );
+    protected readonly userDetailsGroup = new FormGroup({});
+    protected readonly userDetailsModel: UserDetailModel = {} as UserDetailModel;
+    protected readonly passwordGroup = new FormGroup({});
+    protected readonly passwordModel: PasswordModel = {} as PasswordModel
+    protected readonly passwordFields: FormlyFieldConfig[] = passwordForm;
 
-    protected openSaveDialog(userInfos: UserDetail): void {
-        console.log('userInfos', userInfos);
+    private readonly _userInfoService: UserInfosService = inject(UserInfosService);
+    protected readonly userInfo: Observable<FormlyFieldConfig[]> =  this._userInfoService
+        .getUserInfos$()
+        .pipe(
+            tap(console.log),
+            map(mapUserDetailToFormlyFieldConfig)
+        );
+
+    // protected readonly userInfos$ = this._infosService.getUserInfos$().pipe(
+    //     catchError(() => {
+    //         this._snackBar.open('Impossible de charger vos informations');
+    //         return of(undefined);
+    //     })
+    // );
+
+    protected openSaveDialog(userInfos: UserDetailModel | PasswordModel): void {
         const dialogRef = this._dialog.open(UpdateUserInfosDialogComponent, {
             width: '400px',
             data: userInfos,

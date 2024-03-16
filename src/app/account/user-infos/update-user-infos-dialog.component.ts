@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BehaviorSubject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { Id } from '@app/shared/models/id';
-import { UserDetail } from '@app/shared/models/user-detail';
+import { UserDetail, UserDetailModel } from '@app/shared/models/user-detail';
 
 @Component({
     selector: 'app-update-user-user-infos-dialog',
@@ -39,14 +39,13 @@ export class UpdateUserInfosDialogComponent {
     protected readonly isLoading$ = new BehaviorSubject(false);
     private readonly _snackBar: MatSnackBar = inject(MatSnackBar);
     private _dialogRef = inject(MatDialogRef);
-    protected readonly data: { userId: Id; userDetails: UserDetail } =
+    protected readonly data: UserDetailModel  =
         inject(MAT_DIALOG_DATA);
 
     protected updateUserInfos(): void {
         this.isLoading$.next(true);
-        console.log(this.data.userDetails);
         this._userInfosService
-            .updateUserInfos$(this.data.userId, this.data.userDetails)
+            .updateUserInfos$(this.data)
             .subscribe({
                 next: () => {
                     this._snackBar.open(

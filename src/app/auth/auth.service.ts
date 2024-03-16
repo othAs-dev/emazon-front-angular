@@ -15,7 +15,7 @@ export class AuthService {
     }
     public getUserDetails(): Observable<{ user_details: UserDetail }> {
         return this._http.get<{ user_details: UserDetail }>(
-            'http://localhost:8000/api/v1/customer/customer',
+            'http://localhost:8000/api/v1/customer/details',
             {
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem('token')}`,

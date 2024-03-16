@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { UserDetail, UserDetailModel } from '@app/shared/models/user-detail';
-import { Id } from '@app/shared/models/id';
 import { mapUserDetailModelToUserDetail } from '@app/mapper/common.mapper';
 
 @Injectable({ providedIn: 'root' })

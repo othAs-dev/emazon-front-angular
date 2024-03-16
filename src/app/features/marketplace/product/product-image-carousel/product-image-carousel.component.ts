@@ -4,7 +4,7 @@ import {
     CUSTOM_ELEMENTS_SCHEMA,
     ElementRef,
     Input,
-    ViewChild,
+    ViewChild
 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { SwiperDirective } from '@app/shared/directives/swiper.directive';

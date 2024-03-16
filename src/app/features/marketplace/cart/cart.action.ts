@@ -1,5 +1,4 @@
-import { Product } from '@app/shared/models/product';
-import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 
 export class AddProductToCart {
     static readonly type = '[Cart] add product to cart';

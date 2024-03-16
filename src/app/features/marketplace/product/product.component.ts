@@ -19,7 +19,6 @@ import {
 } from './product-table-details/product-table-details.component';
 import { ProductFaqComponent } from './product-faq/product-faq.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductApi } from '../home/home.constants';
 import { ProductService } from '@app/service/product.service';
 import { Observable } from 'rxjs';
 import { Products } from '@app/shared/models/product';

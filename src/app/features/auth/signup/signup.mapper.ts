@@ -1,4 +1,4 @@
-import { Signup, SignupForm } from '@app/auth/signup/signup.models';
+import { Signup, SignupForm } from '@feat/auth/signup/signup.models';
 
 export const mapSignupFormToSignupApi = (signup: SignupForm): Signup => {
     return {

@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { AddProductToCart, DeleteItem, UpdateQuantity } from '@app/marketplace/cart/cart.action';
-import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { AddProductToCart, DeleteItem, UpdateQuantity } from '@feat/marketplace/cart/cart.action';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 import { patch, updateItem } from '@ngxs/store/operators';
 
 export interface CartModel {

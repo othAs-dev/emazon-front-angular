@@ -1,4 +1,4 @@
-import {Routes} from "@angular/router";
+import { Routes } from '@angular/router';
 import { isLoggedGuard } from '@app/shared/guards/is-logged.guard';
 
 export default [

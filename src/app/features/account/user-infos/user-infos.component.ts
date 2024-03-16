@@ -6,11 +6,11 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { map, Observable, Subject, tap } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
-import { UserInfosService } from '@app/account/user-infos/user-infos.service';
+import { UserInfosService } from '@feat/account/user-infos/user-infos.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import {
     UpdateUserInfosDialogComponent
-} from '@app/account/user-infos/update-user-infos-dialog.component';
+} from '@feat/account/user-infos/update-user-infos-dialog.component';
 import { PasswordModel, UserDetailModel } from '@app/shared/models/user-detail';
 import { passwordForm } from '@app/formly/formly-presets/user-infos';
 import { mapUserDetailToFormlyFieldConfig } from '@app/mapper/common.mapper';

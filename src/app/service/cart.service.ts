@@ -1,10 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { AddProductToCart, DeleteItem, UpdateQuantity } from '@app/marketplace/cart/cart.action';
+import { AddProductToCart, DeleteItem, UpdateQuantity } from '@feat/marketplace/cart/cart.action';
 import { map, Observable } from 'rxjs';
-import { CartState } from '@app/marketplace/cart/cart.state';
-import { Product } from '@app/shared/models/product';
-import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { CartState } from '@feat/marketplace/cart/cart.state';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 
 @Injectable({
     providedIn: 'root'

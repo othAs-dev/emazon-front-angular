@@ -1,6 +1,5 @@
 import { Id } from '@app/shared/models/id';
-import { SelectOptions } from '@app/shared/models/selectOptions';
-import { Product, Products } from '@app/shared/models/product';
+import { Product } from '@app/shared/models/product';
 
 export interface benefitsModel {
     id: Id;

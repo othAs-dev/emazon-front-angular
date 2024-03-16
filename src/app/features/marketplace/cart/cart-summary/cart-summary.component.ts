@@ -3,10 +3,9 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { Products } from '@app/shared/models/product';
 import { CartService } from '@app/service/cart.service';
 import { Observable } from 'rxjs';
-import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 
 @Component({
     selector: 'app-cart-summary',

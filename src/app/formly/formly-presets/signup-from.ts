@@ -1,5 +1,5 @@
-import {FormlyFieldConfig} from "@ngx-formly/core";
-import {EmailValidator, PasswordValidator, PhoneValidator} from "../validators";
+import { FormlyFieldConfig } from '@ngx-formly/core';
+import { EmailValidator, PasswordValidator, PhoneValidator } from '../validators';
 
 export const SignupFields: FormlyFieldConfig[] = [{
   type: 'stepper',

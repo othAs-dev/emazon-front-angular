@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { logoData, LogoItem, ProductApi } from './home.constants';
+import { logoData, LogoItem } from './home.constants';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';

@@ -12,9 +12,10 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { matsnackbarConfig } from '../../matsnackbar.config';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { CartState } from '@app/marketplace/cart/cart.state';
+import { CartState } from '@feat/marketplace/cart/cart.state';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+
 registerLocaleData(localeFr)
 
 export const appConfig: ApplicationConfig = {

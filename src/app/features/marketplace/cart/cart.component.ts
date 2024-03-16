@@ -9,7 +9,7 @@ import {
     benefitsModel,
     CartProduct,
     payementMethodData,
-    payementMethodModel,
+    payementMethodModel
 } from './cart.constants';
 import { MatCardModule } from '@angular/material/card';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
@@ -19,12 +19,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ProductCardCarouselComponent } from '@app/shared/components/product-card-carousel/product-card-carousel.component';
+import {
+    ProductCardCarouselComponent
+} from '@app/shared/components/product-card-carousel/product-card-carousel.component';
 import { Id } from '@app/shared/models/id';
 import { SelectComponent } from '@app/shared/components/select/select.component';
-import { CartItemComponent } from '@app/marketplace/cart/cart-item/cart-item.component';
+import { CartItemComponent } from '@feat/marketplace/cart/cart-item/cart-item.component';
 import { CartService } from '@app/service/cart.service';
-import { CartSummaryComponent } from '@app/marketplace/cart/cart-summary/cart-summary.component';
+import { CartSummaryComponent } from '@feat/marketplace/cart/cart-summary/cart-summary.component';
 import { Observable } from 'rxjs';
 import { ProductService } from '@app/service/product.service';
 import { ErrorComponent } from '@app/shared/components/error/error.component';

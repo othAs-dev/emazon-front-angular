@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService } from '@app/auth/auth.service';
+import { AuthService } from '@feat/auth/auth.service';
 
 @Component({
     selector: 'app-account',

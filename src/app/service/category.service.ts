@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { from, map, mergeMap, Observable, tap, toArray } from 'rxjs';
+import { from, map, mergeMap, Observable, toArray } from 'rxjs';
 import { CategoryApi } from '@app/shared/models/api.model';
 import { Id } from '@app/shared/models/id';
 import { Categories, Category } from '@app/shared/models/category';

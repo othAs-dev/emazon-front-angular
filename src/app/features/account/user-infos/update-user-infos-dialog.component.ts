@@ -1,16 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { UserInfosService } from '@app/account/user-infos/user-infos.service';
+import { UserInfosService } from '@feat/account/user-infos/user-infos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {
-    MAT_DIALOG_DATA,
-    MatDialogModule,
-    MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { BehaviorSubject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { Id } from '@app/shared/models/id';
-import { UserDetail, UserDetailModel } from '@app/shared/models/user-detail';
+import { UserDetailModel } from '@app/shared/models/user-detail';
 
 @Component({
     selector: 'app-update-user-user-infos-dialog',

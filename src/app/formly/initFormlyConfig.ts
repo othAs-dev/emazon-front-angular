@@ -1,8 +1,8 @@
-import {DatepickerComponent} from "./date-picker.component";
-import {FormlyFieldStepperComponent} from "./formly-stepper.component";
-import {ConfigOption} from "@ngx-formly/core";
-import {PasswordFieldComponent} from "./password-field.component";
-import {SearchFieldComponent} from "./search-field.component";
+import { DatepickerComponent } from './date-picker.component';
+import { FormlyFieldStepperComponent } from './formly-stepper.component';
+import { ConfigOption } from '@ngx-formly/core';
+import { PasswordFieldComponent } from './password-field.component';
+import { SearchFieldComponent } from './search-field.component';
 
 export function initFormly(): ConfigOption {
   return {

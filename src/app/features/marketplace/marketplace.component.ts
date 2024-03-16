@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    DestroyRef,
-    inject,
-    OnDestroy,
-    OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,21 +7,16 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import {
-    FormlyFieldConfig,
-    FormlyFormOptions,
-    FormlyModule,
-} from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions, FormlyModule } from '@ngx-formly/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { SearchFields } from '../formly/formly-presets/search-form';
-import { AuthService } from '@app/auth/auth.service';
+import { SearchFields } from '@app/formly/formly-presets/search-form';
+import { AuthService } from '@feat/auth/auth.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { BehaviorSubject, Subject, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBadgeModule } from '@angular/material/badge';
-import { CartService } from '@app/service/cart.service';
 import { Store } from '@ngxs/store';
-import { CartState } from '@app/marketplace/cart/cart.state';
+import { CartState } from '@feat/marketplace/cart/cart.state';
 
 @Component({
     selector: 'app-marketplace',

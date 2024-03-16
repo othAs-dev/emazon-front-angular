@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from '@app/shared/guards/auth.guard';
+
 export default [
     {
         path: '',
@@ -9,7 +10,7 @@ export default [
             {
                 path: 'user-infos',
                 loadComponent: () =>
-                    import('@app/account/user-infos/user-infos.component'),
+                    import('@feat/account/user-infos/user-infos.component'),
             },
             {
                 path: 'orders',

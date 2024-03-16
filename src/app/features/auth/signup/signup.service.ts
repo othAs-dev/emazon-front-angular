@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Signup, SignupForm } from '@app/auth/signup/signup.models';
+import { SignupForm } from '@feat/auth/signup/signup.models';
 import { AccessToken } from '@app/shared/models/access-token';
-import { mapSignupFormToSignupApi } from '@app/auth/signup/signup.mapper';
+import { mapSignupFormToSignupApi } from '@feat/auth/signup/signup.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class SignupService {

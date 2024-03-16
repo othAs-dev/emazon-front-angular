@@ -1,9 +1,5 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import {
-    EmailValidator,
-    PasswordValidator,
-    PhoneValidator,
-} from '../validators';
+import { PasswordValidator } from '../validators';
 
 export const passwordForm: FormlyFieldConfig[] = [
     {

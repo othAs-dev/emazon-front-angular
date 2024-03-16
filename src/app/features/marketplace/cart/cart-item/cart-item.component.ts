@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';

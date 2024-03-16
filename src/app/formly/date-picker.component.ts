@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FieldType, FieldTypeConfig, FormlyFieldProps } from '@ngx-formly/core';
 import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-  MatNativeDateModule
+    DateAdapter,
+    MAT_DATE_FORMATS,
+    MAT_DATE_LOCALE,
+    MatNativeDateModule
 } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';

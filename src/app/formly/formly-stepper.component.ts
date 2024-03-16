@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {FieldType, FormlyFieldConfig, FormlyModule} from '@ngx-formly/core';
-import {MatStepperModule} from "@angular/material/stepper";
-import {NgForOf, NgIf} from "@angular/common";
-import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
-import {StepperSelectionEvent} from "@angular/cdk/stepper";
+import { FieldType, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { MatStepperModule } from '@angular/material/stepper';
+import { NgForOf, NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'formly-field-stepper',

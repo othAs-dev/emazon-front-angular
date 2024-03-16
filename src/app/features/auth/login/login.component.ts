@@ -2,16 +2,12 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import {
-    FormlyFieldConfig,
-    FormlyFormOptions,
-    FormlyModule,
-} from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions, FormlyModule } from '@ngx-formly/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { LoginFields } from '@app/formly/formly-presets/login-form';
 import { MatIconModule } from '@angular/material/icon';
-import { LoginService } from '@app/auth/login/login.service';
+import { LoginService } from '@feat/auth/login/login.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccessToken } from '@app/shared/models/access-token';
 import { BehaviorSubject } from 'rxjs';

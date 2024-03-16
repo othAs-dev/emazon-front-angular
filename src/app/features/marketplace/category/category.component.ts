@@ -6,7 +6,6 @@ import { SelectComponent } from '@app/shared/components/select/select.component'
 import { SelectOptions } from '@app/shared/models/selectOptions';
 import { brandOptions, defaultOptions, priceOptions } from './category.constants';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';
-import { ProductApi } from '@app/marketplace/home/home.constants';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { Category } from '@app/shared/models/category';
 import { CategoryService } from '@app/service/category.service';

@@ -1,6 +1,6 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
-import { AuthService } from '@app/auth/auth.service';
+import { AuthService } from '@feat/auth/auth.service';
 import { UserDetail } from '@app/shared/models/user-detail';
 import { map, tap } from 'rxjs/operators';
 

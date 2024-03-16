@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
-import { ProductApi } from '@app/marketplace/home/home.constants';
-import { PageContent, PageContentV2 } from '@app/marketplace/product/product.constants';
+import { ProductApi } from '@feat/marketplace/home/home.constants';
+import { PageContentV2 } from '@feat/marketplace/product/product.constants';
 import { Product, Products } from '@app/shared/models/product';
 
 @Injectable({

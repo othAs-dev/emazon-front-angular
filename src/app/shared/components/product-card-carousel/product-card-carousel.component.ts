@@ -2,8 +2,10 @@ import {
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
-    CUSTOM_ELEMENTS_SCHEMA, ElementRef,
-    Input, ViewChild
+    CUSTOM_ELEMENTS_SCHEMA,
+    ElementRef,
+    Input,
+    ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '@app/shared/components/product-card/product-card.component';

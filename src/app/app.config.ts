@@ -7,7 +7,7 @@ import { FormlyPresetModule } from '@ngx-formly/core/preset';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyModule } from '@ngx-formly/core';
 import { MatNativeDateModule } from '@angular/material/core';
-import { initFormly } from './formlyConfig/initFormlyConfig';
+import { initFormly } from '@app/formly/initFormlyConfig';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { matsnackbarConfig } from '../../matsnackbar.config';
 import { NgxsModule } from '@ngxs/store';

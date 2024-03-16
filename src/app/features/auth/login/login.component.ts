@@ -9,7 +9,7 @@ import {
 } from '@ngx-formly/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
-import { LoginFields } from '@app/formlyConfig/formly-presets/login-form';
+import { LoginFields } from '@app/formly/formly-presets/login-form';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginService } from '@app/auth/login/login.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';

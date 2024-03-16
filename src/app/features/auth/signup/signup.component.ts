@@ -13,7 +13,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { SignupFields } from '@app/formlyConfig/formly-presets/signup-from';
+import { SignupFields } from '@app/formly/formly-presets/signup-from';
 import { MatIconModule } from '@angular/material/icon';
 import { AccessToken } from '@app/shared/models/access-token';
 import { SignupService } from './signup.service';

@@ -2,7 +2,7 @@ import { CategoryApi } from '@app/shared/models/api.model';
 import { Category } from '@app/shared/models/category';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { UserDetail, UserDetailModel } from '@app/shared/models/user-detail';
-import { EmailValidator, PhoneValidator } from '@app/formlyConfig/validators';
+import { EmailValidator, PhoneValidator } from '@app/formly/validators';
 import * as moment from 'moment';
 
 export const CommonMapper = {

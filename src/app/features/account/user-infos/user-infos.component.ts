@@ -12,7 +12,7 @@ import {
     UpdateUserInfosDialogComponent
 } from '@app/account/user-infos/update-user-infos-dialog.component';
 import { PasswordModel, UserDetailModel } from '@app/shared/models/user-detail';
-import { passwordForm } from '@app/formlyConfig/formly-presets/user-infos';
+import { passwordForm } from '@app/formly/formly-presets/user-infos';
 import { mapUserDetailToFormlyFieldConfig } from '@app/mapper/common.mapper';
 
 @Component({

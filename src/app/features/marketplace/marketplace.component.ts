@@ -20,7 +20,7 @@ import {
     FormlyModule,
 } from '@ngx-formly/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { SearchFields } from '../formlyConfig/formly-presets/search-form';
+import { SearchFields } from '../formly/formly-presets/search-form';
 import { AuthService } from '@app/auth/auth.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BehaviorSubject, Subject, tap } from 'rxjs';

@@ -17,6 +17,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { AuthState } from '@app/shared/store/auth/auth.state';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { OrderState } from '@feat/account/orders/orders.state';
 
 registerLocaleData(localeFr)
 
@@ -34,7 +35,7 @@ export const appConfig: ApplicationConfig = {
             FormlyPresetModule,
             FormlyModule.forRoot(initFormly()),
             FormlyMaterialModule,
-            NgxsModule.forRoot([CartState, AuthState], {
+            NgxsModule.forRoot([CartState, AuthState, OrderState], {
                 developmentMode: true,
                 selectorOptions: {suppressErrors : false, injectContainerState: false}
             }),

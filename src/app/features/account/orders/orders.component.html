@@ -1,6 +1,6 @@
-<section class="m-3">
+<section class="m-3" >
     <h2 class="text-lg mb-2">Vos dernières commandes</h2>
-    <table mat-table [dataSource]="dataSource" class="w-full">
+    <table *ngIf="(dataSource | async)?.length !== 0; else noResult" mat-table [dataSource]="dataSource" class="w-full">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -26,3 +26,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </section>
+<ng-template #noResult>
+    <app-error></app-error>
+</ng-template>

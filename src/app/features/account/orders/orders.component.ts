@@ -1,79 +1,21 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CommonModule, NgForOf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngxs/store';
+import { GetAllOrder } from '@feat/account/orders/orders.action';
+import { Observable, tap } from 'rxjs';
+import { OrderState } from '@feat/account/orders/orders.state';
+import { ErrorComponent } from '@app/shared/components/error/error.component';
 
-export interface PeriodicElement {
+export interface Order {
     date: string;
-    id: number;
+    id: string | number;
     quantity: number;
     totalAmount: string;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 3,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 4,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 6,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 9,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 10,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 2,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 4,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 1,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 8,
-        totalAmount: '2500 €',
-    },
-    {
-        id: 1423423543535,
-        date: '25/02/2024',
-        quantity: 2,
-        totalAmount: '2500 €',
-    },
-];
 
 @Component({
     selector: 'app-orders',
@@ -84,11 +26,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
         MatButtonModule,
         MatIconModule,
         NgForOf,
+        ErrorComponent
     ],
     templateUrl: './orders.component.html',
     styleUrls: ['./orders.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class OrdersComponent {
+export default class OrdersComponent implements OnInit{
     displayedColumns: string[] = ['id', 'date', 'quantity', 'totalAmount'];
-    dataSource = ELEMENT_DATA;
+    private readonly _store = inject(Store);
+    dataSource: Observable<Order[]> = this._store.select(OrderState.getAllOrders).pipe(tap(console.log));
+
+    ngOnInit(): void {
+        this._store.dispatch(new GetAllOrder())
+    }
 }

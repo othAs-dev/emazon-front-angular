@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserDetail } from '@app/shared/models/user-detail';
+import { Login } from '@app/shared/models/login';
+import { AccessToken } from '@app/shared/models/access-token';
 
 @Injectable({
     providedIn: 'root',
@@ -12,19 +14,31 @@ export class AuthService {
         const token = sessionStorage.getItem('token');
         return !!token;
     }
-    public getUserDetails(): Observable<{ user_details: UserDetail }> {
+    public getUserDetails(token: string | null): Observable<{ user_details: UserDetail }> {
         return this._http.get<{ user_details: UserDetail }>(
             'http://localhost:8000/api/v1/customer/details',
             {
                 headers: {
-                    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+                    Authorization: `Bearer ${token}`,
                 },
             }
         );
     }
-    public logout(): void {
-        sessionStorage.removeItem('token');
-        localStorage.removeItem('user_details');
-        window.location.href = '/marketplace/home';
+
+    public login(credentials: Login): Observable<AccessToken> {
+        const credentialsApi = { emailPassword: credentials };
+        return this._http.post<AccessToken>(
+            'http://localhost:8000/api/v1/auth/signIn',
+            credentialsApi
+        );
+    }
+
+    public logout(token: string | null): Observable<void> {
+        return this._http.post<void>("http://localhost:8000/api/v1/auth/logout", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        // localStorage.removeItem('user_details');
     }
 }

@@ -33,8 +33,8 @@ export function mapUserDetailModelToUserDetail(udm: UserDetailModel): UserDetail
     };
 }
 
-export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): FormlyFieldConfig[] {
-    return [
+export function mapUserDetailToFormlyFieldConfig(userDetail?: UserDetail): FormlyFieldConfig[] {
+    return  [
         {
             fieldGroupClassName: 'flex flex-col',
             fieldGroup: [
@@ -45,7 +45,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                     fieldGroup: [
                         {
                             className: 'w-full',
-                            defaultValue: userDetail.firstname,
+                            defaultValue: userDetail?.firstname ,
                             key: 'firstname',
                             type: 'input',
                             props: {
@@ -54,7 +54,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                         },
                         {
                             className: 'w-full',
-                            defaultValue: userDetail.lastname,
+                            defaultValue: userDetail?.lastname,
                             key: 'lastname',
                             type: 'input',
                             props: {
@@ -65,7 +65,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                 },
                 {
                     className: 'w-full',
-                    defaultValue: userDetail.email,
+                    defaultValue: userDetail?.email,
                     key: 'email',
                     type: 'input',
                     props: {
@@ -78,7 +78,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                 {
                     // className: 'w-full laptop:w-3/12',
                     key: 'birthdate',
-                    defaultValue: moment(userDetail.birthdate, "DD/MM/YYYY"),
+                    defaultValue: moment(userDetail?.birthdate, "DD/MM/YYYY"),
                     type: 'date-picker',
                     props: {
                         label: 'Date de naissance'
@@ -87,7 +87,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                 {
                     // className: 'w-full laptop:w-4/12',
                     key: 'phone',
-                    defaultValue: userDetail.phone,
+                    defaultValue: userDetail?.phone,
                     type: 'input',
                     props: {
                         label: 'Téléphone',
@@ -108,7 +108,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                                 {
                                     className: 'w-full',
                                     key: 'street',
-                                    defaultValue: userDetail.address?.street,
+                                    defaultValue: userDetail?.address?.street,
                                     type: 'input',
                                     props: {
                                         label: 'Rue'
@@ -117,7 +117,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                                 {
                                     className: 'w-full',
                                     key: 'locality',
-                                    defaultValue: userDetail.address?.locality,
+                                    defaultValue: userDetail?.address?.locality,
                                     type: 'input',
                                     props: {
                                         label: 'Ville'
@@ -132,7 +132,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                                 {
                                     className: 'w-full',
                                     key: 'postalCode',
-                                    defaultValue: userDetail.address?.postalCode,
+                                    defaultValue: userDetail?.address?.postalCode,
                                     type: 'input',
                                     props: {
                                         label: 'Code postal',
@@ -142,7 +142,7 @@ export function mapUserDetailToFormlyFieldConfig(userDetail: UserDetail): Formly
                                 {
                                     className: 'w-full',
                                     key: 'country',
-                                    defaultValue: userDetail.address?.country,
+                                    defaultValue: userDetail?.address?.country,
                                     type: 'input',
                                     props: {
                                         label: 'Pays'

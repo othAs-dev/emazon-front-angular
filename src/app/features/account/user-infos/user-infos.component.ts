@@ -14,6 +14,9 @@ import {
 import { PasswordModel, UserDetailModel } from '@app/shared/models/user-detail';
 import { passwordForm } from '@app/formly/formly-presets/user-infos';
 import { mapUserDetailToFormlyFieldConfig } from '@app/mapper/common.mapper';
+import { Store } from '@ngxs/store';
+import { AuthState } from '@app/shared/store/auth/auth.state';
+import { UserDetails } from '@app/shared/store/auth/auth.action';
 
 @Component({
     selector: 'app-user-infos',
@@ -40,20 +43,16 @@ export default class UserInfosComponent {
     protected readonly passwordModel: PasswordModel = {} as PasswordModel
     protected readonly passwordFields: FormlyFieldConfig[] = passwordForm;
 
-    private readonly _userInfoService: UserInfosService = inject(UserInfosService);
-    protected readonly userInfo: Observable<FormlyFieldConfig[]> =  this._userInfoService
-        .getUserInfos$()
+    private readonly _store: Store = inject(Store);
+    protected readonly userInfo: Observable<FormlyFieldConfig[]> = this._store
+        .selectOnce(AuthState.getUserDetails)
         .pipe(
-            tap(console.log),
-            map(mapUserDetailToFormlyFieldConfig)
+            map(userDetail => {
+                if (userDetail === null)
+                    return mapUserDetailToFormlyFieldConfig()
+                return mapUserDetailToFormlyFieldConfig(userDetail)
+            })
         );
-
-    // protected readonly userInfos$ = this._infosService.getUserInfos$().pipe(
-    //     catchError(() => {
-    //         this._snackBar.open('Impossible de charger vos informations');
-    //         return of(undefined);
-    //     })
-    // );
 
     protected openSaveDialog(userInfos: UserDetailModel | PasswordModel): void {
         const dialogRef = this._dialog.open(UpdateUserInfosDialogComponent, {

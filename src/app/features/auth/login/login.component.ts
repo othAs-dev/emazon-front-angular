@@ -10,7 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginService } from '@feat/auth/login/login.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccessToken } from '@app/shared/models/access-token';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { Login } from '@app/shared/store/auth/auth.action';
 
 @Component({
     selector: 'app-login',
@@ -34,22 +36,21 @@ export default class LoginComponent {
     private _snackBar: MatSnackBar = inject(MatSnackBar);
     private _router: Router = inject(Router);
     protected form = new FormGroup({});
-    protected model: any = {};
+    protected model: {email: string, password: string} = {} as {email: string, password: string};
     protected options: FormlyFormOptions = {};
     protected fields: FormlyFieldConfig[] = LoginFields;
-    protected loadingSucceed$ = new BehaviorSubject(false);
+    protected loadingSucceed$ = new BehaviorSubject(false)
+    private readonly _store : Store = inject(Store);
 
     protected submit(): void {
         this.loadingSucceed$.next(true);
-        this._loginService.login(this.model).subscribe(
-            (response: AccessToken) => {
-                sessionStorage.setItem('token', response.token);
-                this._router.navigate(['/marketplace/home']);
-            },
-            (error) => {
-                this.loadingSucceed$.next(false);
-                this._snackBar.open('Authentification échouée');
-            }
-        );
+        this._store.dispatch(new Login(this.model))
+            .pipe(
+                catchError(_ => {
+                    this.loadingSucceed$.next(false);
+                    this._snackBar.open('Authentification échouée');
+                    return EMPTY
+                })
+            )
     }
 }

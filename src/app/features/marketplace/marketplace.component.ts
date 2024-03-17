@@ -12,11 +12,13 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchFields } from '@app/formly/formly-presets/search-form';
 import { AuthService } from '@feat/auth/auth.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, EMPTY, map, mergeMap, Observable, of, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBadgeModule } from '@angular/material/badge';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { CartState } from '@feat/marketplace/cart/cart.state';
+import { Logout, UserDetails } from '@app/shared/store/auth/auth.action';
+import { AuthState, AuthStateModel } from '@app/shared/store/auth/auth.state';
 
 @Component({
     selector: 'app-marketplace',
@@ -50,30 +52,34 @@ export default class MarketplaceComponent implements OnInit{
     protected showLaptopSubMenu = false;
     protected showHeadphonesSubMenu = false;
     protected showSpeakersSubMenu = false;
+
     protected form = new FormGroup({});
     protected model: any = {};
     protected options: FormlyFormOptions = {};
     protected fields: FormlyFieldConfig[] = SearchFields;
     private readonly _authService: AuthService = inject(AuthService);
-    protected readonly isLoggedIn: boolean =
-        this._authService.isAuthenticated();
+
+    @Select(AuthState.isAuthenticated)
+    protected readonly isLoggedIn: Observable<boolean>;
+
+    protected readonly _store: Store = inject(Store);
+    protected readonly nameOrConnect: Observable<string> = this._store.select(AuthState.getUserDetails)
+        .pipe(
+            tap(console.log),
+            mergeMap(userDetails => {
+                if (userDetails != null)
+                    return of(`${userDetails.firstname}👋`)
+                return of('Se connecter')
+            })
+        )
     protected productsAddedToCart$ = new BehaviorSubject<number>(0);
     private store: Store = inject(Store);
     private destroyRef: DestroyRef = inject(DestroyRef);
 
-    isLogged() {
-        if (this.isLoggedIn) {
-            const userDetailsString = localStorage.getItem('user_details');
-            if (userDetailsString) {
-                const userDetails: { firstname: string; lastname: string } =
-                    JSON.parse(userDetailsString);
-                return `${userDetails.firstname} 👋`;
-            }
-        }
-        return 'Se connecter';
-    }
+    protected logout = () => {
 
-    protected logout = () => this._authService.logout();
+        this._store.dispatch(Logout)
+    };
 
     protected submit(): void {
         if (this.form.valid) {

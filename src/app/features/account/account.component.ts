@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '@feat/auth/auth.service';
+import { Store } from '@ngxs/store';
+import { Logout } from '@app/shared/store/auth/auth.action';
 
 @Component({
     selector: 'app-account',
@@ -21,8 +23,8 @@ import { AuthService } from '@feat/auth/auth.service';
     styleUrls: ['./account.component.css'],
 })
 export default class AccountComponent {
-    private readonly _authService: AuthService = inject(AuthService);
-    protected logout() {
-        this._authService.logout();
-    }
+    private readonly _store : Store = inject(Store);
+    protected logout = () => {
+       this._store.dispatch(Logout)
+    };
 }

@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, LOCALE_ID } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
@@ -18,12 +18,14 @@ import localeFr from '@angular/common/locales/fr';
 import { AuthState } from '@app/shared/store/auth/auth.state';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { OrderState } from '@feat/account/orders/orders.state';
+import { TokenAPIInterceptor } from '@app/shared/interceptor/token-api.interceptor';
+import { ProductState } from '@app/shared/store/product/product.state';
 
 registerLocaleData(localeFr)
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideHttpClient(),
+        provideHttpClient(withInterceptors([TokenAPIInterceptor])),
         provideRouter(routes, withComponentInputBinding()),
         provideAnimations(),
         {
@@ -35,7 +37,7 @@ export const appConfig: ApplicationConfig = {
             FormlyPresetModule,
             FormlyModule.forRoot(initFormly()),
             FormlyMaterialModule,
-            NgxsModule.forRoot([CartState, AuthState, OrderState], {
+            NgxsModule.forRoot([CartState, AuthState, OrderState, ProductState], {
                 developmentMode: true,
                 selectorOptions: {suppressErrors : false, injectContainerState: false}
             }),

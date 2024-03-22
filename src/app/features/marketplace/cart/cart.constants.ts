@@ -15,6 +15,10 @@ export interface payementMethodModel {
 
 export type CartProduct = Pick<Product, 'name'| 'mainPic' | 'price' | 'uid'> & { quantity: number }
 
+export interface CartOrder {
+    productUidToQuantity: Record<string, number>;
+}
+
 export const benefitsData: benefitsModel[] = [
     {
         id: 1,

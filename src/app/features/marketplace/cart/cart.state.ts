@@ -1,42 +1,60 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { AddProductToCart, DeleteItem, UpdateQuantity } from '@feat/marketplace/cart/cart.action';
-import { CartProduct } from '@feat/marketplace/cart/cart.constants';
+import {
+    AddProductToCart,
+    ClearCart,
+    DeleteItem,
+    UpdateQuantity
+} from '@feat/marketplace/cart/cart.action';
+import { CartOrder, CartProduct } from '@feat/marketplace/cart/cart.constants';
 import { patch, updateItem } from '@ngxs/store/operators';
 
 export interface CartModel {
-    products: CartProduct[];
+    cartProducts: CartProduct[];
 }
 
 @State<CartModel>({
     name: 'cart',
-    defaults: { products: [] }
+    defaults: { cartProducts: [] }
 })
 @Injectable()
 export class CartState {
     @Selector()
     static getCartProductTotalAmount(state: CartModel): number {
         return (
-            state && state.products.reduce((acc, curr) => acc +
+            state && state.cartProducts.reduce((acc, curr) => acc +
                 this.toNumber(curr.price) * curr.quantity , 0)
         );
     }
 
     @Selector()
     static getAllCartProducts(state: CartModel): CartProduct[] {
-        return state && state.products;
+        return state && state.cartProducts;
     }
 
     @Selector()
+    static getCartOrder(state: CartModel): CartOrder {
+        return state.cartProducts.reduce((acc, curr) => {
+            return {
+                productUidToQuantity: {
+                    ...acc.productUidToQuantity,
+                    [curr.uid!]: curr.quantity
+                }
+            };
+        }, {} as CartOrder);
+    }
+
+
+    @Selector()
     static itemsInCart(state: CartModel): number {
-        return state && state.products.reduce((acc, curr) => acc + curr.quantity, 0)
+        return state && state.cartProducts.reduce((acc, curr) => acc + curr.quantity, 0);
     }
 
     @Selector()
     static getCartTotalPlusVAT(state: CartModel): number {
         const EmazonFees = 0.05;
         const VATFrance = 0.2;
-        const total = state.products.reduce(
+        const total = state.cartProducts.reduce(
             (acc, curr) => acc + this.toNumber(curr.price) * curr.quantity,
             0
         );
@@ -46,7 +64,7 @@ export class CartState {
     @Action(AddProductToCart)
     addProductToCart(ctx: StateContext<CartModel>, action: AddProductToCart): void {
         const state = ctx.getState();
-        let item = state.products.find(v => v.uid === action.item.uid);
+        let item = state.cartProducts.find(v => v.uid === action.item.uid);
         const isAlreadyInCart: boolean = item !== undefined;
         if (isAlreadyInCart) {
           ctx.dispatch(new UpdateQuantity(action.item, (item!.quantity +1).toString()))
@@ -54,18 +72,18 @@ export class CartState {
         }
         ctx.setState({
             ...state,
-            products: [...state.products, action.item]
+            cartProducts: [...state.cartProducts, action.item]
         });
     }
 
     @Action(DeleteItem)
     deleteItem(ctx: StateContext<CartModel>, action: DeleteItem): void {
         const state = ctx.getState();
-        const newProductList = state.products.filter(
+        const newProductList = state.cartProducts.filter(
             (item) => item.uid !== action.item.uid
         );
         ctx.patchState({
-            products: newProductList
+            cartProducts: newProductList
         });
     }
 
@@ -74,12 +92,21 @@ export class CartState {
         const item: CartProduct = { ...action.item, quantity: +action.quantity };
         ctx.setState(
             patch<CartModel>({
-                products: updateItem<CartProduct>(
+                cartProducts: updateItem<CartProduct>(
                     value => value.uid === action.item.uid,
                     item
                 )
             })
         )
+    }
+
+    @Action(ClearCart)
+    clearCart(ctx: StateContext<CartModel>): void {
+        const state = ctx.getState();
+        const newProduct = state.cartProducts.filter(_ => false);
+        ctx.setState(patch<CartModel>({
+            cartProducts: newProduct
+        }));
     }
 
     static toNumber(num?: string | undefined): number {

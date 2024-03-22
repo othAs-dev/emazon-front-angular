@@ -30,6 +30,10 @@ export default [
                 path: 'product/:id',
                 loadComponent: () => import('./product/product.component'),
             },
+            {
+                path: 'thanks',
+                loadComponent: () => import('./thanks/thanks.component')
+            }
         ],
     },
     {

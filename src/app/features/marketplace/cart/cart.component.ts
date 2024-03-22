@@ -28,9 +28,10 @@ import { CartItemComponent } from '@feat/marketplace/cart/cart-item/cart-item.co
 import { CartService } from '@app/service/cart.service';
 import { CartSummaryComponent } from '@feat/marketplace/cart/cart-summary/cart-summary.component';
 import { Observable } from 'rxjs';
-import { ProductService } from '@app/service/product.service';
 import { ErrorComponent } from '@app/shared/components/error/error.component';
 import { Products } from '@app/shared/models/product';
+import { Store } from '@ngxs/store';
+import { ProductState } from '@app/shared/store/product/product.state';
 
 @Component({
     selector: 'app-cart',
@@ -61,16 +62,18 @@ import { Products } from '@app/shared/models/product';
     standalone: true,
 })
 export default class CartComponent {
-    private _productService: ProductService = inject(ProductService);
     private _cartService = inject(CartService);
     protected benefitsData: benefitsModel[] = benefitsData;
     protected payementMethodData: payementMethodModel[] = payementMethodData;
     protected cartProducts$: Observable<CartProduct[]> =
         this._cartService.getAllProducts();
     protected giftWrap: boolean = false;
-    protected recommendationProducts$: Observable<Products> =
-        this._productService.getProducts();
+
+    // this._productService.getProducts();
     protected form = new FormGroup({});
+    private readonly _store: Store = inject(Store);
+    protected recommendationProducts$: Observable<Products> =
+        this._store.select(ProductState.getProducts)
     protected model: any = {};
     protected fields: FormlyFieldConfig[] = [
         {

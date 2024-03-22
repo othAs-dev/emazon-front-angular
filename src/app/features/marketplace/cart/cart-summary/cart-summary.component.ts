@@ -4,12 +4,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CartService } from '@app/service/cart.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CartProduct } from '@feat/marketplace/cart/cart.constants';
+import { Store } from '@ngxs/store';
+import { PlaceOrder } from '@feat/account/orders/orders.action';
 
 @Component({
     selector: 'app-cart-summary',
     standalone: true,
+    styleUrls: ['./cart-summary.component.css'],
     imports: [
         CommonModule,
         MatButtonModule,
@@ -25,4 +28,14 @@ export class CartSummaryComponent {
 
     protected totalWithoutTaxes: Observable<number> = this.cartService.getTotalWithoutTaxes();
     protected totalProductAmount: Observable<number> = this.cartService.getProductTotalAmount();
+    isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    private readonly _store: Store = inject(Store);
+
+    addOrder(cartProducts: CartProduct[]) {
+        this.isLoading$.next(true);
+        this._store.dispatch(new PlaceOrder(cartProducts))
+            .subscribe(
+                _ => this.isLoading$.next(false)
+            );
+    }
 }

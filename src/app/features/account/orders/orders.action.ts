@@ -1,10 +1,12 @@
-import { Order } from '@feat/account/orders/orders.component';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 
 export class GetAllOrder {
     static readonly type = '[Order] Get All Orders'
 }
 
-export class AddOrder {
-    static readonly type = '[Order] Add Order'
-    constructor(order: Order) {}
+export class PlaceOrder {
+    static readonly type = '[Order] Place order';
+
+    constructor(public cartProducts: CartProduct[]) {
+    }
 }

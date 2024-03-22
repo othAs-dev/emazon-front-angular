@@ -1,4 +1,4 @@
-<section class="overflow-hidden h-full">
+<section class="overflow-hidden min-h-screen">
     <mat-toolbar class="w-full flex justify-between top-0" color="primary">
         <div class="flex items-center">
             <button (click)="isExpanded = !isExpanded" class="hover:bg-[#f6a636]" mat-icon-button>
@@ -38,7 +38,7 @@
             </mat-menu>
         </div>
     </mat-toolbar>
-    <mat-sidenav-container class="h-full fixed">
+    <mat-sidenav-container class="min-h-screen fixed">
         <mat-sidenav mode="side" opened="true" [ngClass]="{'hidden-important': !isExpanded, 'visible': isExpanded}"
                      class="tablet:block">
             <mat-nav-list>
@@ -161,8 +161,10 @@
                 </mat-list-item>
             </mat-nav-list>
         </mat-sidenav>
-        <section class="scroll-auto" (click)="isExpanded = false">
-            <router-outlet />
-        </section>
+        <mat-sidenav-content>
+            <section (click)="isExpanded = false" class="scroll-auto h-full">
+                <router-outlet />
+            </section>
+        </mat-sidenav-content>
     </mat-sidenav-container>
 </section>

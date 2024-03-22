@@ -18,3 +18,7 @@ export class UpdateQuantity {
     constructor(public item: CartProduct, public quantity: string) {
     }
 }
+
+export class ClearCart {
+    static readonly type = '[Cart] clear cart';
+}

@@ -10,7 +10,7 @@ import { Observable, tap } from 'rxjs';
 import { OrderState } from '@feat/account/orders/orders.state';
 import { ErrorComponent } from '@app/shared/components/error/error.component';
 
-export interface Order {
+export interface OrderTable {
     date: string;
     id: string | number;
     quantity: number;
@@ -35,7 +35,7 @@ export interface Order {
 export default class OrdersComponent implements OnInit{
     displayedColumns: string[] = ['id', 'date', 'quantity', 'totalAmount'];
     private readonly _store = inject(Store);
-    dataSource: Observable<Order[]> = this._store.select(OrderState.getAllOrders).pipe(tap(console.log));
+    dataSource: Observable<OrderTable[]> = this._store.select(OrderState.getAllOrders).pipe(tap(console.log));
 
     ngOnInit(): void {
         this._store.dispatch(new GetAllOrder())

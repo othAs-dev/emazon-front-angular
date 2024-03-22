@@ -12,16 +12,6 @@
                             <p class="font-bold">{{ pr.name }}</p>
                             <p class="text-orange-500 text-right">{{pr.quantity}} x {{pr.price | currency : 'EUR' }}</p>
                         </div>
-<!--                        <div>-->
-<!--                            <div class="flex justify-between">-->
-<!--                                <p>Livraison</p>-->
-<!--                                <p>{{ pr.delivery | currency : 'EUR' }}</p>-->
-<!--                            </div>-->
-<!--                            <div class="flex justify-between">-->
-<!--                                <p>Emballage</p>-->
-<!--                                <p>{{ pr.packaging | currency : 'EUR' }}</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -47,7 +37,13 @@
                     <p>{{ totalProductAmount | async | currency : 'EUR' }}</p>
                 </div>
                 <div>
-                    <button class="w-full mt-3" color="primary" mat-raised-button>Passer la commande</button>
+                    <button (click)="addOrder(cartProducts)"
+                            [class.spinner]="isLoading$ | async"
+                            class="w-full mt-3"
+                            color="primary"
+                            mat-raised-button>
+                        {{ !(isLoading$ | async) ? 'Passer la commande' : '' }}
+                    </button>
                     <div class="flex justify-center mt-2">
                         <mat-icon>
                             lock

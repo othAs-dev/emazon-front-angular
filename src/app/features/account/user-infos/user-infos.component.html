@@ -1,0 +1,33 @@
+<section class="w-1/2 m-auto pb-5" >
+    <form *ngIf="userInfo | async as userDetail" class="flex flex-col gap-5 rounded shadow-md bg-white px-8 py-4 mt-8" [formGroup]="userDetailsGroup">
+        <h2 class="font-sans text-2xl">Informations d'utilisateur</h2>
+        <formly-form [fields]="userDetail" [form]="userDetailsGroup" [model]="userDetailsModel"/>
+        <div class="self-end">
+            <button
+                class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+                color="primary"
+                mat-raised-button
+                type="submit"
+                (click)="openSaveDialog(userDetailsModel)"
+            >
+                Enregistrer les modifications
+            </button>
+        </div>
+    </form>
+
+    <form class="flex flex-col gap-5 rounded shadow-md bg-white px-8 py-4 mt-8 " [formGroup]="passwordGroup">
+        <h2 class="font-sans text-2xl">Mot de passe</h2>
+        <formly-form [fields]="passwordFields" [form]="passwordGroup" [model]="passwordModel"/>
+        <div class="self-end">
+            <button
+                    class="text-xs w-fit h-fit tablet:text-sm laptop:text-md desktop:text-lg"
+                    color="primary"
+                    mat-raised-button
+                    type="submit"
+                    (click)="openSaveDialog(passwordModel)"
+            >
+                Enregistrer
+            </button>
+        </div>
+    </form>
+</section>

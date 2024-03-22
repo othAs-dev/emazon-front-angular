@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductApi } from '@app/marketplace/home/home.constants';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,8 +37,9 @@ export class ProductCardComponent {
 
         this._cartService
             .addItem({
+                uid: p.uid,
                 name: p.name,
-                imgSrc: p.imgSrc,
+                mainPic: p.mainPic,
                 price: p.price,
                 quantity: 1
             })

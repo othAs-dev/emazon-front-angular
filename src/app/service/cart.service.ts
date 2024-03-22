@@ -1,10 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { AddProductToCart, DeleteItem, UpdateQuantity } from '@app/marketplace/cart/cart.action';
+import { AddProductToCart, DeleteItem, UpdateQuantity } from '@feat/marketplace/cart/cart.action';
 import { map, Observable } from 'rxjs';
-import { CartState } from '@app/marketplace/cart/cart.state';
-import { Product } from '@app/shared/models/product';
-import { CartProduct } from '@app/marketplace/cart/cart.constants';
+import { CartState } from '@feat/marketplace/cart/cart.state';
+import { CartProduct } from '@feat/marketplace/cart/cart.constants';
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +13,8 @@ export class CartService {
     private productTotalAmount$: Observable<number> = this._store.select(
         CartState.getCartProductTotalAmount
     );
-    private allProductRecap$: Observable<CartProduct[]> = this._store.select(
-        CartState.getAllCartProduct
+    private allCartProducts$: Observable<CartProduct[]> = this._store.select(
+        CartState.getAllCartProducts
     );
 
     addItem(item: CartProduct): void {
@@ -31,7 +30,7 @@ export class CartService {
     }
 
     getAllProducts(): Observable<CartProduct[]> {
-        return this.allProductRecap$;
+        return this.allCartProducts$;
     }
 
     getTotalWithoutTaxes(): Observable<number> {

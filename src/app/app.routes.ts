@@ -9,16 +9,16 @@ export const routes: Routes = [
         children: [
             {
                 path: 'auth',
-                loadChildren: () => import('./auth/auth.routes'),
+                loadChildren: () => import('@feat/auth/auth.routes'),
                 canActivateChild: [isLoggedGuard],
             },
             {
                 path: 'account',
-                loadChildren: () => import('./account/account.routes'),
+                loadChildren: () => import('@feat/account/account.routes'),
             },
             {
                 path: 'marketplace',
-                loadChildren: () => import('./marketplace/marketplace.routes'),
+                loadChildren: () => import('@feat/marketplace/marketplace.routes'),
             },
             {
                 path: '**',

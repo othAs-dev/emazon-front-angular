@@ -1,0 +1,35 @@
+<div class="flex flex-col justify-center gap-y-3 ">
+    <div>
+        <h3 class="font-bold text-lg  laptop:text-xl">Votre panier :</h3>
+    </div>
+
+    <mat-card *ngFor="let product of cartProducts" class="p-6">
+        <mat-card-content class="mt-5">
+            <div class="flex flex-row">
+                <div class="p-1 h-fit  mr-3">
+                    <img [alt]="product.name" [src]="'http://localhost:8000/'+product.mainPic" height="80" width="80">
+                </div>
+                <div class="w-full flex flex-col">
+                    <div class="flex justify-between">
+                        <p class="font-bold">{{ product.name }}</p>
+                        <p class="text-orange-500 font-bold">{{ product.price | currency : "EUR" }}</p>
+                    </div>
+                    <span class="text-green-500">Plus que 10 en stock</span>
+                    <div class="flex justify-end mt-2">
+                        <div class="flex flex-row gap-2 items-center">
+                            <app-select
+                                (selectedChange)="onDefaultNumberOptionsSelected($event, product)"
+                                [options]="getOptions()"
+                                [selected]="product.quantity.toString()"
+                            />
+                            <button (click)="deleteFn(product)" class="text-sm" color="warn" mat-stroked-button>
+                                Supprimer
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,31 +1,17 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
-import { AuthService } from '@app/auth/auth.service';
-import { UserDetail } from '@app/shared/models/user-detail';
-import { map, tap } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
+import { AuthState } from '@app/shared/store/auth/auth.state';
+import { UserDetails } from '@app/shared/store/auth/auth.action';
 
 export const initGuard: CanActivateFn = (route, state) => {
-    const authService: AuthService = inject(AuthService);
+    const store: Store = inject(Store);
+    const isAuthenticated = store.selectSnapshot(AuthState.isAuthenticated)
 
-    if (authService.isAuthenticated()) {
-        authService
-            .getUserDetails()
-            .pipe(
-                map((userDetail: { user_details: UserDetail }) => {
-                    return {
-                        firstname: userDetail.user_details.firstname,
-                        lastname: userDetail.user_details.lastname,
-                    };
-                }),
-                tap((userDetails) => {
-                    console.log(userDetails);
-                    localStorage.setItem(
-                        'user_details',
-                        JSON.stringify(userDetails)
-                    );
-                })
-            )
-            .subscribe();
+    if (isAuthenticated) {
+        const hasUserDetails: boolean = store.selectSnapshot(AuthState.getUserDetails) !== null
+        if (!hasUserDetails)
+            store.dispatch(UserDetails)
     }
     return true;
 };

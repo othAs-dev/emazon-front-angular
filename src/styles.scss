@@ -4,8 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "primeicons/primeicons.css";
+
+@layer components {
+  .formly-group {
+    @apply flex flex-row gap-4 flex-wrap
+  }
+}
+
+
 html, body {
-  height: 100%
+  height: auto
 }
 
 html {

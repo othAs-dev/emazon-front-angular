@@ -25,11 +25,12 @@
       "dom"
     ],
     "paths": {
+      "@feat/*": ["./src/app/features/*"],
       "@app/*": ["./src/app/*"],
       "@app/environment": ["./src/environments/environment.ts"],
       "@app/models": ["./src/app/core/models/index.ts"],
       "@app/shared/*": ["./src/app/shared/*"],
-      "@app/guards": ["./src/app/core/guards"],
+      "@app/guards": ["./src/app/core/guards"]
     }
   },
   "angularCompilerOptions": {

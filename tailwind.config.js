@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  content: [
+    "./src/**/*.{html,ts}",
+    // "./src/**/formly-presets/*.ts"
+  ],
   theme: {
     screens: {
       'tablet': '640px',
